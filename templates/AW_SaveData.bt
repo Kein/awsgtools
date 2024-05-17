@@ -1,0 +1,304 @@
+// =====================
+// DEFINITIONS
+// =====================
+
+// Config footer
+enum <ubyte> ControllerStyle
+{
+    PS5=0,
+    Xbox,
+    Nintendo,
+    Keyboard
+};
+
+enum <ubyte> Graphics
+{
+    Good=0,
+    Better,
+    Best
+};
+
+enum <ubyte> Language
+{
+    English=0,
+    Spanish,
+    French,
+    Italian,
+    German,
+    Chinese,
+    Korean,
+    Japanese,
+    Portuguese,
+    Ukrainian,
+    Russian
+};
+
+typedef struct {
+    uint64 Egg1 : 1;
+    uint64 Egg2 : 1;
+    uint64 Egg3 : 1;
+    uint64 Egg4 : 1;
+    uint64 Egg5 : 1;
+    uint64 Egg6 : 1;
+    uint64 Egg7 : 1;
+    uint64 Egg8 : 1;
+    uint64 Egg9 : 1;
+    uint64 Egg10 : 1;
+    uint64 Egg11 : 1;
+    uint64 Egg12 : 1;
+    uint64 Egg13 : 1;
+    uint64 Egg14 : 1;
+    uint64 Egg15 : 1;
+    uint64 Egg16 : 1;
+    uint64 Egg17 : 1;
+    uint64 Egg18 : 1;
+    uint64 Egg19 : 1;
+    uint64 Egg20 : 1;
+    uint64 Egg21 : 1;
+    uint64 Egg22 : 1;
+    uint64 Egg23 : 1;
+    uint64 Egg24 : 1;
+    uint64 Egg25 : 1;
+    uint64 Egg26 : 1;
+    uint64 Egg27 : 1;
+    uint64 Egg28 : 1;
+    uint64 Egg29 : 1;
+    uint64 Egg30 : 1;
+    uint64 Egg31 : 1;
+    uint64 Egg32 : 1;
+    uint64 Egg33 : 1;
+    uint64 Egg34 : 1;
+    uint64 Egg35 : 1;
+    uint64 Egg36 : 1;
+    uint64 Egg37 : 1;
+    uint64 Egg38 : 1;
+    uint64 Egg39 : 1;
+    uint64 Egg40 : 1;
+    uint64 Egg41 : 1;
+    uint64 Egg42 : 1;
+    uint64 Egg43 : 1;
+    uint64 Egg44 : 1;
+    uint64 Egg45 : 1;
+    uint64 Egg46 : 1;
+    uint64 Egg47 : 1;
+    uint64 Egg48 : 1;
+    uint64 Egg49 : 1;
+    uint64 Egg50 : 1;
+    uint64 Egg51 : 1;
+    uint64 Egg52 : 1;
+    uint64 Egg53 : 1;
+    uint64 Egg54 : 1;
+    uint64 Egg55 : 1;
+    uint64 Egg56 : 1;
+    uint64 Egg57 : 1;
+    uint64 Egg58 : 1;
+    uint64 Egg59 : 1;
+    uint64 Egg60 : 1;
+    uint64 Egg61 : 1;
+    uint64 Egg62 : 1;
+    uint64 Egg63 : 1;
+    uint64 Egg64 : 1;
+} Eggs;
+
+typedef struct
+{
+    ushort Unknown : 1;
+    ushort Firecrackers : 1;
+    ushort Flute : 1;
+    ushort Lantern : 1;
+    ushort Top : 1;
+    ushort Disc : 1;
+    ushort BWand : 1;
+    ushort Yoyo : 1;
+    ushort Slink : 1;
+    ushort Remote : 1;
+    ushort Ball : 1;
+    ushort Wheel : 1;
+    ushort UVLight : 1;
+} Equipment <optimize=false>;
+
+
+typedef struct
+{
+    ubyte None : 1;
+    ubyte SMedal : 1;
+    ubyte UnknownItem1 : 1;
+    ubyte HouseKey : 1;
+    ubyte OfficeKey : 1;
+    ubyte UnusedCageKey : 1;
+    ubyte EMedal : 1;
+    ubyte FPack : 1;
+} OtherItems <optimize=false>;
+
+typedef struct
+{
+    ubyte None : 1;
+    ubyte Map : 1;
+    ubyte Stamp : 1;
+    ubyte Pencil : 1;
+} MapItems <optimize=false>;
+
+
+typedef struct
+{
+    ubyte Figurine1 : 1;
+    ubyte Figurine2 : 1;
+    ubyte Figurine3 : 1;
+    ubyte SouvenirCup : 1;
+    ubyte OrigamiFig : 1;
+    ubyte Rabbits : 1;
+    ubyte Owl : 1;
+    ubyte DecorativeRabbit : 1;
+    ubyte Fish : 1;
+    ubyte Donkey : 1;
+    ubyte Cat : 1;
+    ubyte MamaCha : 1;
+    ubyte Giraffe : 1;
+    ubyte IncenseBurner : 1;
+    ubyte Peacock : 1;
+    ubyte Otter : 1;
+    ubyte Duck : 1;
+    ubyte Figurine18 : 1 <hidden=true>;
+    ubyte Figurine19 : 1 <hidden=true>;
+    ubyte Figurine20 : 1 <hidden=true>;
+    ubyte Figurine21 : 1 <hidden=true>;
+    ubyte Figurine22 : 1 <hidden=true>;
+    ubyte Figurine23 : 1 <hidden=true>;
+    ubyte Figurine24 : 1 <hidden=true>;
+    ubyte Figurine25 : 1 <hidden=true>;
+    ubyte Figurine26 : 1 <hidden=true>;
+    ubyte Figurine27 : 1 <hidden=true>;
+    ubyte Figurine28 : 1 <hidden=true>;
+    ubyte Figurine29 : 1 <hidden=true>;
+    ubyte Figurine30 : 1 <hidden=true>;
+    ubyte Figurine31 : 1 <hidden=true>;
+    ubyte Figurine32 : 1 <hidden=true>;
+}  Figurines <optimize=false>;
+
+// Header
+typedef struct {
+    uint32 Version;
+    uint32 Achievements; // has to be
+    uint32 UnknownData; // what other shared state is saved?
+    ubyte Unk <hidden=true>; // always 00?
+    ubyte SaveHash <write=WriteHash>;
+    ushort Unk <hidden=true>;  // always 00?
+    Figurines UnlockedFigurines;
+    uint32 Unk <hidden=true>;   // always 00?
+    
+} Header <optimize=false>;
+
+// Options
+
+typedef struct {
+    ubyte Scanlines : 1;
+    ubyte Fullscreen : 1;
+    ubyte Unk1 : 1 <hidden=true>;
+    ubyte Unk2 : 1 <hidden=true>;
+    ubyte Vibration : 1;
+    ubyte Unk3 : 1 <hidden=true>;
+    ubyte Flashing : 1;
+    ubyte OverrideStyle : 1;
+    ubyte SwapCancel : 1;
+    ubyte IgnoreBGInput : 1;
+    Language Lang;
+    ubyte Unk4 <hidden=true>;
+    ubyte Unk5<hidden=true>;
+    ubyte Unk6<hidden=true>;
+    ubyte Unk7<hidden=true>;
+    ubyte Unk8<hidden=true>;
+    float SFX;
+    float Music;
+    ControllerStyle GamepadStyle;
+    Graphics GFX;
+    ubyte pad[38] <hidden=true>;
+} Options <optimize=false>;
+
+// SLOTS
+
+typedef struct
+{
+    ushort Year;
+    ubyte Month;
+    ubyte Day;
+    ubyte Hour;
+    ubyte Minutes;
+    ubyte Seconds;
+    ubyte Unknown;
+} Timestamp <optimize=false>;
+
+typedef struct
+{
+    uint32 X;
+    uint32 Y;
+} SavedPos <optimize=false>;
+
+typedef struct
+{
+    Timestamp SlotTimestamp;
+    ubyte pad0[18] <hidden=true>;
+    ushort CrankLevel;
+    ushort CrankLevel2;
+    ubyte pad1[234] <hidden=true>;
+    uint32 Steps;
+    ubyte pad2[43] <hidden=true>;
+    ubyte ButtonDoor1;
+    ubyte pad3[16] <hidden=true>;
+    ubyte ButtonDoor2;
+    ubyte ButtonDoor3;
+    ubyte pad4[62] <hidden=true>;
+    Eggs EggsOwned;
+    ubyte pad4_1[24] <hidden=true>;
+    ushort TimesSaved;
+    ubyte pad5[8] <hidden=true>;
+    ubyte Matches;
+    ubyte FireCrackers;
+    uint32 Hearts;
+    uint32 Unk1;
+    uint32 TicksIngame;
+    uint32 TicksTotal;
+    ubyte pad6[16] <hidden=true>;
+    SavedPos SavePos;    
+    Equipment OwnedEquipment;
+    OtherItems Items1;
+    ubyte pad7[3] <hidden=true>;
+    ushort DeathsUnk2;
+    ushort Deaths;
+    ubyte pad8[4] <hidden=true>;
+    ubyte SelectedItem;
+    
+} Slot <optimize=false>;
+
+// =====================
+// FUNCTIONS
+// =====================
+
+ubyte CalculateHash()
+{
+    local ubyte total = 0;
+    local uint32 pos = 0;
+    while (pos < FileSize())
+    {
+        if (pos != 13)
+            total = total ^ ReadUByte(pos);
+        pos++;
+    }
+    Printf("Save hash: %d", total);
+    return total;
+}
+
+void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
+
+// =====================
+// PARSING
+// =====================
+
+// Because Slot data is incomplete we parse manually for now
+Header GlobalState;
+Slot Slot1;
+FSeek(24 + (159760 * 1));
+Slot Slot2;
+FSeek(24 + (159760 * 2));
+Slot Slot3;
+FSeek(479304);
+Options Config;
