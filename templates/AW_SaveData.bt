@@ -8,8 +8,10 @@
 //  Category: Game
 // File Mask: *.sav
 //   History: 
-//     0.1a - Initial release
-//     0.3  - Added most of the basic data. Ready to use.
+//     0.1a  - Initial release
+//     0.3   - Added most of the basic data. Ready to use.
+//     0.3.1 - Added Stopwatch, Pedometer, Cring. Minimap and pencil data.
+//             Renamed a few things.
 //---------------------------------------------------------
 
 // =====================
@@ -228,14 +230,18 @@ typedef struct
     ubyte Map : 1;
     ubyte Stamp : 1;
     ubyte Pencil : 1;
-} MapItem <optimize=false>;
+    ubyte Unknown1 : 1;
+    ubyte CRing : 1;
+    ubyte Unknown2 : 1;
+    ubyte Unknown3 : 1;
+} AuxularyItem <optimize=false>;
 
 
 typedef struct
 {
-    ubyte Figurine1 : 1;
-    ubyte Figurine2 : 1;
-    ubyte Figurine3 : 1;
+    ubyte StopWatch : 1;
+    ubyte Pedometer : 1;
+    ubyte UnkUnlockable : 1;
     ubyte SouvenirCup : 1;
     ubyte OrigamiFig : 1;
     ubyte Rabbits : 1;
@@ -275,7 +281,7 @@ typedef struct {
     ubyte SelectedSaveSlot; // always 00?
     ubyte SaveHash <write=WriteHash>;
     ushort Unk <hidden=true>;  // always 00?
-    Figurines UnlockedFigurines;
+    Figurines Unlockables;
     uint32 Unk <hidden=true>;   // always 00?
     
 } Header <optimize=false>;
@@ -285,14 +291,15 @@ typedef struct {
 typedef struct {
     ubyte Scanlines : 1;
     ubyte Fullscreen : 1;
-    ubyte Unk1 : 1 <hidden=true>;
-    ubyte Unk2 : 1 <hidden=true>;
+    ubyte ShowTime : 1;
+    ubyte ShowSteps : 1;
     ubyte Vibration : 1;
-    ubyte Unk3 : 1 <hidden=true>;
+    ubyte UnknownOption : 1;
     ubyte Flashing : 1;
     ubyte OverrideStyle : 1;
     ubyte SwapCancel : 1;
     ubyte IgnoreBGInput : 1;
+    ubyte UnknownOption2 : 1;
     Language Lang;
     ubyte Unk4 <hidden=true>;
     ubyte Unk5 <hidden=true>;
@@ -320,11 +327,49 @@ typedef struct
     ubyte Unknown;
 } Timestamp <optimize=false>;
 
+
 typedef struct
 {
     uint32 X;
     uint32 Y;
 } SavedPos <optimize=false>;
+
+
+typedef struct {
+    ubyte FullMapRow[100];
+} MinimapRow <optimize=false>;
+
+
+typedef struct {
+    MinimapRow GridRoomRow[22];
+} MinimapRowsData <optimize=false>;
+
+enum <ushort> StampType
+{
+    Chest = 0,
+    Heart,
+    Skull,
+    Diamond,
+    Spiral,
+    Flame,
+    Grid,
+    Question
+};
+
+typedef struct
+{
+    ushort X;
+    ushort Y;
+    StampType Stamp;
+} StampEntry <optimize=false>;
+
+typedef struct
+{
+    ubyte TotalStamps;
+    StampType LastSelected;
+    StampEntry PlacedStamps[64];
+} StampData <optimize=false>;
+
 
 typedef struct
 {
@@ -363,9 +408,16 @@ typedef struct
     ubyte pad8[4] <hidden=true>;
     ubyte SelectedItem <bgcolor=0xD2FFD6>;
     ushort Unk <hidden=true>;
-    MapItem MapItems <bgcolor=0xD2FFD6>;
+    AuxularyItem AuxularyItems <bgcolor=0xD2FFD6>;
     Equipment2 Upgrades <bgcolor=0xD2FFD6>;
-    //uchar unknownfill[(24 + (159760 * 1)) - FTell()];
+    ubyte pad9[54] <hidden=true>;
+    StampData PlacedStamps; // 387 bytes
+    ubyte DynamicDataThatConstantlyUpdates[64] <hidden=true>;
+    uint32 UnknownData <hidden=true>;
+    MinimapRowsData RevealedMapData[24];
+    ubyte Unused <hidden=true>;
+    MinimapRowsData PencilMapData[24];
+    ////uchar unknownfill[(24 + (159760 * 1)) - FTell()];
 } Slot <optimize=false>;
 
 // =====================
