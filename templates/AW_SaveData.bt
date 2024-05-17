@@ -1,3 +1,17 @@
+//---------------------------------------------------------
+//--- 010 Editor v14.0 Binary Template
+//
+//      File: AW_SaveData.bt
+//   Authors: Kein, apocalyptech
+//   Version: 0.3
+//   Purpose: Parser for Animal Well save game data
+//  Category: Game
+// File Mask: *.sav
+//   History: 
+//     0.1a - Initial release
+//     0.3  - Added most of the basic data. Ready to use.
+//---------------------------------------------------------
+
 // =====================
 // DEFINITIONS
 // =====================
