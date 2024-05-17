@@ -3,7 +3,12 @@ Tools and scripts to parse Animal Well binary save  data
 # Templates
 
 ## 010 Editor
-`AW_SaveData.bt` is the binary template file for 010 Editor
+`AW_SaveData.bt` is the binary template file for [010 Editor](https://www.sweetscape.com/010editor/)
+Install the editor, run it, open `AnimalWell.sav` as a binary file, then go `Templates -> Open Template`
+and open the `AW_SaveData.bt`. Press F5 to run/parse the savegame.
+You can change data and values in the output/results window at the bottom (it pops-up when template is processed).
+After you done making changes, enter **any** value into `GlobalState -> SaveHash` field, press enter, it will calculate save hash. Re-save the file. If you forget this step... well, you will see.
+
 
 ## ImHex
 In progerss

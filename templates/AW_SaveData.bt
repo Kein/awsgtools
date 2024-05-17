@@ -331,14 +331,12 @@ typedef struct
     Equipment OwnedEquipment;
     OtherItems Items1;
     ubyte pad7[3] <hidden=true>;
-    ushort DeathsUnk2 <hidden=true>;
+    ushort DeathsUnk;
     ushort Deaths;
     ubyte pad8[4] <hidden=true>;
     ubyte SelectedItem;
     ushort Unk <hidden=true>;
     MapItem MapItems;
-    
-    
 } Slot <optimize=false>;
 
 // =====================
