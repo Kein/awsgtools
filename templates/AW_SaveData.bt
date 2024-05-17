@@ -164,7 +164,7 @@ typedef struct {
     uint64 Flag62 : 1;
     uint64 Flag63 : 1;
     uint64 Flag64 : 1;
-} GenericFlags;
+} GenericFlags64;
 
 typedef struct
 {
@@ -182,6 +182,18 @@ typedef struct
     ushort Wheel : 1;
     ushort UVLight : 1;
 } Equipment <optimize=false>;
+
+typedef struct
+{
+    ubyte Unknown1 : 1;
+    ubyte Unknown2 : 1;
+    ubyte UnknownButUsed : 1;
+    ubyte BBwand : 1;
+    ubyte Unknown5 : 1;
+    ubyte Unknown6 : 1;
+    ubyte Unknown7 : 1;
+    ubyte Unknown8 : 1;
+} Equipment2;
 
 
 typedef struct
@@ -246,7 +258,7 @@ typedef struct {
     uint32 Version;
     uint32 Achievements; // has to be
     uint32 UnknownData; // what other shared state is saved?
-    ubyte Unk <hidden=true>; // always 00?
+    ubyte SelectedSaveSlot; // always 00?
     ubyte SaveHash <write=WriteHash>;
     ushort Unk <hidden=true>;  // always 00?
     Figurines UnlockedFigurines;
@@ -269,10 +281,10 @@ typedef struct {
     ubyte IgnoreBGInput : 1;
     Language Lang;
     ubyte Unk4 <hidden=true>;
-    ubyte Unk5<hidden=true>;
-    ubyte Unk6<hidden=true>;
-    ubyte Unk7<hidden=true>;
-    ubyte Unk8<hidden=true>;
+    ubyte Unk5 <hidden=true>;
+    ubyte Unk6 <hidden=true>;
+    ubyte Unk7 <hidden=true>;
+    ubyte Unk8 <hidden=true>;
     float SFX;
     float Music;
     ControllerStyle GamepadStyle;
@@ -302,15 +314,16 @@ typedef struct
 
 typedef struct
 {
-    Timestamp SlotTimestamp;
+    Timestamp SlotTimestamp <bgcolor=0xFFD2EE>;
     ubyte pad0[18] <hidden=true>;
     ushort CrankLevel;
     ushort CrankLevel2;
     ubyte pad1[234] <hidden=true>;
-    uint32 Steps;
+    uint32 Steps  <bgcolor=0xFFD2EE>;
     ubyte pad2[20] <hidden=true>;
-    GenericFlags OpenedChests;
-    ubyte pad2_1[15] <hidden=true>;
+    GenericFlags64 OpenedChests;
+    GenericFlags64 OpenedChests2;
+    ubyte pad2_1[7] <hidden=true>;
     ubyte ButtonDoor1;
     ubyte pad3[16] <hidden=true>;
     ubyte ButtonDoor2;
@@ -320,23 +333,25 @@ typedef struct
     ubyte pad4_1[24] <hidden=true>;
     ushort TimesSaved;
     ubyte pad5[8] <hidden=true>;
-    ubyte Matches;
-    ubyte FireCrackers;
-    uint32 Hearts;
+    ubyte Matches <bgcolor=0xD2FFD6>;
+    ubyte FireCrackers <bgcolor=0xD2FFD6>;
+    uint32 Hearts <bgcolor=0xFFD2EE>;
     uint32 Unk1;
-    uint32 TicksIngame;
-    uint32 TicksTotal;
+    uint32 TicksIngame  <bgcolor=0xFFD2EE>;
+    uint32 TicksTotal  <bgcolor=0xFFD2EE>;
     ubyte pad6[16] <hidden=true>;
-    SavedPos SavePos;    
-    Equipment OwnedEquipment;
-    OtherItems Items1;
+    SavedPos SavedRoomPos <bgcolor=0xCACAFF>;    
+    Equipment OwnedEquipment <bgcolor=0xD2FFD6>;
+    OtherItems Items1 <bgcolor=0xD2FFD6>;
     ubyte pad7[3] <hidden=true>;
-    ushort DeathsUnk;
-    ushort Deaths;
+    ushort DeathsUnk <bgcolor=0xFFD2EE>;
+    ushort Deaths <bgcolor=0xFFD2EE>;
     ubyte pad8[4] <hidden=true>;
-    ubyte SelectedItem;
+    ubyte SelectedItem <bgcolor=0xD2FFD6>;
     ushort Unk <hidden=true>;
-    MapItem MapItems;
+    MapItem MapItems <bgcolor=0xD2FFD6>;
+    Equipment2 Upgrades <bgcolor=0xD2FFD6>;
+    //uchar unknownfill[(24 + (159760 * 1)) - FTell()];
 } Slot <optimize=false>;
 
 // =====================
@@ -347,10 +362,13 @@ ubyte CalculateHash()
 {
     local ubyte total = 0;
     local uint32 pos = 0;
-    while (pos < FileSize())
-    {
-        if (pos != 13)
-            total = total ^ ReadUByte(pos);
+    while (pos <= 12) {
+        total = total ^ ReadUByte(pos);
+        pos++;
+    }
+    pos = 14;
+    while (pos < FileSize()) {
+        total = total ^ ReadUByte(pos);
         pos++;
     }
     Printf("Save hash: %d", total);
@@ -364,11 +382,11 @@ void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
 // =====================
 
 // Because Slot data is incomplete we parse manually for now
-Header GlobalState;
-Slot Slot1;
+Header GlobalState <bgcolor=0xCACAFF>;
+Slot Slot1 <bgcolor=0xD2F2FF>;
 FSeek(24 + (159760 * 1));
-Slot Slot2;
+Slot Slot2 <bgcolor=0xFFF2D2>;
 FSeek(24 + (159760 * 2));
-Slot Slot3;
+Slot Slot3 <bgcolor=0xD2FFF8>;
 FSeek(479304);
-Options Config;
+Options Config <bgcolor=0xFFD2EE>;
