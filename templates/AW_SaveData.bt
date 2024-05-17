@@ -2,7 +2,6 @@
 // DEFINITIONS
 // =====================
 
-// Config footer
 enum <ubyte> ControllerStyle
 {
     PS5=0,
@@ -100,6 +99,73 @@ typedef struct {
     uint64 Egg64 : 1;
 } Eggs;
 
+typedef struct {
+    uint64 Flag1 : 1;
+    uint64 Flag2 : 1;
+    uint64 Flag3 : 1;
+    uint64 Flag4 : 1;
+    uint64 Flag5 : 1;
+    uint64 Flag6 : 1;
+    uint64 Flag7 : 1;
+    uint64 Flag8 : 1;
+    uint64 Flag9 : 1;
+    uint64 Flag10 : 1;
+    uint64 Flag11 : 1;
+    uint64 Flag12 : 1;
+    uint64 Flag13 : 1;
+    uint64 Flag14 : 1;
+    uint64 Flag15 : 1;
+    uint64 Flag16 : 1;
+    uint64 Flag17 : 1;
+    uint64 Flag18 : 1;
+    uint64 Flag19 : 1;
+    uint64 Flag20 : 1;
+    uint64 Flag21 : 1;
+    uint64 Flag22 : 1;
+    uint64 Flag23 : 1;
+    uint64 Flag24 : 1;
+    uint64 Flag25 : 1;
+    uint64 Flag26 : 1;
+    uint64 Flag27 : 1;
+    uint64 Flag28 : 1;
+    uint64 Flag29 : 1;
+    uint64 Flag30 : 1;
+    uint64 Flag31 : 1;
+    uint64 Flag32 : 1;
+    uint64 Flag33 : 1;
+    uint64 Flag34 : 1;
+    uint64 Flag35 : 1;
+    uint64 Flag36 : 1;
+    uint64 Flag37 : 1;
+    uint64 Flag38 : 1;
+    uint64 Flag39 : 1;
+    uint64 Flag40 : 1;
+    uint64 Flag41 : 1;
+    uint64 Flag42 : 1;
+    uint64 Flag43 : 1;
+    uint64 Flag44 : 1;
+    uint64 Flag45 : 1;
+    uint64 Flag46 : 1;
+    uint64 Flag47 : 1;
+    uint64 Flag48 : 1;
+    uint64 Flag49 : 1;
+    uint64 Flag50 : 1;
+    uint64 Flag51 : 1;
+    uint64 Flag52 : 1;
+    uint64 Flag53 : 1;
+    uint64 Flag54 : 1;
+    uint64 Flag55 : 1;
+    uint64 Flag56 : 1;
+    uint64 Flag57 : 1;
+    uint64 Flag58 : 1;
+    uint64 Flag59 : 1;
+    uint64 Flag60 : 1;
+    uint64 Flag61 : 1;
+    uint64 Flag62 : 1;
+    uint64 Flag63 : 1;
+    uint64 Flag64 : 1;
+} GenericFlags;
+
 typedef struct
 {
     ushort Unknown : 1;
@@ -136,7 +202,7 @@ typedef struct
     ubyte Map : 1;
     ubyte Stamp : 1;
     ubyte Pencil : 1;
-} MapItems <optimize=false>;
+} MapItem <optimize=false>;
 
 
 typedef struct
@@ -214,6 +280,7 @@ typedef struct {
     ubyte pad[38] <hidden=true>;
 } Options <optimize=false>;
 
+
 // SLOTS
 
 typedef struct
@@ -241,7 +308,9 @@ typedef struct
     ushort CrankLevel2;
     ubyte pad1[234] <hidden=true>;
     uint32 Steps;
-    ubyte pad2[43] <hidden=true>;
+    ubyte pad2[20] <hidden=true>;
+    GenericFlags OpenedChests;
+    ubyte pad2_1[15] <hidden=true>;
     ubyte ButtonDoor1;
     ubyte pad3[16] <hidden=true>;
     ubyte ButtonDoor2;
@@ -262,10 +331,13 @@ typedef struct
     Equipment OwnedEquipment;
     OtherItems Items1;
     ubyte pad7[3] <hidden=true>;
-    ushort DeathsUnk2;
+    ushort DeathsUnk2 <hidden=true>;
     ushort Deaths;
     ubyte pad8[4] <hidden=true>;
     ubyte SelectedItem;
+    ushort Unk <hidden=true>;
+    MapItem MapItems;
+    
     
 } Slot <optimize=false>;
 
