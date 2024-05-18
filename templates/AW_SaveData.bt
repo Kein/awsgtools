@@ -116,6 +116,77 @@ typedef struct {
 } Eggs;
 
 typedef struct {
+    uint32 Bunny1 : 1;
+    uint32 IllegallBunny1 : 1;
+    uint32 Bunny3 : 1;
+    uint32 Bunny4 : 1;
+    uint32 Bunny5 : 1;
+    uint32 IllegallBunny2 : 1;
+    uint32 Bunny7 : 1;
+    uint32 Jungle : 1;
+    uint32 Bunny9 : 1;
+    uint32 Bunny10 : 1;
+    uint32 Bunny11 : 1;
+    uint32 ChinChilla : 1;
+    uint32 IllegallBunny3 : 1;
+    uint32 IllegallBunny4 : 1;
+    uint32 IllegallBunny5 : 1;
+    uint32 Bunny16 : 1;
+    uint32 IllegallBunny6 : 1;
+    uint32 IllegallBunny7 : 1;
+    uint32 IllegallBunny8 : 1;
+    uint32 IllegallBunny9 : 1;
+    uint32 IllegallBunny10 : 1;
+    uint32 IllegallBunny11 : 1;
+    uint32 Bunny23 : 1;
+    uint32 IllegallBunny12 : 1;
+    uint32 IllegallBunny13 : 1;
+    uint32 Bunny26 : 1;
+    uint32 IllegallBunny14 : 1;
+    uint32 IllegallBunny15 : 1;
+    uint32 Bunny29 : 1;
+    uint32 IllegallBunny16 : 1;
+    uint32 Bunny31 : 1;
+    uint32 Bunny32 : 1;
+
+} BunnyData;
+
+typedef struct {
+    uint32 Achievement1 : 1;
+    uint32 Achievement2 : 1;
+    uint32 Achievement3 : 1;
+    uint32 Achievement4 : 1;
+    uint32 Achievement5 : 1;
+    uint32 Achievement6 : 1;
+    uint32 Achievement7 : 1;
+    uint32 SECRET_RABBIT : 1;
+    uint32 Achievement9 : 1;
+    uint32 Achievement10 : 1;
+    uint32 Achievement11 : 1;
+    uint32 Achievement12 : 1;
+    uint32 Achievement13 : 1;
+    uint32 Achievement14 : 1;
+    uint32 Achievement15 : 1;
+    uint32 Achievement16 : 1;
+    uint32 Achievement17 : 1;
+    uint32 Achievement18 : 1;
+    uint32 SECRET_EGG : 1;
+    uint32 Achievement20 : 1;
+    uint32 Achievement21 : 1;
+    uint32 Achievement22 : 1;
+    uint32 Achievement23 : 1;
+    uint32 Achievement24 : 1;
+    uint32 Achievement25 : 1;
+    uint32 Achievement26 : 1;
+    uint32 Achievement27 : 1;
+    uint32 Achievement28 : 1;
+    uint32 Achievement29 : 1;
+    uint32 Achievement30 : 1;
+    uint32 Achievement31 : 1;
+    uint32 Achievement32 : 1;
+} AchievementData;
+
+typedef struct {
     uint64 Flag1 : 1;
     uint64 Flag2 : 1;
     uint64 Flag3 : 1;
@@ -237,6 +308,8 @@ typedef struct
 } AuxularyItem <optimize=false>;
 
 
+
+
 typedef struct
 {
     ubyte StopWatch : 1;
@@ -276,13 +349,13 @@ typedef struct
 // Header
 typedef struct {
     uint32 Version;
-    uint32 Achievements; // has to be
-    uint32 UnknownData; // what other shared state is saved?
-    ubyte SelectedSaveSlot; // always 00?
+    AchievementData Achievements;
+    uint32 UnknownData <hidden=true>; // what other shared state is saved?
+    ubyte SelectedSaveSlot;
     ubyte SaveHash <write=WriteHash>;
     ushort Unk <hidden=true>;  // always 00?
     Figurines Unlockables;
-    uint32 Unk <hidden=true>;   // always 00?
+    uint32 Reserved <hidden=true>; // seems to be reserved data
     
 } Header <optimize=false>;
 
@@ -301,23 +374,18 @@ typedef struct {
     ubyte IgnoreBGInput : 1;
     ubyte UnknownOption2 : 1;
     Language Lang;
-    ubyte Unk4 <hidden=true>;
-    ubyte Unk5 <hidden=true>;
-    ubyte Unk6 <hidden=true>;
-    ubyte Unk7 <hidden=true>;
-    ubyte Unk8 <hidden=true>;
+    ubyte Unk[5] <hidden=true>;
     float SFX;
     float Music;
     ControllerStyle GamepadStyle;
     Graphics GFX;
-    ubyte pad[38] <hidden=true>;
+    ubyte Unk2[38] <hidden=true>;
 } Options <optimize=false>;
 
 
 // SLOTS
 
-typedef struct
-{
+typedef struct {
     ushort Year;
     ubyte Month;
     ubyte Day;
@@ -328,8 +396,7 @@ typedef struct
 } Timestamp <optimize=false>;
 
 
-typedef struct
-{
+typedef struct {
     uint32 X;
     uint32 Y;
 } SavedPos <optimize=false>;
@@ -344,6 +411,7 @@ typedef struct {
     MinimapRow GridRoomRow[22];
 } MinimapRowsData <optimize=false>;
 
+
 enum <ushort> StampType
 {
     Chest = 0,
@@ -356,12 +424,14 @@ enum <ushort> StampType
     Question
 };
 
+
 typedef struct
 {
     ushort X;
     ushort Y;
     StampType Stamp;
 } StampEntry <optimize=false>;
+
 
 typedef struct
 {
@@ -371,9 +441,14 @@ typedef struct
 } StampData <optimize=false>;
 
 
-typedef struct
+typedef struct (uint32 bytelen) {
+    ubyte pad[bytelen];
+} RemainingFill;
+    
+
+typedef struct (ubyte slot)
 {
-    Timestamp SlotTimestamp <bgcolor=0xFFD2EE>;
+    Timestamp SlotTime <bgcolor=0xFFD2EE>;
     ubyte pad0[18] <hidden=true>;
     ushort CrankLevel;
     ushort CrankLevel2;
@@ -383,13 +458,15 @@ typedef struct
     GenericFlags64 OpenedChests;
     GenericFlags64 OpenedChests2;
     ubyte pad2_1[7] <hidden=true>;
-    ubyte ButtonDoor1;
+    ubyte ButtonDoor1 <hidden=true>;
     ubyte pad3[16] <hidden=true>;
-    ubyte ButtonDoor2;
-    ubyte ButtonDoor3;
+    ubyte ButtonDoor2 <hidden=true>;
+    ubyte ButtonDoor3 <hidden=true>;
     ubyte pad4[62] <hidden=true>;
     Eggs EggsOwned;
-    ubyte pad4_1[24] <hidden=true>;
+    ubyte pad4_1[8] <hidden=true>;
+    BunnyData Bunnies;
+    ubyte pad4_2[12] <hidden=true>;
     ushort TimesSaved;
     ubyte pad5[8] <hidden=true>;
     ubyte Matches <bgcolor=0xD2FFD6>;
@@ -417,12 +494,18 @@ typedef struct
     MinimapRowsData RevealedMapData[24];
     ubyte Unused <hidden=true>;
     MinimapRowsData PencilMapData[24];
-    ////uchar unknownfill[(24 + (159760 * 1)) - FTell()];
+    ubyte Unused <hidden=true>; // do we need it?
+    MinimapRowsData TileStateData[24];
+    RemainingFill unknownfill(GetRemainingSlotPadding(slot)) <bgcolor=0x919191>;
 } Slot <optimize=false>;
 
 // =====================
 // FUNCTIONS
 // =====================
+
+uint32 GetRemainingSlotPadding(ubyte slot) {
+    return (24 + (159760 * slot)) - FTell();
+}
 
 ubyte CalculateHash()
 {
@@ -449,10 +532,8 @@ void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
 
 // Because Slot data is incomplete we parse manually for now
 Header GlobalState <bgcolor=0xCACAFF>;
-Slot Slot1 <bgcolor=0xD2F2FF>;
-FSeek(24 + (159760 * 1));
-Slot Slot2 <bgcolor=0xFFF2D2>;
-FSeek(24 + (159760 * 2));
-Slot Slot3 <bgcolor=0xD2FFF8>;
-FSeek(479304);
+Assert(GlobalState.Version == 9, "Unsupported version detected");
+Slot Slot1(1) <bgcolor=0xD2F2FF>;
+Slot Slot2(2) <bgcolor=0xFFF2D2>;
+Slot Slot3(3) <bgcolor=0xD2FFF8>;
 Options Config <bgcolor=0xFFD2EE>;
