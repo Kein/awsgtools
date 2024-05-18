@@ -348,13 +348,13 @@ typedef struct
 
 // Header
 typedef struct {
-    uint32 Version;
+    uint32 Version <comment="Save file version">;
     AchievementData Achievements;
     uint32 UnknownData <hidden=true>; // what other shared state is saved?
     ubyte SelectedSaveSlot;
-    ubyte SaveHash <write=WriteHash>;
+    ubyte SaveHash <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
     ushort Unk <hidden=true>;  // always 00?
-    Figurines Unlockables;
+    Figurines Unlockables <comment="Both figurines and global items">;
     uint32 Reserved <hidden=true>; // seems to be reserved data
     
 } Header <optimize=false>;
@@ -392,7 +392,7 @@ typedef struct {
     ubyte Hour;
     ubyte Minutes;
     ubyte Seconds;
-    ubyte Unknown;
+    ubyte Unknown <hidden=true>;
 } Timestamp <optimize=false>;
 
 
@@ -403,12 +403,12 @@ typedef struct {
 
 
 typedef struct {
-    ubyte FullMapRow[100];
+    ubyte FullMapRow[100] <comment="Whole world row, starting from right, each room is 5 bytes, each bit is one tile/pixel, total 40 horizontal tiles/pixesl per room">;
 } MinimapRow <optimize=false>;
 
 
 typedef struct {
-    MinimapRow GridRoomRow[22];
+    MinimapRow GridRoomRow[22] <comment="22 full world rows, denoting height of a room">;
 } MinimapRowsData <optimize=false>;
 
 
@@ -480,7 +480,7 @@ typedef struct (ubyte slot)
     Equipment OwnedEquipment <bgcolor=0xD2FFD6>;
     OtherItems Items1 <bgcolor=0xD2FFD6>;
     ubyte pad7[3] <hidden=true>;
-    ushort DeathsUnk <bgcolor=0xFFD2EE>;
+    ushort DeathsUnk <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
     ushort Deaths <bgcolor=0xFFD2EE>;
     ubyte pad8[4] <hidden=true>;
     ubyte SelectedItem <bgcolor=0xD2FFD6>;
@@ -495,7 +495,7 @@ typedef struct (ubyte slot)
     ubyte Unused <hidden=true>;
     MinimapRowsData PencilMapData[24];
     ubyte Unused <hidden=true>; // do we need it?
-    MinimapRowsData TileStateData[24];
+    MinimapRowsData TileStateData[24] <comment="Deleted/erased static tiles">;
     RemainingFill unknownfill(GetRemainingSlotPadding(slot)) <bgcolor=0x919191>;
 } Slot <optimize=false>;
 
