@@ -12,11 +12,14 @@
 //     0.3   - Added most of the basic data. Ready to use.
 //     0.3.1 - Added Stopwatch, Pedometer, Cring. Minimap and pencil data.
 //             Renamed a few things.
+//     0.4   - Added A LOT of new data points courtesy of ero/just_ero
 //---------------------------------------------------------
 
 // =====================
 // DEFINITIONS
 // =====================
+
+enum <ubyte> PixelColor { N=0, B, R, Y };
 
 enum <ubyte> ControllerStyle
 {
@@ -46,6 +49,26 @@ enum <ubyte> Language
     Portuguese,
     Ukrainian,
     Russian
+};
+
+enum <ubyte> FlameState {
+    Sealed=0,
+    GlassCracked,
+    CrackedMore,
+    GlassBroken,
+    FlameCollected,
+    FlameUsed
+};
+
+enum <ushort> StampType {
+    Chest = 0,
+    Heart,
+    Skull,
+    Diamond,
+    Spiral,
+    Flame,
+    Grid,
+    Question
 };
 
 typedef struct {
@@ -84,172 +107,173 @@ typedef struct {
 } AchievementData;
 
 
-typedef struct { // 0x30 | more?
-    uint16 room_0406_0; // 0x00 (0x2)
-    uint16 room_0406_1; // 0x02 (0x2)
-    uint16 room_0508_0; // 0x04 (0x2)
-    uint16 room_0605_0; // 0x06 (0x2)
-    uint16 unknown_08;  // 0x08 (0x2)
-    uint16 unknown_0A;  // 0x0A (0x2)
-    uint16 room_0907_0; // 0x0C (0x2)
-    uint16 unknown_0E;  // 0x0E (0x2)
-    uint16 unknown_10;  // 0x10 (0x2)
-    uint16 unknown_12;  // 0x12 (0x2)
-    uint16 room_1310_0; // 0x14 (0x2)
-    uint16 room_1312_0; // 0x16 (0x2)
-    uint16 room_1312_1; // 0x18 (0x2)
-    uint16 room_1504_0; // 0x1A (0x2)
-    uint16 room_1504_1; // 0x1C (0x2)
-    uint16 room_1504_2; // 0x1E (0x2)
-    uint16 room_1702_0; // 0x20 (0x2)
-    uint16 room_1702_1; // 0x22 (0x2)
-    uint16 unknown_24;  // 0x24 (0x2)
-    uint16 unknown_26;  // 0x26 (0x2)
-    uint16 room_1808_0; // 0x28 (0x2)
-    uint16 unknown_2A;  // 0x2A (0x2)
-    uint16 unknown_2C;  // 0x2C (0x2)
-    uint16 unknown_2E;  // 0x2E (0x2)
+typedef struct { 
+    uint16 room_0406_0;
+    uint16 room_0406_1;
+    uint16 room_0508_0;
+    uint16 room_0605_0;
+    uint16 unknown_08; 
+    uint16 unknown_0A; 
+    uint16 room_0907_0;
+    uint16 unknown_0E; 
+    uint16 unknown_10; 
+    uint16 unknown_12; 
+    uint16 room_1310_0;
+    uint16 room_1312_0;
+    uint16 room_1312_1;
+    uint16 room_1504_0;
+    uint16 room_1504_1;
+    uint16 room_1504_2;
+    uint16 room_1702_0;
+    uint16 room_1702_1;
+    uint16 unknown_24; 
+    uint16 unknown_26; 
+    uint16 room_1808_0;
+    uint16 unknown_2A; 
+    uint16 unknown_2C; 
+    uint16 unknown_2E; 
 } Cranks <comment="Room coordinates are yx_id not xy_id">; 
 
 typedef struct { 
-    uint64 Door_00_0 : 1; // 0x0
-    uint64 Door_00_1 : 1; // 0x0
-    uint64 Door_00_2 : 1; // 0x0
-    uint64 Door_00_3 : 1; // 0x0
-    uint64 Door_00_4 : 1; // 0x0
-    uint64 Door_00_5 : 1; // 0x0
-    uint64 Door_00_6 : 1; // 0x0
-    uint64 Door_00_7 : 1; // 0x0
-    uint64 Door_01_0 : 1; // 0x1
-    uint64 Door_01_1 : 1; // 0x1
-    uint64 Door_01_2 : 1; // 0x1
-    uint64 Door_01_3 : 1; // 0x1
-    uint64 Door_01_4 : 1; // 0x1
-    uint64 Door_01_5 : 1; // 0x1
-    uint64 Door_01_6 : 1; // 0x1
-    uint64 Door_01_7 : 1; // 0x1
-    uint64 Door_02_0 : 1; // 0x2
-    uint64 Door_02_1 : 1; // 0x2
-    uint64 Door_02_2 : 1; // 0x2
-    uint64 Door_02_3 : 1; // 0x2
-    uint64 Door_02_4 : 1; // 0x2
-    uint64 Door_02_5 : 1; // 0x2
-    uint64 Door_02_6 : 1; // 0x2
-    uint64 Door_02_7 : 1; // 0x2
-    uint64 Door_03_0 : 1; // 0x3
-    uint64 Door_03_1 : 1; // 0x3
-    uint64 Door_03_2 : 1; // 0x3
-    uint64 Door_03_3 : 1; // 0x3
-    uint64 Door_03_4 : 1; // 0x3
-    uint64 Door_03_5 : 1; // 0x3
-    uint64 Door_03_6 : 1; // 0x3
-    uint64 Door_03_7 : 1; // 0x3
-    uint64 Door_04_0 : 1; // 0x4
-    uint64 Door_04_1 : 1; // 0x4
-    uint64 Door_04_2 : 1; // 0x4
-    uint64 Door_04_3 : 1; // 0x4
-    uint64 Door_04_4 : 1; // 0x4
-    uint64 Door_04_5 : 1; // 0x4
-    uint64 Door_04_6 : 1; // 0x4
-    uint64 Door_04_7 : 1; // 0x4
-    uint64 Door_05_0 : 1; // 0x5
-    uint64 Door_05_1 : 1; // 0x5
-    uint64 Door_05_2 : 1; // 0x5
-    uint64 Door_05_3 : 1; // 0x5
-    uint64 Door_05_4 : 1; // 0x5
-    uint64 Door_05_5 : 1; // 0x5
-    uint64 Door_05_6 : 1; // 0x5
-    uint64 Door_05_7 : 1; // 0x5
-    uint64 Door_06_0 : 1; // 0x6
-    uint64 Door_06_1 : 1; // 0x6
-    uint64 Door_06_2 : 1; // 0x6
-    uint64 Door_06_3 : 1; // 0x6
-    uint64 Door_06_4 : 1; // 0x6
-    uint64 Door_06_5 : 1; // 0x6
-    uint64 Door_06_6 : 1; // 0x6
-    uint64 Door_06_7 : 1; // 0x6
-    uint64 Door_07_0 : 1; // 0x7
-    uint64 Door_07_1 : 1; // 0x7
-    uint64 Door_07_2 : 1; // 0x7
-    uint64 Door_07_3 : 1; // 0x7
-    uint64 Door_07_4 : 1; // 0x7
-    uint64 Door_07_5 : 1; // 0x7
-    uint64 Door_07_6 : 1; // 0x7
-    uint64 Door_07_7 : 1; // 0x7
-    uint64 Door_08_0 : 1; // 0x8
-    uint64 Door_08_1 : 1; // 0x8
-    uint64 Door_08_2 : 1; // 0x8
-    uint64 Door_08_3 : 1; // 0x8
-    uint64 Door_08_4 : 1; // 0x8
-    uint64 Door_08_5 : 1; // 0x8
-    uint64 Door_08_6 : 1; // 0x8
-    uint64 Door_08_7 : 1; // 0x8
-    uint64 Door_09_0 : 1; // 0x9
-    uint64 Door_09_1 : 1; // 0x9
-    uint64 Door_09_2 : 1; // 0x9
-    uint64 Door_09_3 : 1; // 0x9
-    uint64 Door_09_4 : 1; // 0x9
-    uint64 Door_09_5 : 1; // 0x9
-    uint64 Door_09_6 : 1; // 0x9
-    uint64 Door_09_7 : 1; // 0x9
-    uint64 Door_0A_0 : 1; // 0xA
-    uint64 Door_0A_1 : 1; // 0xA
-    uint64 Door_0A_2 : 1; // 0xA
-    uint64 Door_0A_3 : 1; // 0xA
-    uint64 Door_0A_4 : 1; // 0xA
-    uint64 Door_0A_5 : 1; // 0xA
-    uint64 Door_0A_6 : 1; // 0xA
-    uint64 Door_0A_7 : 1; // 0xA
-    uint64 Door_0B_0 : 1; // 0xB
-    uint64 Door_0B_1 : 1; // 0xB
-    uint64 Door_0B_2 : 1; // 0xB
-    uint64 Door_0B_3 : 1; // 0xB
-    uint64 Door_0B_4 : 1; // 0xB
-    uint64 Door_0B_5 : 1; // 0xB
-    uint64 Door_0B_6 : 1; // 0xB
-    uint64 Door_0B_7 : 1; // 0xB
-    uint64 Door_0C_0 : 1; // 0xC
-    uint64 Door_0C_1 : 1; // 0xC
-    uint64 Door_0C_2 : 1; // 0xC
-    uint64 Door_0C_3 : 1; // 0xC
-    uint64 Door_0C_4 : 1; // 0xC
-    uint64 Door_0C_5 : 1; // 0xC
-    uint64 Door_0C_6 : 1; // 0xC
-    uint64 Door_0C_7 : 1; // 0xC
-    uint64 Door_0D_0 : 1; // 0xD
-    uint64 Door_0D_1 : 1; // 0xD
-    uint64 Door_0D_2 : 1; // 0xD
-    uint64 Door_0D_3 : 1; // 0xD
-    uint64 Door_0D_4 : 1; // 0xD
-    uint64 Door_0D_5 : 1; // 0xD
-    uint64 Door_0D_6 : 1; // 0xD
-    uint64 Door_0D_7 : 1; // 0xD
-    uint64 Door_0E_0 : 1; // 0xE
-    uint64 Door_0E_1 : 1; // 0xE
-    uint64 Door_0E_2 : 1; // 0xE
-    uint64 Door_0E_3 : 1; // 0xE
-    uint64 Door_0E_4 : 1; // 0xE
-    uint64 Door_0E_5 : 1; // 0xE
-    uint64 Door_0E_6 : 1; // 0xE
-    uint64 Door_0E_7 : 1; // 0xE
-    uint64 Door_0F_0 : 1; // 0xF
-    uint64 Door_0F_1 : 1; // 0xF
-    uint64 Door_0F_2 : 1; // 0xF
-    uint64 Door_0F_3 : 1; // 0xF
-    uint64 Door_0F_4 : 1; // 0xF
-    uint64 Door_0F_5 : 1; // 0xF
-    uint64 Door_0F_6 : 1; // 0xF
-    uint64 Door_0F_7 : 1; // 0xF
+    uint64 Door_00_0 : 1;
+    uint64 Door_00_1 : 1;
+    uint64 Door_00_2 : 1;
+    uint64 Door_00_3 : 1;
+    uint64 Door_00_4 : 1;
+    uint64 Door_00_5 : 1;
+    uint64 Door_00_6 : 1;
+    uint64 Door_00_7 : 1;
+    uint64 Door_01_0 : 1;
+    uint64 Door_01_1 : 1;
+    uint64 Door_01_2 : 1;
+    uint64 Door_01_3 : 1;
+    uint64 Door_01_4 : 1;
+    uint64 Door_01_5 : 1;
+    uint64 Door_01_6 : 1;
+    uint64 Door_01_7 : 1;
+    uint64 Door_02_0 : 1;
+    uint64 Door_02_1 : 1;
+    uint64 Door_02_2 : 1;
+    uint64 Door_02_3 : 1;
+    uint64 Door_02_4 : 1;
+    uint64 Door_02_5 : 1;
+    uint64 Door_02_6 : 1;
+    uint64 Door_02_7 : 1;
+    uint64 Door_03_0 : 1;
+    uint64 Door_03_1 : 1;
+    uint64 Door_03_2 : 1;
+    uint64 Door_03_3 : 1;
+    uint64 Door_03_4 : 1;
+    uint64 Door_03_5 : 1;
+    uint64 Door_03_6 : 1;
+    uint64 Door_03_7 : 1;
+    uint64 Door_04_0 : 1;
+    uint64 Door_04_1 : 1;
+    uint64 Door_04_2 : 1;
+    uint64 Door_04_3 : 1;
+    uint64 Door_04_4 : 1;
+    uint64 Door_04_5 : 1;
+    uint64 Door_04_6 : 1;
+    uint64 Door_04_7 : 1;
+    uint64 Door_05_0 : 1;
+    uint64 Door_05_1 : 1;
+    uint64 Door_05_2 : 1;
+    uint64 Door_05_3 : 1;
+    uint64 Door_05_4 : 1;
+    uint64 Door_05_5 : 1;
+    uint64 Door_05_6 : 1;
+    uint64 Door_05_7 : 1;
+    uint64 Door_06_0 : 1;
+    uint64 Door_06_1 : 1;
+    uint64 Door_06_2 : 1;
+    uint64 Door_06_3 : 1;
+    uint64 Door_06_4 : 1;
+    uint64 Door_06_5 : 1;
+    uint64 Door_06_6 : 1;
+    uint64 Door_06_7 : 1;
+    uint64 Door_07_0 : 1;
+    uint64 Door_07_1 : 1;
+    uint64 Door_07_2 : 1;
+    uint64 Door_07_3 : 1;
+    uint64 Door_07_4 : 1;
+    uint64 Door_07_5 : 1;
+    uint64 Door_07_6 : 1;
+    uint64 Door_07_7 : 1;
+    uint64 Door_08_0 : 1;
+    uint64 Door_08_1 : 1;
+    uint64 Door_08_2 : 1;
+    uint64 Door_08_3 : 1;
+    uint64 Door_08_4 : 1;
+    uint64 Door_08_5 : 1;
+    uint64 Door_08_6 : 1;
+    uint64 Door_08_7 : 1;
+    uint64 Door_09_0 : 1;
+    uint64 Door_09_1 : 1;
+    uint64 Door_09_2 : 1;
+    uint64 Door_09_3 : 1;
+    uint64 Door_09_4 : 1;
+    uint64 Door_09_5 : 1;
+    uint64 Door_09_6 : 1;
+    uint64 Door_09_7 : 1;
+    uint64 Door_0A_0 : 1;
+    uint64 Door_0A_1 : 1;
+    uint64 Door_0A_2 : 1;
+    uint64 Door_0A_3 : 1;
+    uint64 Door_0A_4 : 1;
+    uint64 Door_0A_5 : 1;
+    uint64 Door_0A_6 : 1;
+    uint64 Door_0A_7 : 1;
+    uint64 Door_0B_0 : 1;
+    uint64 Door_0B_1 : 1;
+    uint64 Door_0B_2 : 1;
+    uint64 Door_0B_3 : 1;
+    uint64 Door_0B_4 : 1;
+    uint64 Door_0B_5 : 1;
+    uint64 Door_0B_6 : 1;
+    uint64 Door_0B_7 : 1;
+    uint64 Door_0C_0 : 1;
+    uint64 Door_0C_1 : 1;
+    uint64 Door_0C_2 : 1;
+    uint64 Door_0C_3 : 1;
+    uint64 Door_0C_4 : 1;
+    uint64 Door_0C_5 : 1;
+    uint64 Door_0C_6 : 1;
+    uint64 Door_0C_7 : 1;
+    uint64 Door_0D_0 : 1;
+    uint64 Door_0D_1 : 1;
+    uint64 Door_0D_2 : 1;
+    uint64 Door_0D_3 : 1;
+    uint64 Door_0D_4 : 1;
+    uint64 Door_0D_5 : 1;
+    uint64 Door_0D_6 : 1;
+    uint64 Door_0D_7 : 1;
+    uint64 Door_0E_0 : 1;
+    uint64 Door_0E_1 : 1;
+    uint64 Door_0E_2 : 1;
+    uint64 Door_0E_3 : 1;
+    uint64 Door_0E_4 : 1;
+    uint64 Door_0E_5 : 1;
+    uint64 Door_0E_6 : 1;
+    uint64 Door_0E_7 : 1;
+    uint64 Door_0F_0 : 1;
+    uint64 Door_0F_1 : 1;
+    uint64 Door_0F_2 : 1;
+    uint64 Door_0F_3 : 1;
+    uint64 Door_0F_4 : 1;
+    uint64 Door_0F_5 : 1;
+    uint64 Door_0F_6 : 1;
+    uint64 Door_0F_7 : 1;
 } KeyDoorData <comment="Orderng unknown">;
 
 
-typedef struct { // 0x08 | more?
-    ubyte unknown_00;  // 0x0 (0x1)
-    ubyte room_1504_0; // 0x1 (0x1) | incorrect?
-    ubyte room_1504_1; // 0x2 (0x1) | would make this the 0th one instead
-    ubyte room_1504_2; // 0x3 (0x1)
-    ubyte room_1504_3; // 0x4 (0x1)
+typedef struct {
+    ubyte unknown_00;
+    ubyte room_1504_0 <comment="incorrect?">;
+    ubyte room_1504_1 <comment="would make this the 0th one instead">; 
+    ubyte room_1504_2;
+    ubyte room_1504_3;
 } FillData <comment="Room coordinates are yx_id not xy_id">;
+
 
 typedef struct {
     uint64 room_0403_0 : 1;
@@ -476,6 +500,7 @@ typedef struct {
     uint64 room_1916_0 : 1;
 } ButtonDoorsData <comment="Room coordinates are yx_id not xy_id">;
 
+
 typedef struct { 
     uint64 room_0403_0 : 1;  
     uint64 room_0413_0 : 1;  
@@ -670,6 +695,7 @@ typedef struct {
     uint64 room_1105_0 : 1;
     uint64 room_1302_0 : 1;
 } GreenButtonData <comment="Room coordinates are yx_id not xy_id">;
+
 
 typedef struct {
     uint64 unknown_00_0 : 1;
@@ -910,6 +936,7 @@ typedef struct {
   uint64 room_0815_0 : 1  <comment="zen egg">;
   uint64 unknown_03_1 : 1 <comment="?">;
   uint64 room_0903_0 : 1  <comment="friendship egg">;
+  uint64 room_unk : 1  <comment="truth egg">;
   uint64 room_0913_0 : 1  <comment="transcendental egg">;
   uint64 room_1002_0 : 1  <comment="ancient egg">;
   uint64 room_1003_0 : 1  <comment="magic egg">;
@@ -951,6 +978,7 @@ typedef struct {
   uint64 unknown_07_6 : 1 <comment="?">;
   uint64 unknown_07_7 : 1 <comment="?">;
 } EggData  <comment="Room coordinates are yx_id not xy_id">;
+
 
 typedef struct {
     uint32 room_0511_0 : 1;  
@@ -1016,21 +1044,27 @@ typedef struct {
 
 
 typedef struct {
-  uint64 room_0509_0 : 1; 
-  uint64 room_0909_0 : 1; 
-  uint64 room_1015_0 : 1; 
-  uint64 room_1109_0 : 1; 
-  uint64 room_1210_0 : 1; 
-  uint64 room_1308_0 : 1; 
-  uint64 room_1403_0 : 1; 
-  uint64 room_1414_0 : 1; 
+  uint16 room_0509_0 : 1; 
+  uint16 room_0909_0 : 1; 
+  uint16 room_1015_0 : 1; 
+  uint16 room_1109_0 : 1; 
+  uint16 room_1210_0 : 1; 
+  uint16 room_1308_0 : 1; 
+  uint16 room_1403_0 : 1; 
+  uint16 room_1414_0 : 1; 
 
-  uint64 room_1507_0 : 1; 
-  uint64 room_1615_0 : 1; 
-  uint64 room_1807_0 : 1; 
-  uint64 room_1808_0 : 1; 
-  uint64 room_1909_0 : 1; 
+  uint16 room_1507_0 : 1; 
+  uint16 room_1615_0 : 1; 
+  uint16 room_1807_0 : 1; 
+  uint16 room_1808_0 : 1; 
+  uint16 room_1909_0 : 1; 
 } SquirrelData <comment="Room coordinates are yx_id not xy_id">;
+
+
+// part of the struct above?
+typedef struct { 
+  uint16 room_1816_0 : 1 <comment="left cat cage">;
+}  Uncategorized_00;
 
 typedef struct
 {
@@ -1049,21 +1083,44 @@ typedef struct
     ushort UVLight : 1;
 } Equipment <optimize=false>;
 
-typedef struct
-{
-    ubyte Unknown1 : 1;
-    ubyte Unknown2 : 1;
-    ubyte UnknownButUsed : 1;
-    ubyte BBwand : 1;
-    ubyte Unknown5 : 1;
-    ubyte Unknown6 : 1;
-    ubyte Unknown7 : 1;
-    ubyte Unknown8 : 1;
-} Equipment2;
 
 
-typedef struct
-{
+typedef struct  {
+  uint16 room_0604_0 : 1;
+  uint16 room_0608_0 : 1;
+  uint16 room_0704_0 : 1;
+  uint16 room_0706_0 : 1;
+  uint16 room_0906_0 : 1;
+  uint16 room_0915_0 : 1;
+  uint16 room_1305_0 : 1;
+  uint16 room_1310_0 : 1;
+  uint16 room_1316_0 : 1;
+} CandlesData;
+
+
+typedef struct {
+  uint16 room_0608_0 : 1;
+  uint16 room_0704_0 : 1;
+  uint16 room_0706_0 : 1; 
+  uint16 unknown_00_3 : 1;
+  uint16 unknown_00_4 : 1;
+  uint16 unknown_00_5 : 1;
+  uint16 unknown_00_6 : 1;
+  uint16 room_1305_0 : 1;
+
+  uint16 room_1310_0 : 1;
+  uint16 room_1316_0 : 1;
+  uint16 room_1407_0 : 1;
+} GhostData;
+
+
+typedef struct {
+  uint16 unknown_00_0 : 1;
+  uint16 room_1811_0 : 1;
+} Uncategorized_01;
+
+
+typedef struct {
     ubyte None : 1;
     ubyte SMedal : 1;
     ubyte UnknownItem1 : 1;
@@ -1074,17 +1131,89 @@ typedef struct
     ubyte FPack : 1;
 } OtherItems <optimize=false>;
 
-typedef struct
-{
-    ubyte None : 1;
-    ubyte Map : 1;
-    ubyte Stamp : 1;
-    ubyte Pencil : 1;
-    ubyte Unknown1 : 1;
-    ubyte CRing : 1;
-    ubyte Unknown2 : 1;
-    ubyte Unknown3 : 1;
-} AuxularyItem <optimize=false>;
+
+typedef struct { 
+    uint32 HouseOpened : 1  <comment="used the house key to open the house">;
+    uint32 unknown_00_1 : 1; 
+    uint32 ClosetOpened : 1  <comment="opened the closet to get the fanny pack">;
+    uint32 unknown_00_3 : 1; 
+    uint32 unknown_00_4 : 1; 
+    uint32 unknown_00_5 : 1; 
+    uint32 unknown_00_6 : 1; 
+    uint32 unknown_00_7 : 1; 
+
+    uint32 SwitchState : 1  <comment="state of the switches; 0 = left?, 1 = right?">;
+    uint32 MapCollected : 1; 
+    uint32 StampsCollected : 1; 
+    uint32 PencilCollected : 1; 
+    uint32 ChameleonDefeated : 1; 
+    uint32 CRing : 1; 
+    uint32 unknown_01_6 : 1; 
+    uint32 unknown_01_7 : 1; 
+
+    uint32 unknown_02_0 : 1; 
+    uint32 unknown_02_1 : 1; 
+    uint32 WokeUp : 1  <comment="start of the game">;
+    uint32 BBWandUpgrade : 1; 
+    uint32 unknown_02_4 : 1; 
+    uint32 unknown_02_5 : 1; 
+    uint32 unknown_02_6 : 1; 
+    uint32 unknown_02_7 : 1; 
+
+    uint32 BatDefeated : 1  <comment="defeated the bat in room 0604">;
+    uint32 OstrichStart : 1  <comment="ostrich in the wheel in room 1913">;
+    uint32 OstrichDefeated : 1  <comment="defeated the ostrich">;
+    uint32 unknown_03_3 : 1; 
+    uint32 unknown_03_4 : 1; 
+    uint32 DiscInDog : 1  <comment="whether there is any disc placed in room 0908? just a guess, has something to do with the (mock) disc">;
+    uint32 GhostDogActive : 1  <comment="whether the ghost dog is active?">;
+    uint32 unknown_03_7 : 1; 
+} QuestState;
+
+
+typedef struct {
+    ubyte unknown_00_0 : 1; 
+    ubyte unknown_00_1 : 1; 
+    ubyte unknown_00_2 : 1; 
+    ubyte unknown_00_3 : 1; 
+    ubyte unknown_00_4 : 1; 
+    ubyte unknown_00_5 : 1; 
+    ubyte unknown_00_6 : 1; 
+    ubyte unknown_00_7 : 1; 
+} KangarooState;
+
+
+typedef struct {
+    ubyte unknown_00_0 : 1; 
+    ubyte chameleon : 1; 
+    ubyte unknown_00_2 : 1; 
+    ubyte unknown_00_3 : 1; 
+    ubyte unknown_00_4 : 1; 
+    ubyte unknown_00_5 : 1; 
+    ubyte unknown_00_6 : 1; 
+    ubyte aligator : 1; 
+} FluteAnimalsEyes;
+
+
+typedef struct {
+    ubyte unknown_00_0 : 1; 
+    ubyte chameleon : 1; 
+    ubyte unknown_00_2 : 1; 
+    ubyte unknown_00_3 : 1; 
+    ubyte unknown_00_4 : 1; 
+    ubyte unknown_00_5 : 1; 
+    ubyte unknown_00_6 : 1; 
+    ubyte aligator : 1; 
+} Teleports;
+
+
+typedef struct {
+    FlameState BFlame; 
+    FlameState PFlame; 
+    FlameState VFlame; 
+    FlameState GFlame; 
+} FlameData;
+
 
 
 typedef struct
@@ -1123,21 +1252,21 @@ typedef struct
     ubyte Figurine32 : 1 <hidden=true>;
 }  Figurines <optimize=false>;
 
+
 // Header
 typedef struct {
-    uint32 Version <comment="Save file version">;
-    AchievementData Achievements;
-    uint32 UnknownData <hidden=true>; // what other shared state is saved?
-    ubyte SelectedSaveSlot;
-    ubyte SaveHash <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
-    ushort Unk <hidden=true>;  // always 00?
-    Figurines Unlockables <comment="Both figurines and global items">;
-    uint32 Reserved <hidden=true>; // seems to be reserved data
-    
+    uint32           Version       <comment="Save file version">;
+    AchievementData  Achievements;
+    uint32           UnknownData   <hidden=true>; // what other shared state is saved?
+    ubyte            SelectedSlot  <comment="Last selected/played save slot">;
+    ubyte            SaveHash      <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
+    ushort           Unk           <hidden=true>;  // always 00?
+    Figurines        Unlockables   <comment="Both figurines and global items">;
+    uint32           Reserved      <hidden=true>; // seems to be reserved data
 } Header <optimize=false>;
 
-// Options
 
+// Options
 typedef struct {
     ubyte Scanlines : 1;
     ubyte Fullscreen : 1;
@@ -1156,12 +1285,12 @@ typedef struct {
     float Music;
     ControllerStyle GamepadStyle;
     Graphics GFX;
-    ubyte Unk2[38] <hidden=true>;
+    ubyte Reserved[38] <hidden=true>;
 } Options <optimize=false>;
 
 
-// SLOTS
 
+// SLOTS
 typedef struct {
     ushort Year;
     ubyte Month;
@@ -1169,7 +1298,7 @@ typedef struct {
     ubyte Hour;
     ubyte Minutes;
     ubyte Seconds;
-    ubyte Unknown <hidden=true>;
+    ubyte Pad <hidden=true>;
 } Timestamp <optimize=false>;
 
 
@@ -1179,9 +1308,11 @@ typedef struct {
 } SavedPos <optimize=false>;
 
 
+
 typedef struct {
     ubyte FullMapRow[100] <comment="Whole world row, starting from right, each room is 5 bytes, each bit is one tile/pixel, total 40 horizontal tiles/pixesl per room">;
 } MinimapRow <optimize=false>;
+
 
 
 typedef struct {
@@ -1189,25 +1320,12 @@ typedef struct {
 } MinimapRowsData <optimize=false>;
 
 
-enum <ushort> StampType
-{
-    Chest = 0,
-    Heart,
-    Skull,
-    Diamond,
-    Spiral,
-    Flame,
-    Grid,
-    Question
-};
-
-
 typedef struct
 {
     ushort X;
     ushort Y;
     StampType Stamp;
-} StampEntry <optimize=false>;
+} StampEntry;
 
 
 typedef struct
@@ -1215,7 +1333,67 @@ typedef struct
     ubyte TotalStamps;
     StampType LastSelected;
     StampEntry PlacedStamps[64];
-} StampData <optimize=false>;
+} StampData;
+
+
+typedef struct {
+    // ---
+    StampData        PlacedStamps <read=Str("%u", this.TotalStamps)>; // 387 bytes
+    float            SimFloats[16] <comment="Unrelated to map data">;
+    uint32  Unk32    <hidden=true>;
+    // ---
+    MinimapRowsData  RevealedMapData[24];
+    ubyte   Pad     <hidden=true>;
+    MinimapRowsData  PencilMapData[24];
+    ubyte   Pad     <hidden=true>;
+    MinimapRowsData  TileStateData[24] <comment="Deleted/erased static tiles">;
+    ubyte   Pad     <hidden=true>;
+} MapData <optimize=false>;
+
+
+typedef struct
+{
+    PixelColor Pixel1 : 2;
+    PixelColor Pixel2 : 2;
+    PixelColor Pixel3 : 2;
+    PixelColor Pixel4 : 2;
+    PixelColor Pixel5 : 2;
+    PixelColor Pixel6 : 2;
+    PixelColor Pixel7 : 2;
+    PixelColor Pixel8 : 2;
+    PixelColor Pixel9 : 2;
+    PixelColor Pixel10 : 2;
+    PixelColor Pixel11 : 2;
+    PixelColor Pixel12 : 2;
+    PixelColor Pixel13 : 2;
+    PixelColor Pixel14 : 2;
+    PixelColor Pixel15 : 2;
+    PixelColor Pixel16 : 2;
+    PixelColor Pixel17 : 2;
+    PixelColor Pixel18 : 2;
+    PixelColor Pixel19 : 2;
+    PixelColor Pixel20 : 2;
+    PixelColor Pixel21 : 2;
+    PixelColor Pixel22 : 2;
+    PixelColor Pixel23 : 2;
+    PixelColor Pixel24 : 2;
+    PixelColor Pixel25 : 2;
+    PixelColor Pixel26 : 2;
+    PixelColor Pixel27 : 2;
+    PixelColor Pixel28 : 2;
+    PixelColor Pixel29 : 2;
+    PixelColor Pixel30 : 2;
+    PixelColor Pixel31 : 2;
+    PixelColor Pixel32 : 2;
+    PixelColor Pixel33 : 2;
+    PixelColor Pixel34 : 2;
+    PixelColor Pixel35 : 2;
+    PixelColor Pixel36 : 2;
+    PixelColor Pixel37 : 2;
+    PixelColor Pixel38 : 2;
+    PixelColor Pixel39 : 2;
+    PixelColor Pixel40 : 2;
+} MuralPixelRow <optimize=false>;
 
 
 typedef struct (uint32 bytelen) {
@@ -1223,66 +1401,82 @@ typedef struct (uint32 bytelen) {
 } RemainingFill;
     
 
-typedef struct (ubyte slot)
+typedef struct
 {
-    Timestamp SlotTime <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
+    Timestamp       SlotTime <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     //----
-    Cranks CrankLevelsPerRoom;
-    ubyte  Unk1[88]  <hidden=true>;
-    KeyDoorData KeyDoors <comment="Ordering is unknown">;
-    ubyte  Unk2[104]  <hidden=true>;
-    uint32 Steps  <bgcolor=0xFFD2EE>;
-    FillData FillLevels;
+    Cranks          CrankLevelsPerRoom;
+    ubyte   Pad1[88]  <hidden=true>;
+    KeyDoorData     KeyDoors <comment="Ordering is unknown">;
+    ubyte   Pad2[104]  <hidden=true>;
+    uint32          Steps    <bgcolor=0xFFD2EE>;
+    FillData        FillLevels;
     // --
-    ubyte  Unk3[15]  <hidden=true>;
-    ChestData OpenedChests;
+    ubyte   Pad3[15]          <hidden=true>;
+    ChestData       OpenedChests;
     ButtonDoorsData ButtonDoors;
     // --
-    YellowButtonData YellowButtons;
-    ubyte  Unk4[8]  <hidden=true>;
-    PurpleButtonData PurpleButtons;
-    GreenButtonData GreenButtons;
+    struct ButtonData
+    {
+        YellowButtonData YellowButtons;
+        uint64  Unk64            <hidden=true>;
+        PurpleButtonData PurpleButtons;
+        GreenButtonData GreenButtons;
+    } Buttons <optimize=false>;
     // --
-    FruitData PickedFuits;
-    FirecrackerData PickedFCrackers;
-    EggData Eggs;
-    ExplosionData Explosions;
-    DetonatorData Detonators;
-    BunnyData Bunnies;
-    SquirrelData SpookedSquirrels;
-    uint32 Unk5  <hidden=true>;
+    FruitData        PickedFuits;
+    FirecrackerData  PickedFCrackers;
+    EggData          Eggs;
+    ExplosionData    Explosions;
+    DetonatorData    Detonators;
+    BunnyData        Bunnies;
+    SquirrelData     SpookedSquirrels;
     // --
-    ushort TimesSaved;
-    ubyte pad5[8]  <hidden=true>;
-    ubyte Matches  <bgcolor=0xD2FFD6>;
-    ubyte FireCrackers <bgcolor=0xD2FFD6>;
-    uint32 Hearts  <bgcolor=0xFFD2EE>;
-    uint32 Unk5;
-    uint32 TicksIngame  <bgcolor=0xFFD2EE>;
-    uint32 TicksTotal  <bgcolor=0xFFD2EE>;
-    ubyte pad6[16] <hidden=true>;
-    SavedPos SavedRoomPos <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
-    Equipment OwnedEquipment <bgcolor=0xD2FFD6>;
-    OtherItems Items1 <bgcolor=0xD2FFD6>;
-    ubyte pad7[3] <hidden=true>;
-    ushort DeathsUnk <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
-    ushort Deaths <bgcolor=0xFFD2EE>;
-    ubyte pad8[4] <hidden=true>;
-    ubyte SelectedItem <bgcolor=0xD2FFD6>;
-    ushort Unk <hidden=true>;
-    AuxularyItem AuxularyItems <bgcolor=0xD2FFD6>;
-    Equipment2 Upgrades <bgcolor=0xD2FFD6>;
-    ubyte pad9[54] <hidden=true>;
-    StampData PlacedStamps <read=Str("%u", this.TotalStamps)>; // 387 bytes
-    ubyte DynamicDataThatConstantlyUpdates[64] <hidden=true>;
-    uint32 UnknownData <hidden=true>;
-    MinimapRowsData RevealedMapData[24];
-    ubyte Unused <hidden=true>;
-    MinimapRowsData PencilMapData[24];
-    ubyte Unused <hidden=true>; // do we need it?
-    MinimapRowsData TileStateData[24] <comment="Deleted/erased static tiles">;
-    RemainingFill unknown(GetRemainingSlotPadding(slot)) <hidden=true, bgcolor=0x919191>;
+    Uncategorized_00 UnkData;
+    uint16  Unk16    <hidden=true>;
+    uint16           FirecrackersPickedUp;
+    uint16           BubblesPopped;
+    uint16  Unk16    <hidden=true>;
+    ushort           TimesSaved;
+    ushort  Unk16    <hidden=true>;
+    ushort  Unk16    <hidden=true>;
+    ushort  Unk16    <hidden=true>;
+    ubyte   Unk8     <hidden=true>;
+    ubyte            KeysCount  <bgcolor=0xD2FFD6>;
+    ubyte            MatchesCount  <bgcolor=0xD2FFD6>;
+    ubyte            FCrackersCount <bgcolor=0xD2FFD6>;
+    uint32           Hearts  <bgcolor=0xFFD2EE>;
+    uint32  Unk32    <hidden=true>;
+    uint32           FramesIngame  <bgcolor=0xFFD2EE>;
+    uint32           FramesTotal   <bgcolor=0xFFD2EE>;
+    ubyte   Pad4[16]        <hidden=true>;
+    SavedPos         SavedRoomPos <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
+    Equipment        OwnedEquipment <bgcolor=0xD2FFD6>;
+    OtherItems       Items <bgcolor=0xD2FFD6>;
+    ubyte   Unk8     <hidden=true>;
+    CandlesData      CandlesLit;
+    ushort           HitsTaken <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
+    ushort           Deaths <bgcolor=0xFFD2EE>;
+    GhostData        FreightenedGhosts;
+    Uncategorized_01 UnkData2;
+    ubyte            SelectedItem <bgcolor=0xD2FFD6>;
+    ubyte   Unk8     <hidden=true>;
+    QuestState       QuestAndUpgrades;    
+    ubyte            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
+    ubyte   Unk_40[40] <hidden=true>;
+    KangarooState    Kangaroo;
+    uint32  Unk32    <hidden=true>;
+    FlameData        Flames;
+    ubyte   Unk8     <hidden=true>;
+    FluteAnimalsEyes Transient <hidden=true>;
+    Teleports        ActiveTeleports;
+    MapData          Map;
+    // ---
+    MuralPixelRow    Mural[20];
+    ubyte   Unk_153[153] <hidden=true>;
 } Slot <optimize=false>;
+
+
 
 // =====================
 // FUNCTIONS
@@ -1311,7 +1505,7 @@ ubyte CalculateHash()
 
 void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
 
-uint32 numberOfSetBits(uint32 i)
+uint32 numSetBits(uint32 i)
 {
      i = i - ((i >> 1) & 0x55555555);
      i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
@@ -1325,10 +1519,7 @@ uint32 numberOfSetBits(uint32 i)
 // PARSING
 // =====================
 
-// Because Slot data is incomplete we parse manually for now
 Header GlobalState <bgcolor=0xCACAFF>;
 Assert(GlobalState.Version == 9, "Unsupported version detected");
-Slot Slot1(1) <bgcolor=0xD2F2FF>;
-Slot Slot2(2) <bgcolor=0xFFF2D2>;
-Slot Slot3(3) <bgcolor=0xD2FFF8>;
+Slot Slots[3]; // <bgcolor=0xD2F2FF>;
 Options Config <bgcolor=0xFFD2EE>;
