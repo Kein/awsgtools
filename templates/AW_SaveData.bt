@@ -19,6 +19,8 @@
 // DEFINITIONS
 // =====================
 
+LittleEndian();
+
 enum <ubyte> PixelColor { N=0, B, R, Y };
 
 enum <ubyte> ControllerStyle
@@ -328,7 +330,7 @@ typedef struct {
     uint64 room_1003_0 : 1;
     uint64 room_1006_0 : 1;
     uint64 room_1007_0 : 1;
-    uint64 room_1008_0 : 1;
+    uint64 room_1008_0 : 1 <comment="Manticore Egg65 Chest">;
 
     uint64 room_1008_1 : 1;
     uint64 room_1008_2 : 1;
@@ -1060,6 +1062,12 @@ typedef struct {
   uint16 room_1909_0 : 1; 
 } SquirrelData <comment="Room coordinates are yx_id not xy_id">;
 
+typedef struct {
+    ubyte TotalHearts;
+    ubyte MaxYellow;
+    ubyte UnknownHearts1 <hidden=true>;
+    ubyte UnknownHearts2<hidden=true>;
+} HPData;
 
 // part of the struct above?
 typedef struct { 
@@ -1155,7 +1163,7 @@ typedef struct {
     uint32 unknown_02_1 : 1; 
     uint32 WokeUp : 1  <comment="start of the game">;
     uint32 BBWandUpgrade : 1; 
-    uint32 unknown_02_4 : 1; 
+    uint32 ManticoreEgg65 : 1; 
     uint32 unknown_02_5 : 1; 
     uint32 unknown_02_6 : 1; 
     uint32 unknown_02_7 : 1; 
@@ -1215,12 +1223,11 @@ typedef struct {
 } FlameData;
 
 
-
 typedef struct
 {
     ubyte StopWatch : 1;
     ubyte Pedometer : 1;
-    ubyte UnkUnlockable : 1;
+    ubyte PinkPhone : 1;
     ubyte SouvenirCup : 1;
     ubyte OrigamiFig : 1;
     ubyte Rabbits : 1;
@@ -1302,11 +1309,22 @@ typedef struct {
 } Timestamp <optimize=false>;
 
 
+typedef struct
+{
+    ubyte Door1 : 1;
+    ubyte Door2 : 1;
+    ubyte Door3 : 1;
+    ubyte Door4 : 1;
+    ubyte Unk1 : 1;
+    ubyte Unk2 : 1;
+    ubyte Unk3 : 1;
+    ubyte Unk4 : 1;
+} EggRoomDoors;
+
 typedef struct {
     uint32 X;
     uint32 Y;
 } SavedPos <optimize=false>;
-
 
 
 typedef struct {
@@ -1328,8 +1346,7 @@ typedef struct
 } StampEntry;
 
 
-typedef struct
-{
+typedef struct {
     ubyte TotalStamps;
     StampType LastSelected;
     StampEntry PlacedStamps[64];
@@ -1343,11 +1360,11 @@ typedef struct {
     uint32  Unk32    <hidden=true>;
     // ---
     MinimapRowsData  RevealedMapData[24];
-    ubyte   Pad     <hidden=true>;
+    ubyte   Pad      <hidden=true>;
     MinimapRowsData  PencilMapData[24];
-    ubyte   Pad     <hidden=true>;
+    ubyte   Pad      <hidden=true>;
     MinimapRowsData  TileStateData[24] <comment="Deleted/erased static tiles">;
-    ubyte   Pad     <hidden=true>;
+    ubyte   Pad      <hidden=true>;
 } MapData <optimize=false>;
 
 
@@ -1396,32 +1413,28 @@ typedef struct
 } MuralPixelRow <optimize=false>;
 
 
-typedef struct (uint32 bytelen) {
-    ubyte pad[bytelen];
-} RemainingFill;
-    
-
 typedef struct
 {
-    Timestamp       SlotTime <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
+    Timestamp       SlotTime   <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     //----
     Cranks          CrankLevelsPerRoom;
-    ubyte   Pad1[88]  <hidden=true>;
-    KeyDoorData     KeyDoors <comment="Ordering is unknown">;
-    ubyte   Pad2[104]  <hidden=true>;
-    uint32          Steps    <bgcolor=0xFFD2EE>;
+    ubyte           Reserved[80]  <hidden=true>;
+    uint64          ExtraKeyDoors <hidden=true>;
+    KeyDoorData     KeyDoors      <comment="Ordering is unknown">;
+    ubyte           Pad2[104]     <hidden=true>;
+    uint32          Steps         <bgcolor=0xFFD2EE>;
     FillData        FillLevels;
     // --
-    ubyte   Pad3[15]          <hidden=true>;
+    ubyte           Pad3[15]      <hidden=true>;
     ChestData       OpenedChests;
     ButtonDoorsData ButtonDoors;
     // --
     struct ButtonData
     {
-        YellowButtonData YellowButtons;
-        uint64  Unk64            <hidden=true>;
-        PurpleButtonData PurpleButtons;
-        GreenButtonData GreenButtons;
+        YellowButtonData  YellowButtons;
+        uint64            Unk64 <hidden=true>;
+        PurpleButtonData  PurpleButtons;
+        GreenButtonData   GreenButtons;
     } Buttons <optimize=false>;
     // --
     FruitData        PickedFuits;
@@ -1433,48 +1446,50 @@ typedef struct
     SquirrelData     SpookedSquirrels;
     // --
     Uncategorized_00 UnkData;
-    uint16  Unk16    <hidden=true>;
+    uint16           Unk16          <hidden=true>;
     uint16           FirecrackersPickedUp;
     uint16           BubblesPopped;
-    uint16  Unk16    <hidden=true>;
+    uint16           Unk16          <hidden=true>;
     ushort           TimesSaved;
-    ushort  Unk16    <hidden=true>;
-    ushort  Unk16    <hidden=true>;
-    ushort  Unk16    <hidden=true>;
-    ubyte   Unk8     <hidden=true>;
-    ubyte            KeysCount  <bgcolor=0xD2FFD6>;
-    ubyte            MatchesCount  <bgcolor=0xD2FFD6>;
+    ushort           Unk16          <hidden=true>;
+    ushort           Unk16          <hidden=true>;
+    ushort           Unk16          <hidden=true>;
+    ubyte            Unk8           <hidden=true>;
+    ubyte            KeysCount      <bgcolor=0xD2FFD6>;
+    ubyte            MatchesCount   <bgcolor=0xD2FFD6>;
     ubyte            FCrackersCount <bgcolor=0xD2FFD6>;
-    uint32           Hearts  <bgcolor=0xFFD2EE>;
-    uint32  Unk32    <hidden=true>;
-    uint32           FramesIngame  <bgcolor=0xFFD2EE>;
-    uint32           FramesTotal   <bgcolor=0xFFD2EE>;
-    ubyte   Pad4[16]        <hidden=true>;
-    SavedPos         SavedRoomPos <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
+    HPData           Hearts         <bgcolor=0xFFD2EE>;
+    ubyte            Unk8           <hidden=true>;
+    EggRoomDoors     EggRoom        <comment="it is unclear what other flags are">;
+    uint16           Unk16          <hidden=true>;
+    uint32           FramesIngame   <bgcolor=0xFFD2EE>;
+    uint32           FramesTotal    <bgcolor=0xFFD2EE>;
+    ubyte            Pad4[16]       <hidden=true>;
+    SavedPos         SavedRoomPos   <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
     Equipment        OwnedEquipment <bgcolor=0xD2FFD6>;
-    OtherItems       Items <bgcolor=0xD2FFD6>;
-    ubyte   Unk8     <hidden=true>;
+    OtherItems       Items          <bgcolor=0xD2FFD6>;
+    ubyte            Unk8           <hidden=true>;
     CandlesData      CandlesLit;
-    ushort           HitsTaken <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
-    ushort           Deaths <bgcolor=0xFFD2EE>;
+    ushort           HitsTaken      <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
+    ushort           Deaths         <bgcolor=0xFFD2EE>;
     GhostData        FreightenedGhosts;
     Uncategorized_01 UnkData2;
-    ubyte            SelectedItem <bgcolor=0xD2FFD6>;
-    ubyte   Unk8     <hidden=true>;
+    ubyte            SelectedItem   <bgcolor=0xD2FFD6>;
+    ubyte            Unk8           <hidden=true>;
     QuestState       QuestAndUpgrades;    
     ubyte            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
-    ubyte   Unk_40[40] <hidden=true>;
+    ubyte            Unk_40[40]     <hidden=true>;
     KangarooState    Kangaroo;
-    uint32  Unk32    <hidden=true>;
+    uint32           Unk32          <hidden=true>;
     FlameData        Flames;
-    ubyte   Unk8     <hidden=true>;
-    FluteAnimalsEyes Transient <hidden=true>;
+    ubyte            Unk8           <hidden=true>;
+    FluteAnimalsEyes Transient      <hidden=true>;
     Teleports        ActiveTeleports;
     MapData          Map;
     // ---
     MuralPixelRow    Mural[20];
-    ubyte   Unk_153[153] <hidden=true>;
-} Slot <optimize=false>;
+    ubyte            Unk_153[153]   <hidden=true>;
+} Slot <optimize=false, read=SlotSummary>;
 
 
 
@@ -1482,9 +1497,27 @@ typedef struct
 // FUNCTIONS
 // =====================
 
-uint32 GetRemainingSlotPadding(ubyte slot) {
-    return (24 + (159760 * slot)) - FTell();
+string SlotSummary(Slot &slot) {
+    if (slot.FramesTotal <= 0)
+        return "<empty>";
+    local ubyte hrs = (ubyte)((slot.FramesTotal * 16.66) / 1000 /60 / 60);
+    local uint32 numBunnies = numSetBits32(ReadUInt(startof(slot.Bunnies)));
+    local uint32 numEggs = numSetBits64(ReadUInt64(startof(slot.Eggs)));
+    return Str("%u:%u:%u %u.%u.%u :: (%u) - [%u hrs] - {%u/64} - {%u}", slot.SlotTime.Hour, slot.SlotTime.Minutes, slot.SlotTime.Seconds,  slot.SlotTime.Day, slot.SlotTime.Month, slot.SlotTime.Year, slot.Steps, hrs, numEggs, numBunnies);
 }
+
+uint32 numSetBits32(uint32 i) {
+     i = i - ((i >> 1) & 0x55555555);
+     i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+     return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
+}
+
+uint64 numSetBits64(uint64 i) {
+    i = i - ((i >> 1) & 0x5555555555555555);
+    i = (i & 0x3333333333333333) + ((i >> 2) & 0x3333333333333333);
+    return (((i + (i >> 4)) & 0xF0F0F0F0F0F0F0F) * 0x101010101010101) >> 56;
+}
+
 
 ubyte CalculateHash()
 {
@@ -1505,14 +1538,7 @@ ubyte CalculateHash()
 
 void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
 
-uint32 numSetBits(uint32 i)
-{
-     i = i - ((i >> 1) & 0x55555555);
-     i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
-     i = (i + (i >> 4)) & 0x0F0F0F0F;
-     i *= 0x01010101;
-     return  i >> 24;
-}
+
 
 
 // =====================
