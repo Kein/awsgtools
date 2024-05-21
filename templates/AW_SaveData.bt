@@ -1204,14 +1204,14 @@ typedef struct {
 
 
 typedef struct {
-    ubyte unknown_00_0 : 1; 
-    ubyte chameleon : 1; 
-    ubyte unknown_00_2 : 1; 
-    ubyte unknown_00_3 : 1; 
-    ubyte unknown_00_4 : 1; 
-    ubyte unknown_00_5 : 1; 
-    ubyte unknown_00_6 : 1; 
-    ubyte aligator : 1; 
+    ubyte unknown_00_0 : 1 <hidden=true>;
+    ubyte Frog : 1;
+    ubyte Fish : 1;
+    ubyte Bear : 1;
+    ubyte Dog : 1;
+    ubyte Bird : 1;
+    ubyte Squirrel : 1;
+    ubyte Hippo : 1;
 } Teleports;
 
 
