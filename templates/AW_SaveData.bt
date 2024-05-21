@@ -1264,7 +1264,21 @@ typedef struct {
     u8 EncounterRoomY;
     KangarooShardState ShardState; // u8
     u8 Unk_0B;
-} KangarooState;
+} LKangarooState;
+
+
+typedef struct {
+    u8 unkState;
+    u8 Status <comment="byte for the kangaroo's state, i think. 0 = idle, 1 = running away, 2 = attacking">;
+} GKangarooState;
+
+
+typedef struct {
+  u8 BlueRat : 1 <comment="0 down, 1 up">;
+  u8 RedRat : 1  <comment=" 0 right, 1 left">;
+  u8 Ostrich : 1 <comment=" 0 right, 1 left">;
+  u8 Dog : 1     <comment="0 down, 1 up">;
+} ElevatorsData;
 
 
 typedef struct {
@@ -1345,9 +1359,10 @@ typedef struct {
 
 typedef struct {
     // ---
-    StampData        PlacedStamps <read=Str("%u", this.TotalStamps)>; // 387 bytes
+    StampData        PlacedStamps  <read=Str("%u", this.TotalStamps)>; // 387 bytes
     float            SimFloats[16] <comment="Unrelated to map data">;
-    u32  Unk32    <hidden=true>;
+    ElevatorsData    ElevatorStates;
+    u8               pad3[3]       <hidden=true>;
     // ---
     MinimapRowsData  RevealedMapData[24];
     u8   Pad      <hidden=true>;
@@ -1490,8 +1505,8 @@ typedef struct {
     u8            Unk8           <hidden=true>;
     QuestState    QuestsAndUpgrades;
     u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
-    u8            Unk_3[3]       <hidden=true>;
-    KangarooState Kangaroo[3];
+    u8            pad_3[3]       <hidden=true>;
+    LKangarooState Kangaroo[3];
     u8            Unk_6[6]       <hidden=true>;
     FlameData     Flames;
     u8            Unk8           <hidden=true>;
