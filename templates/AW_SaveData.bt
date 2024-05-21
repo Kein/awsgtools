@@ -19,7 +19,18 @@
 // DEFINITIONS
 // =====================
 
-LittleEndian();
+// ImHex <-> 010 aliasing
+// -------------------------------
+typedef ubyte u8;
+typedef uint16 u16;
+typedef ushort u16;
+typedef uint32 u32;
+typedef uint64 u64;
+typedef byte s8;
+typedef int16 s16;
+typedef int32 s32;
+typedef int64 s64;
+// -------------------------------
 
 enum <ubyte> PixelColor { N=0, B, R, Y };
 
@@ -74,836 +85,826 @@ enum <ushort> StampType {
 };
 
 typedef struct {
-    uint32 Achievement1 : 1;
-    uint32 Achievement2 : 1;
-    uint32 Achievement3 : 1;
-    uint32 Achievement4 : 1;
-    uint32 Achievement5 : 1;
-    uint32 Achievement6 : 1;
-    uint32 Achievement7 : 1;
-    uint32 SECRET_RABBIT : 1;
-    uint32 Achievement9 : 1;
-    uint32 Achievement10 : 1;
-    uint32 Achievement11 : 1;
-    uint32 Achievement12 : 1;
-    uint32 Achievement13 : 1;
-    uint32 Achievement14 : 1;
-    uint32 Achievement15 : 1;
-    uint32 Achievement16 : 1;
-    uint32 Achievement17 : 1;
-    uint32 Achievement18 : 1;
-    uint32 SECRET_EGG : 1;
-    uint32 Achievement20 : 1;
-    uint32 Achievement21 : 1;
-    uint32 Achievement22 : 1;
-    uint32 Achievement23 : 1;
-    uint32 Achievement24 : 1;
-    uint32 Achievement25 : 1;
-    uint32 Achievement26 : 1;
-    uint32 Achievement27 : 1;
-    uint32 Achievement28 : 1;
-    uint32 Achievement29 : 1;
-    uint32 Achievement30 : 1;
-    uint32 Achievement31 : 1;
-    uint32 Achievement32 : 1;
+    u32 PLATINUM : 1;
+    u32 COLLECT_MAP : 1;
+    u32 COLLECT_EGG : 1;
+    u32 COLLECT_8_EGGS : 1;
+    u32 COLLECT_16_EGGS : 1;
+    u32 COLLECT_32_EGGS : 1;
+    u32 COLLECT_ALL_EGGS : 1;
+    u32 SECRET_RABBIT : 1;
+    u32 DEFEAT_CHAMELEON : 1;
+    u32 DEFEAT_GHOST_DOG : 1;
+    u32 DEFEAT_SEAHORSE : 1;
+    u32 DEFEAT_OSTRICH : 1;
+    u32 LIGHT_ALL_CANDLES : 1;
+    u32 DEFEAT_MANTICORE : 1;
+    u32 TOUCH_SQUIRREL : 1;
+    u32 GET_CRUSHED_BY_CHINCHILLA : 1;
+    u32 RIDE_FRISBEE : 1;
+    u32 POP_BUBBLES : 1;
+    u32 FLUTE_WARP : 1;
+    u32 YOYO_RIDE : 1;
+    u32 LEAVE_WELL : 1;
+    u32 pad : 11 <hidden=true>;
 } AchievementData;
 
 
 typedef struct { 
-    uint16 room_0406_0;
-    uint16 room_0406_1;
-    uint16 room_0508_0;
-    uint16 room_0605_0;
-    uint16 unknown_08; 
-    uint16 unknown_0A; 
-    uint16 room_0907_0;
-    uint16 unknown_0E; 
-    uint16 unknown_10; 
-    uint16 unknown_12; 
-    uint16 room_1310_0;
-    uint16 room_1312_0;
-    uint16 room_1312_1;
-    uint16 room_1504_0;
-    uint16 room_1504_1;
-    uint16 room_1504_2;
-    uint16 room_1702_0;
-    uint16 room_1702_1;
-    uint16 unknown_24; 
-    uint16 unknown_26; 
-    uint16 room_1808_0;
-    uint16 unknown_2A; 
-    uint16 unknown_2C; 
-    uint16 unknown_2E; 
+    u16 room_0406_0;
+    u16 room_0406_1;
+    u16 room_0508_0;
+    u16 room_0605_0;
+    u16 unknown_08; 
+    u16 unknown_0A; 
+    u16 room_0907_0;
+    u16 unknown_0E; 
+    u16 unknown_10; 
+    u16 unknown_12; 
+    u16 room_1310_0;
+    u16 room_1312_0;
+    u16 room_1312_1;
+    u16 room_1504_0;
+    u16 room_1504_1;
+    u16 room_1504_2;
+    u16 room_1702_0;
+    u16 room_1702_1;
+    u16 unknown_24; 
+    u16 unknown_26; 
+    u16 room_1808_0;
+    u16 unknown_2A; 
+    u16 unknown_2C; 
+    u16 unknown_2E; 
 } Cranks <comment="Room coordinates are yx_id not xy_id">; 
 
 typedef struct { 
-    uint64 Door_00_0 : 1;
-    uint64 Door_00_1 : 1;
-    uint64 Door_00_2 : 1;
-    uint64 Door_00_3 : 1;
-    uint64 Door_00_4 : 1;
-    uint64 Door_00_5 : 1;
-    uint64 Door_00_6 : 1;
-    uint64 Door_00_7 : 1;
-    uint64 Door_01_0 : 1;
-    uint64 Door_01_1 : 1;
-    uint64 Door_01_2 : 1;
-    uint64 Door_01_3 : 1;
-    uint64 Door_01_4 : 1;
-    uint64 Door_01_5 : 1;
-    uint64 Door_01_6 : 1;
-    uint64 Door_01_7 : 1;
-    uint64 Door_02_0 : 1;
-    uint64 Door_02_1 : 1;
-    uint64 Door_02_2 : 1;
-    uint64 Door_02_3 : 1;
-    uint64 Door_02_4 : 1;
-    uint64 Door_02_5 : 1;
-    uint64 Door_02_6 : 1;
-    uint64 Door_02_7 : 1;
-    uint64 Door_03_0 : 1;
-    uint64 Door_03_1 : 1;
-    uint64 Door_03_2 : 1;
-    uint64 Door_03_3 : 1;
-    uint64 Door_03_4 : 1;
-    uint64 Door_03_5 : 1;
-    uint64 Door_03_6 : 1;
-    uint64 Door_03_7 : 1;
-    uint64 Door_04_0 : 1;
-    uint64 Door_04_1 : 1;
-    uint64 Door_04_2 : 1;
-    uint64 Door_04_3 : 1;
-    uint64 Door_04_4 : 1;
-    uint64 Door_04_5 : 1;
-    uint64 Door_04_6 : 1;
-    uint64 Door_04_7 : 1;
-    uint64 Door_05_0 : 1;
-    uint64 Door_05_1 : 1;
-    uint64 Door_05_2 : 1;
-    uint64 Door_05_3 : 1;
-    uint64 Door_05_4 : 1;
-    uint64 Door_05_5 : 1;
-    uint64 Door_05_6 : 1;
-    uint64 Door_05_7 : 1;
-    uint64 Door_06_0 : 1;
-    uint64 Door_06_1 : 1;
-    uint64 Door_06_2 : 1;
-    uint64 Door_06_3 : 1;
-    uint64 Door_06_4 : 1;
-    uint64 Door_06_5 : 1;
-    uint64 Door_06_6 : 1;
-    uint64 Door_06_7 : 1;
-    uint64 Door_07_0 : 1;
-    uint64 Door_07_1 : 1;
-    uint64 Door_07_2 : 1;
-    uint64 Door_07_3 : 1;
-    uint64 Door_07_4 : 1;
-    uint64 Door_07_5 : 1;
-    uint64 Door_07_6 : 1;
-    uint64 Door_07_7 : 1;
-    uint64 Door_08_0 : 1;
-    uint64 Door_08_1 : 1;
-    uint64 Door_08_2 : 1;
-    uint64 Door_08_3 : 1;
-    uint64 Door_08_4 : 1;
-    uint64 Door_08_5 : 1;
-    uint64 Door_08_6 : 1;
-    uint64 Door_08_7 : 1;
-    uint64 Door_09_0 : 1;
-    uint64 Door_09_1 : 1;
-    uint64 Door_09_2 : 1;
-    uint64 Door_09_3 : 1;
-    uint64 Door_09_4 : 1;
-    uint64 Door_09_5 : 1;
-    uint64 Door_09_6 : 1;
-    uint64 Door_09_7 : 1;
-    uint64 Door_0A_0 : 1;
-    uint64 Door_0A_1 : 1;
-    uint64 Door_0A_2 : 1;
-    uint64 Door_0A_3 : 1;
-    uint64 Door_0A_4 : 1;
-    uint64 Door_0A_5 : 1;
-    uint64 Door_0A_6 : 1;
-    uint64 Door_0A_7 : 1;
-    uint64 Door_0B_0 : 1;
-    uint64 Door_0B_1 : 1;
-    uint64 Door_0B_2 : 1;
-    uint64 Door_0B_3 : 1;
-    uint64 Door_0B_4 : 1;
-    uint64 Door_0B_5 : 1;
-    uint64 Door_0B_6 : 1;
-    uint64 Door_0B_7 : 1;
-    uint64 Door_0C_0 : 1;
-    uint64 Door_0C_1 : 1;
-    uint64 Door_0C_2 : 1;
-    uint64 Door_0C_3 : 1;
-    uint64 Door_0C_4 : 1;
-    uint64 Door_0C_5 : 1;
-    uint64 Door_0C_6 : 1;
-    uint64 Door_0C_7 : 1;
-    uint64 Door_0D_0 : 1;
-    uint64 Door_0D_1 : 1;
-    uint64 Door_0D_2 : 1;
-    uint64 Door_0D_3 : 1;
-    uint64 Door_0D_4 : 1;
-    uint64 Door_0D_5 : 1;
-    uint64 Door_0D_6 : 1;
-    uint64 Door_0D_7 : 1;
-    uint64 Door_0E_0 : 1;
-    uint64 Door_0E_1 : 1;
-    uint64 Door_0E_2 : 1;
-    uint64 Door_0E_3 : 1;
-    uint64 Door_0E_4 : 1;
-    uint64 Door_0E_5 : 1;
-    uint64 Door_0E_6 : 1;
-    uint64 Door_0E_7 : 1;
-    uint64 Door_0F_0 : 1;
-    uint64 Door_0F_1 : 1;
-    uint64 Door_0F_2 : 1;
-    uint64 Door_0F_3 : 1;
-    uint64 Door_0F_4 : 1;
-    uint64 Door_0F_5 : 1;
-    uint64 Door_0F_6 : 1;
-    uint64 Door_0F_7 : 1;
-} KeyDoorData <comment="Orderng unknown">;
+    u64 Door_00_0 : 1;
+    u64 Door_00_1 : 1;
+    u64 Door_00_2 : 1;
+    u64 Door_00_3 : 1;
+    u64 Door_00_4 : 1;
+    u64 Door_00_5 : 1;
+    u64 Door_00_6 : 1;
+    u64 Door_00_7 : 1;
+    u64 Door_01_0 : 1;
+    u64 Door_01_1 : 1;
+    u64 Door_01_2 : 1;
+    u64 Door_01_3 : 1;
+    u64 Door_01_4 : 1;
+    u64 Door_01_5 : 1;
+    u64 Door_01_6 : 1;
+    u64 Door_01_7 : 1;
+    u64 Door_02_0 : 1;
+    u64 Door_02_1 : 1;
+    u64 Door_02_2 : 1;
+    u64 Door_02_3 : 1;
+    u64 Door_02_4 : 1;
+    u64 Door_02_5 : 1;
+    u64 Door_02_6 : 1;
+    u64 Door_02_7 : 1;
+    u64 Door_03_0 : 1;
+    u64 Door_03_1 : 1;
+    u64 Door_03_2 : 1;
+    u64 Door_03_3 : 1;
+    u64 Door_03_4 : 1;
+    u64 Door_03_5 : 1;
+    u64 Door_03_6 : 1;
+    u64 Door_03_7 : 1;
+    u64 Door_04_0 : 1;
+    u64 Door_04_1 : 1;
+    u64 Door_04_2 : 1;
+    u64 Door_04_3 : 1;
+    u64 Door_04_4 : 1;
+    u64 Door_04_5 : 1;
+    u64 Door_04_6 : 1;
+    u64 Door_04_7 : 1;
+    u64 Door_05_0 : 1;
+    u64 Door_05_1 : 1;
+    u64 Door_05_2 : 1;
+    u64 Door_05_3 : 1;
+    u64 Door_05_4 : 1;
+    u64 Door_05_5 : 1;
+    u64 Door_05_6 : 1;
+    u64 Door_05_7 : 1;
+    u64 Door_06_0 : 1;
+    u64 Door_06_1 : 1;
+    u64 Door_06_2 : 1;
+    u64 Door_06_3 : 1;
+    u64 Door_06_4 : 1;
+    u64 Door_06_5 : 1;
+    u64 Door_06_6 : 1;
+    u64 Door_06_7 : 1;
+    u64 Door_07_0 : 1;
+    u64 Door_07_1 : 1;
+    u64 Door_07_2 : 1;
+    u64 Door_07_3 : 1;
+    u64 Door_07_4 : 1;
+    u64 Door_07_5 : 1;
+    u64 Door_07_6 : 1;
+    u64 Door_07_7 : 1;
+    u64 Door_08_0 : 1;
+    u64 Door_08_1 : 1;
+    u64 Door_08_2 : 1;
+    u64 Door_08_3 : 1;
+    u64 Door_08_4 : 1;
+    u64 Door_08_5 : 1;
+    u64 Door_08_6 : 1;
+    u64 Door_08_7 : 1;
+    u64 Door_09_0 : 1;
+    u64 Door_09_1 : 1;
+    u64 Door_09_2 : 1;
+    u64 Door_09_3 : 1;
+    u64 Door_09_4 : 1;
+    u64 Door_09_5 : 1;
+    u64 Door_09_6 : 1;
+    u64 Door_09_7 : 1;
+    u64 Door_0A_0 : 1;
+    u64 Door_0A_1 : 1;
+    u64 Door_0A_2 : 1;
+    u64 Door_0A_3 : 1;
+    u64 Door_0A_4 : 1;
+    u64 Door_0A_5 : 1;
+    u64 Door_0A_6 : 1;
+    u64 Door_0A_7 : 1;
+    u64 Door_0B_0 : 1;
+    u64 Door_0B_1 : 1;
+    u64 Door_0B_2 : 1;
+    u64 Door_0B_3 : 1;
+    u64 Door_0B_4 : 1;
+    u64 Door_0B_5 : 1;
+    u64 Door_0B_6 : 1;
+    u64 Door_0B_7 : 1;
+    u64 Door_0C_0 : 1;
+    u64 Door_0C_1 : 1;
+    u64 Door_0C_2 : 1;
+    u64 Door_0C_3 : 1;
+    u64 Door_0C_4 : 1;
+    u64 Door_0C_5 : 1;
+    u64 Door_0C_6 : 1;
+    u64 Door_0C_7 : 1;
+    u64 Door_0D_0 : 1;
+    u64 Door_0D_1 : 1;
+    u64 Door_0D_2 : 1;
+    u64 Door_0D_3 : 1;
+    u64 Door_0D_4 : 1;
+    u64 Door_0D_5 : 1;
+    u64 Door_0D_6 : 1;
+    u64 Door_0D_7 : 1;
+    u64 Door_0E_0 : 1;
+    u64 Door_0E_1 : 1;
+    u64 Door_0E_2 : 1;
+    u64 Door_0E_3 : 1;
+    u64 Door_0E_4 : 1;
+    u64 Door_0E_5 : 1;
+    u64 Door_0E_6 : 1;
+    u64 Door_0E_7 : 1;
+    u64 Door_0F_0 : 1;
+    u64 Door_0F_1 : 1;
+    u64 Door_0F_2 : 1;
+    u64 Door_0F_3 : 1;
+    u64 Door_0F_4 : 1;
+    u64 Door_0F_5 : 1;
+    u64 Door_0F_6 : 1;
+    u64 Door_0F_7 : 1;
+} KeyDoorData <comment="Ordering unknown">;
 
 
 typedef struct {
-    ubyte unknown_00;
-    ubyte room_1504_0 <comment="incorrect?">;
-    ubyte room_1504_1 <comment="would make this the 0th one instead">; 
-    ubyte room_1504_2;
-    ubyte room_1504_3;
+    u8 unknown_00;
+    u8 room_1504_0 <comment="incorrect?">;
+    u8 room_1504_1 <comment="would make this the 0th one instead">; 
+    u8 room_1504_2;
+    u8 room_1504_3;
 } FillData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-    uint64 room_0403_0 : 1;
-    uint64 room_0404_0 : 1;
-    uint64 room_0407_0 : 1;
-    uint64 room_0411_0 : 1;
-    uint64 unknown_00_4 : 1;
-    uint64 room_0414_0 : 1;
-    uint64 room_0502_0 : 1;
-    uint64 room_0517_0 : 1;
+    u64 room_0403_0 : 1;
+    u64 room_0404_0 : 1;
+    u64 room_0407_0 : 1;
+    u64 room_0411_0 : 1;
+    u64 unknown_00_4 : 1;
+    u64 room_0414_0 : 1;
+    u64 room_0502_0 : 1;
+    u64 room_0517_0 : 1;
 
-    uint64 unknown_01_0 : 1;
-    uint64 room_0603_0 : 1;
-    uint64 unknown_01_2 : 1;
-    uint64 room_0608_0 : 1 <comment="match">;
-    uint64 room_0608_1 : 1;
-    uint64 room_0613_0 : 1 <comment="match">;
-    uint64 room_0617_0 : 1;
-    uint64 unknown_01_7 : 1;
+    u64 unknown_01_0 : 1;
+    u64 room_0603_0 : 1;
+    u64 unknown_01_2 : 1;
+    u64 room_0608_0 : 1 <comment="match">;
+    u64 room_0608_1 : 1;
+    u64 room_0613_0 : 1 <comment="match">;
+    u64 room_0617_0 : 1;
+    u64 unknown_01_7 : 1;
 
-    uint64 room_0703_0 : 1 <comment="key">;
-    uint64 room_0704_0 : 1;
-    uint64 unknown_02_2 : 1;
-    uint64 room_0710_0 : 1 <comment="match">;
-    uint64 room_0710_1 : 1;
-    uint64 room_0711_0 : 1 <comment="match">;
-    uint64 room_0711_1 : 1;
-    uint64 room_0717_0 : 1;
+    u64 room_0703_0 : 1 <comment="key">;
+    u64 room_0704_0 : 1;
+    u64 unknown_02_2 : 1;
+    u64 room_0710_0 : 1 <comment="match">;
+    u64 room_0710_1 : 1;
+    u64 room_0711_0 : 1 <comment="match">;
+    u64 room_0711_1 : 1;
+    u64 room_0717_0 : 1;
 
-    uint64 room_0802_0 : 1;
-    uint64 room_0803_0 : 1;
-    uint64 unknown_03_2 : 1;
-    uint64 room_0808_0 : 1;
-    uint64 room_0810_0 : 1;
-    uint64 room_0811_0 : 1;
-    uint64 unknown_03_6 : 1 <comment="slink">;
-    uint64 room_0814_0 : 1;
+    u64 room_0802_0 : 1;
+    u64 room_0803_0 : 1;
+    u64 unknown_03_2 : 1;
+    u64 room_0808_0 : 1;
+    u64 room_0810_0 : 1;
+    u64 room_0811_0 : 1;
+    u64 unknown_03_6 : 1 <comment="slink">;
+    u64 room_0814_0 : 1;
 
-    uint64 room_0814_1 : 1;
-    uint64 room_0815_0 : 1;
-    uint64 room_0815_1 : 1 <comment="key">;
-    uint64 room_0902_0 : 1;
-    uint64 room_0903_0 : 1;
-    uint64 unknown_04_5 : 1;
-    uint64 room_0910_0 : 1 <comment="match">;
-    uint64 unknown_04_7 : 1;
+    u64 room_0814_1 : 1;
+    u64 room_0815_0 : 1;
+    u64 room_0815_1 : 1 <comment="key">;
+    u64 room_0902_0 : 1;
+    u64 room_0903_0 : 1;
+    u64 unknown_04_5 : 1;
+    u64 room_0910_0 : 1 <comment="match">;
+    u64 unknown_04_7 : 1;
 
-    uint64 room_0912_0 : 1;
-    uint64 room_0913_0 : 1;
-    uint64 room_0913_1 : 1;
-    uint64 room_1002_0 : 1;
-    uint64 room_1003_0 : 1;
-    uint64 room_1006_0 : 1;
-    uint64 room_1007_0 : 1;
-    uint64 room_1008_0 : 1 <comment="Manticore Egg65 Chest">;
+    u64 room_0912_0 : 1;
+    u64 room_0913_0 : 1;
+    u64 room_0913_1 : 1;
+    u64 room_1002_0 : 1;
+    u64 room_1003_0 : 1;
+    u64 room_1006_0 : 1;
+    u64 room_1007_0 : 1;
+    u64 room_1008_0 : 1 <comment="Manticore Egg65 Chest">;
 
-    uint64 room_1008_1 : 1;
-    uint64 room_1008_2 : 1;
-    uint64 room_1009_0 : 1;
-    uint64 room_1010_0 : 1;
-    uint64 room_1010_1 : 1;
-    uint64 room_1015_0 : 1;
-    uint64 room_1017_0 : 1 <comment="key">;
-    uint64 room_1104_0 : 1;
+    u64 room_1008_1 : 1;
+    u64 room_1008_2 : 1;
+    u64 room_1009_0 : 1;
+    u64 room_1010_0 : 1;
+    u64 room_1010_1 : 1;
+    u64 room_1015_0 : 1;
+    u64 room_1017_0 : 1 <comment="key">;
+    u64 room_1104_0 : 1;
 
-    uint64 room_1108_0 : 1 <comment="match">;
-    uint64 room_1109_0 : 1;
-    uint64 room_1205_0 : 1;
-    uint64 room_1208_0 : 1;
-    uint64 room_1210_0 : 1;
-    uint64 room_1211_0 : 1;
-    uint64 room_1213_0 : 1 <comment="key">;
-    uint64 room_1214_0 : 1 <comment="match">;
+    u64 room_1108_0 : 1 <comment="match">;
+    u64 room_1109_0 : 1;
+    u64 room_1205_0 : 1;
+    u64 room_1208_0 : 1;
+    u64 room_1210_0 : 1;
+    u64 room_1211_0 : 1;
+    u64 room_1213_0 : 1 <comment="key">;
+    u64 room_1214_0 : 1 <comment="match">;
 
-    uint64 room_1214_1 : 1;
-    uint64 room_1217_0 : 1;
-    uint64 room_1302_0 : 1;
-    uint64 room_1303_0 : 1;
-    uint64 unknown_08_4 : 1 <comment="b. wand">;
-    uint64 room_1305_0 : 1;
-    uint64 room_1307_0 : 1 <comment="match">;
-    uint64 unknown_08_7 : 1 <comment="dream egg">;
+    u64 room_1214_1 : 1;
+    u64 room_1217_0 : 1;
+    u64 room_1302_0 : 1;
+    u64 room_1303_0 : 1;
+    u64 unknown_08_4 : 1 <comment="b. wand">;
+    u64 room_1305_0 : 1;
+    u64 room_1307_0 : 1 <comment="match">;
+    u64 unknown_08_7 : 1 <comment="dream egg">;
 
-    uint64 room_1314_0 : 1;
-    uint64 room_1317_0 : 1;
-    uint64 room_1409_0 : 1;
-    uint64 room_1411_0 : 1;
-    uint64 room_1412_0 : 1;
-    uint64 room_1415_0 : 1;
-    uint64 room_1417_0 : 1;
-    uint64 unknown_09_7 : 1;
+    u64 room_1314_0 : 1;
+    u64 room_1317_0 : 1;
+    u64 room_1409_0 : 1;
+    u64 room_1411_0 : 1;
+    u64 room_1412_0 : 1;
+    u64 room_1415_0 : 1;
+    u64 room_1417_0 : 1;
+    u64 unknown_09_7 : 1;
 
-    uint64 room_1506_0 : 1;
-    uint64 room_1512_0 : 1 <comment="match">;
-    uint64 room_1513_0 : 1 <comment="key">;
-    uint64 room_1515_0 : 1 <comment="key">;
-    uint64 unknown_0A_4 : 1;
-    uint64 unknown_0A_5 : 1;
-    uint64 room_1608_0 : 1;
-    uint64 room_1609_0 : 1;
+    u64 room_1506_0 : 1;
+    u64 room_1512_0 : 1 <comment="match">;
+    u64 room_1513_0 : 1 <comment="key">;
+    u64 room_1515_0 : 1 <comment="key">;
+    u64 unknown_0A_4 : 1;
+    u64 unknown_0A_5 : 1;
+    u64 room_1608_0 : 1;
+    u64 room_1609_0 : 1;
 
-    uint64 room_1614_0 : 1;
-    uint64 unknown_0B_1 : 1;
-    uint64 unknown_0B_2 : 1;
-    uint64 room_1713_0 : 1;
-    uint64 room_1714_0 : 1;
-    uint64 room_1715_0 : 1;
-    uint64 room_1716_0 : 1;
-    uint64 unknown_0B_7 : 1;
+    u64 room_1614_0 : 1;
+    u64 unknown_0B_1 : 1;
+    u64 unknown_0B_2 : 1;
+    u64 room_1713_0 : 1;
+    u64 room_1714_0 : 1;
+    u64 room_1715_0 : 1;
+    u64 room_1716_0 : 1;
+    u64 unknown_0B_7 : 1;
 
-    uint64 unknown_0C_0 : 1;
-    uint64 room_1814_0 : 1;
-    uint64 unknown_0C_2 : 1;
-    uint64 unknown_0C_3 : 1;
-    uint64 room_1908_0 : 1;
+    u64 unknown_0C_0 : 1;
+    u64 room_1814_0 : 1;
+    u64 unknown_0C_2 : 1;
+    u64 unknown_0C_3 : 1;
+    u64 room_1908_0 : 1;
 } ChestData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-    uint64 room_0403_0 : 1;
-    uint64 room_0410_0 : 1;
-    uint64 room_0412_0 : 1;
-    uint64 room_0413_0 : 1;
-    uint64 room_0414_0 : 1;
-    uint64 room_0414_1 : 1;
-    uint64 room_0416_0 : 1;
-    uint64 room_0510_0 : 1;
+    u64 room_0403_0 : 1;
+    u64 room_0410_0 : 1;
+    u64 room_0412_0 : 1;
+    u64 room_0413_0 : 1;
+    u64 room_0414_0 : 1;
+    u64 room_0414_1 : 1;
+    u64 room_0416_0 : 1;
+    u64 room_0510_0 : 1;
 
-    uint64 room_0512_0 : 1;
-    uint64 room_0514_0 : 1;
-    uint64 room_0515_0 : 1;
-    uint64 unknown_01_3 : 1;
-    uint64 room_0607_0 : 1;
-    uint64 room_0609_0 : 1;
-    uint64 room_0610_0 : 1;
-    uint64 room_0611_0 : 1;
+    u64 room_0512_0 : 1;
+    u64 room_0514_0 : 1;
+    u64 room_0515_0 : 1;
+    u64 unknown_01_3 : 1;
+    u64 room_0607_0 : 1;
+    u64 room_0609_0 : 1;
+    u64 room_0610_0 : 1;
+    u64 room_0611_0 : 1;
 
-    uint64 room_0611_1 : 1;
-    uint64 room_0612_0 : 1;
-    uint64 room_0613_0 : 1;
-    uint64 room_0614_0 : 1;
-    uint64 room_0615_0 : 1;
-    uint64 room_0615_1 : 1;
-    uint64 room_0616_0 : 1;
-    uint64 room_0703_0 : 1;
+    u64 room_0611_1 : 1;
+    u64 room_0612_0 : 1;
+    u64 room_0613_0 : 1;
+    u64 room_0614_0 : 1;
+    u64 room_0615_0 : 1;
+    u64 room_0615_1 : 1;
+    u64 room_0616_0 : 1;
+    u64 room_0703_0 : 1;
 
-    uint64 room_0704_0 : 1;
-    uint64 room_0705_0 : 1;
-    uint64 room_0706_0 : 1;
-    uint64 room_0713_0 : 1;
-    uint64 room_0716_0 : 1;
-    uint64 room_0717_0 : 1;
-    uint64 room_0803_0 : 1;
-    uint64 room_0808_0 : 1;
+    u64 room_0704_0 : 1;
+    u64 room_0705_0 : 1;
+    u64 room_0706_0 : 1;
+    u64 room_0713_0 : 1;
+    u64 room_0716_0 : 1;
+    u64 room_0717_0 : 1;
+    u64 room_0803_0 : 1;
+    u64 room_0808_0 : 1;
 
-    uint64 room_0810_0 : 1;
-    uint64 room_0811_0 : 1;
-    uint64 room_0813_0 : 1;
-    uint64 room_0813_1 : 1;
-    uint64 room_0814_0 : 1;
-    uint64 room_0814_1 : 1;
-    uint64 room_0814_2 : 1;
-    uint64 room_0817_0 : 1;
+    u64 room_0810_0 : 1;
+    u64 room_0811_0 : 1;
+    u64 room_0813_0 : 1;
+    u64 room_0813_1 : 1;
+    u64 room_0814_0 : 1;
+    u64 room_0814_1 : 1;
+    u64 room_0814_2 : 1;
+    u64 room_0817_0 : 1;
 
-    uint64 room_0906_0 : 1;
-    uint64 room_0907_0 : 1;
-    uint64 room_0910_0 : 1;
-    uint64 room_0913_0 : 1;
-    uint64 room_0913_1 : 1;
-    uint64 room_0914_0 : 1;
-    uint64 room_0916_0 : 1;
-    uint64 room_0917_0 : 1;
+    u64 room_0906_0 : 1;
+    u64 room_0907_0 : 1;
+    u64 room_0910_0 : 1;
+    u64 room_0913_0 : 1;
+    u64 room_0913_1 : 1;
+    u64 room_0914_0 : 1;
+    u64 room_0916_0 : 1;
+    u64 room_0917_0 : 1;
 
-    uint64 room_1003_0 : 1;
-    uint64 room_1005_0 : 1;
-    uint64 room_1006_0 : 1;
-    uint64 room_1013_0 : 1;
-    uint64 room_1105_0 : 1;
-    uint64 room_1107_0 : 1;
-    uint64 room_1114_0 : 1;
-    uint64 room_1115_0 : 1;
+    u64 room_1003_0 : 1;
+    u64 room_1005_0 : 1;
+    u64 room_1006_0 : 1;
+    u64 room_1013_0 : 1;
+    u64 room_1105_0 : 1;
+    u64 room_1107_0 : 1;
+    u64 room_1114_0 : 1;
+    u64 room_1115_0 : 1;
 
-    uint64 room_1213_0 : 1;
-    uint64 room_1304_0 : 1;
-    uint64 room_1307_0 : 1;
-    uint64 room_1313_0 : 1;
-    uint64 room_1314_0 : 1;
-    uint64 room_1404_0 : 1;
-    uint64 room_1405_0 : 1;
-    uint64 room_1410_0 : 1;
+    u64 room_1213_0 : 1;
+    u64 room_1304_0 : 1;
+    u64 room_1307_0 : 1;
+    u64 room_1313_0 : 1;
+    u64 room_1314_0 : 1;
+    u64 room_1404_0 : 1;
+    u64 room_1405_0 : 1;
+    u64 room_1410_0 : 1;
 
-    uint64 room_1411_0 : 1;
-    uint64 room_1413_0 : 1;
-    uint64 room_1414_0 : 1;
-    uint64 room_1415_0 : 1;
-    uint64 unknown_08_4 : 1;
-    uint64 room_1504_0 : 1;
-    uint64 room_1504_1 : 1;
-    uint64 room_1505_0 : 1;
+    u64 room_1411_0 : 1;
+    u64 room_1413_0 : 1;
+    u64 room_1414_0 : 1;
+    u64 room_1415_0 : 1;
+    u64 unknown_08_4 : 1;
+    u64 room_1504_0 : 1;
+    u64 room_1504_1 : 1;
+    u64 room_1505_0 : 1;
 
-    uint64 room_1510_0 : 1;
-    uint64 room_1515_0 : 1;
-    uint64 room_1516_0 : 1;
-    uint64 room_1516_1 : 1;
-    uint64 room_1517_0 : 1;
-    uint64 unknown_09_5 : 1;
-    uint64 unknown_09_6 : 1;
-    uint64 unknown_09_7 : 1;
+    u64 room_1510_0 : 1;
+    u64 room_1515_0 : 1;
+    u64 room_1516_0 : 1;
+    u64 room_1516_1 : 1;
+    u64 room_1517_0 : 1;
+    u64 unknown_09_5 : 1;
+    u64 unknown_09_6 : 1;
+    u64 unknown_09_7 : 1;
 
-    uint64 room_1610_0 : 1;
-    uint64 room_1613_0 : 1;
-    uint64 room_1615_0 : 1;
-    uint64 room_1615_1 : 1;
-    uint64 unknown_0A_4 : 1;
-    uint64 room_1709_0 : 1;
-    uint64 room_1715_0 : 1;
-    uint64 room_1810_0 : 1;
+    u64 room_1610_0 : 1;
+    u64 room_1613_0 : 1;
+    u64 room_1615_0 : 1;
+    u64 room_1615_1 : 1;
+    u64 unknown_0A_4 : 1;
+    u64 room_1709_0 : 1;
+    u64 room_1715_0 : 1;
+    u64 room_1810_0 : 1;
 
-    uint64 room_1813_0 : 1;
-    uint64 room_1816_0 : 1;
-    uint64 room_1817_0 : 1;
-    uint64 unknown_0B_3 : 1;
-    uint64 unknown_0B_4 : 1;
-    uint64 room_1916_0 : 1;
+    u64 room_1813_0 : 1;
+    u64 room_1816_0 : 1;
+    u64 room_1817_0 : 1;
+    u64 unknown_0B_3 : 1;
+    u64 unknown_0B_4 : 1;
+    u64 room_1916_0 : 1;
 } ButtonDoorsData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct { 
-    uint64 room_0403_0 : 1;  
-    uint64 room_0413_0 : 1;  
-    uint64 room_0413_1 : 1;  
-    uint64 room_0414_0 : 1;  
-    uint64 room_0416_0 : 1;  
-    uint64 room_0510_0 : 1;  
-    uint64 room_0512_0 : 1;  
-    uint64 room_0514_0 : 1;  
+    u64 room_0403_0 : 1;  
+    u64 room_0413_0 : 1;  
+    u64 room_0413_1 : 1;  
+    u64 room_0414_0 : 1;  
+    u64 room_0416_0 : 1;  
+    u64 room_0510_0 : 1;  
+    u64 room_0512_0 : 1;  
+    u64 room_0514_0 : 1;  
 
-    uint64 room_0514_1 : 1;  
-    uint64 room_0514_2 : 1;  
-    uint64 room_0515_0 : 1;  
-    uint64 room_0515_1 : 1;  
-    uint64 unknown_01_4 : 1; 
-    uint64 room_0607_0 : 1;  
-    uint64 room_0609_0 : 1;  
-    uint64 room_0610_0 : 1;  
+    u64 room_0514_1 : 1;  
+    u64 room_0514_2 : 1;  
+    u64 room_0515_0 : 1;  
+    u64 room_0515_1 : 1;  
+    u64 unknown_01_4 : 1; 
+    u64 room_0607_0 : 1;  
+    u64 room_0609_0 : 1;  
+    u64 room_0610_0 : 1;  
 
-    uint64 room_0611_0 : 1;  
-    uint64 room_0613_0 : 1;  
-    uint64 room_0614_0 : 1;  
-    uint64 room_0615_0 : 1;  
-    uint64 room_0616_0 : 1;  
-    uint64 room_0616_1 : 1;  
-    uint64 room_0616_2 : 1;  
-    uint64 room_0703_0 : 1;  
+    u64 room_0611_0 : 1;  
+    u64 room_0613_0 : 1;  
+    u64 room_0614_0 : 1;  
+    u64 room_0615_0 : 1;  
+    u64 room_0616_0 : 1;  
+    u64 room_0616_1 : 1;  
+    u64 room_0616_2 : 1;  
+    u64 room_0703_0 : 1;  
 
-    uint64 room_0703_1 : 1;  
-    uint64 room_0703_2 : 1;  
-    uint64 room_0703_3 : 1;  
-    uint64 room_0704_0 : 1;  
-    uint64 room_0705_0 : 1;  
-    uint64 room_0706_0 : 1;  
-    uint64 room_0713_0 : 1;  
-    uint64 room_0716_0 : 1;  
+    u64 room_0703_1 : 1;  
+    u64 room_0703_2 : 1;  
+    u64 room_0703_3 : 1;  
+    u64 room_0704_0 : 1;  
+    u64 room_0705_0 : 1;  
+    u64 room_0706_0 : 1;  
+    u64 room_0713_0 : 1;  
+    u64 room_0716_0 : 1;  
 
-    uint64 room_0717_0 : 1;  
-    uint64 room_0717_1 : 1;  
-    uint64 room_0717_2 : 1;  
-    uint64 room_0808_0 : 1;  
-    uint64 room_0810_0 : 1;  
-    uint64 room_0811_0 : 1;  
-    uint64 room_0814_0 : 1;  
-    uint64 room_0816_0 : 1;  
+    u64 room_0717_0 : 1;  
+    u64 room_0717_1 : 1;  
+    u64 room_0717_2 : 1;  
+    u64 room_0808_0 : 1;  
+    u64 room_0810_0 : 1;  
+    u64 room_0811_0 : 1;  
+    u64 room_0814_0 : 1;  
+    u64 room_0816_0 : 1;  
 
-    uint64 room_0816_1 : 1;  
-    uint64 room_0817_0 : 1;  
-    uint64 room_0817_1 : 1;  
-    uint64 room_0817_2 : 1;  
-    uint64 room_0906_0 : 1;  
-    uint64 room_0906_1 : 1;  
-    uint64 room_0907_0 : 1;  
-    uint64 room_0907_1 : 1;  
+    u64 room_0816_1 : 1;  
+    u64 room_0817_0 : 1;  
+    u64 room_0817_1 : 1;  
+    u64 room_0817_2 : 1;  
+    u64 room_0906_0 : 1;  
+    u64 room_0906_1 : 1;  
+    u64 room_0907_0 : 1;  
+    u64 room_0907_1 : 1;  
 
-    uint64 room_0907_2 : 1;  
-    uint64 room_0910_0 : 1;  
-    uint64 room_0913_0 : 1;  
-    uint64 room_0914_0 : 1;  
-    uint64 room_0914_1 : 1;  
-    uint64 room_0914_2 : 1;  
-    uint64 room_0916_0 : 1;  
-    uint64 room_0917_0 : 1;  
+    u64 room_0907_2 : 1;  
+    u64 room_0910_0 : 1;  
+    u64 room_0913_0 : 1;  
+    u64 room_0914_0 : 1;  
+    u64 room_0914_1 : 1;  
+    u64 room_0914_2 : 1;  
+    u64 room_0916_0 : 1;  
+    u64 room_0917_0 : 1;  
 
-    uint64 room_1003_0 : 1;  
-    uint64 room_1003_1 : 1;  
-    uint64 room_1003_2 : 1;  
-    uint64 room_1005_0 : 1;  
-    uint64 room_1006_0 : 1;  
-    uint64 room_1105_0 : 1;  
-    uint64 room_1105_1 : 1;  
-    uint64 room_1105_2 : 1;  
+    u64 room_1003_0 : 1;  
+    u64 room_1003_1 : 1;  
+    u64 room_1003_2 : 1;  
+    u64 room_1005_0 : 1;  
+    u64 room_1006_0 : 1;  
+    u64 room_1105_0 : 1;  
+    u64 room_1105_1 : 1;  
+    u64 room_1105_2 : 1;  
 
-    uint64 room_1105_3 : 1;  
-    uint64 room_1114_0 : 1;  
-    uint64 room_1115_0 : 1;  
-    uint64 room_1213_0 : 1;  
-    uint64 room_1304_0 : 1;  
-    uint64 room_1304_1 : 1;  
-    uint64 room_1304_2 : 1;  
-    uint64 room_1307_0 : 1;  
+    u64 room_1105_3 : 1;  
+    u64 room_1114_0 : 1;  
+    u64 room_1115_0 : 1;  
+    u64 room_1213_0 : 1;  
+    u64 room_1304_0 : 1;  
+    u64 room_1304_1 : 1;  
+    u64 room_1304_2 : 1;  
+    u64 room_1307_0 : 1;  
 
-    uint64 room_1307_1 : 1;  
-    uint64 room_1307_2 : 1;  
-    uint64 room_1313_0 : 1;  
-    uint64 room_1314_0 : 1;  
-    uint64 room_1404_0 : 1;  
-    uint64 room_1411_0 : 1;  
-    uint64 room_1413_0 : 1;  
-    uint64 room_1413_1 : 1;  
+    u64 room_1307_1 : 1;  
+    u64 room_1307_2 : 1;  
+    u64 room_1313_0 : 1;  
+    u64 room_1314_0 : 1;  
+    u64 room_1404_0 : 1;  
+    u64 room_1411_0 : 1;  
+    u64 room_1413_0 : 1;  
+    u64 room_1413_1 : 1;  
 
-    uint64 room_1413_2 : 1;  
-    uint64 room_1413_3 : 1;  
-    uint64 room_1414_0 : 1;  
-    uint64 room_1415_0 : 1;  
-    uint64 room_1415_1 : 1;  
-    uint64 room_1415_2 : 1;  
-    uint64 room_1503_0 : 1;  
-    uint64 room_1503_1 : 1;  
+    u64 room_1413_2 : 1;  
+    u64 room_1413_3 : 1;  
+    u64 room_1414_0 : 1;  
+    u64 room_1415_0 : 1;  
+    u64 room_1415_1 : 1;  
+    u64 room_1415_2 : 1;  
+    u64 room_1503_0 : 1;  
+    u64 room_1503_1 : 1;  
 
-    uint64 room_1503_2 : 1;  
-    uint64 room_1503_3 : 1;  
-    uint64 room_1505_0 : 1;  
-    uint64 room_1510_0 : 1;  
-    uint64 room_1510_1 : 1;  
-    uint64 room_1510_2 : 1;  
-    uint64 room_1515_0 : 1;  
-    uint64 room_1516_0 : 1;  
+    u64 room_1503_2 : 1;  
+    u64 room_1503_3 : 1;  
+    u64 room_1505_0 : 1;  
+    u64 room_1510_0 : 1;  
+    u64 room_1510_1 : 1;  
+    u64 room_1510_2 : 1;  
+    u64 room_1515_0 : 1;  
+    u64 room_1516_0 : 1;  
 
-    uint64 room_1517_0 : 1;  
-    uint64 room_1603_0 : 1;  
-    uint64 room_1603_1 : 1;  
-    uint64 room_1603_2 : 1;  
-    uint64 room_1603_3 : 1;  
-    uint64 unknown_0C_4 : 1; 
-    uint64 unknown_0C_5 : 1; 
-    uint64 unknown_0C_6 : 1; 
+    u64 room_1517_0 : 1;  
+    u64 room_1603_0 : 1;  
+    u64 room_1603_1 : 1;  
+    u64 room_1603_2 : 1;  
+    u64 room_1603_3 : 1;  
+    u64 unknown_0C_4 : 1; 
+    u64 unknown_0C_5 : 1; 
+    u64 unknown_0C_6 : 1; 
 
-    uint64 room_1610_0 : 1;  
-    uint64 room_1613_0 : 1;  
-    uint64 room_1613_1 : 1;  
-    uint64 room_1613_2 : 1;  
-    uint64 room_1613_3 : 1;  
-    uint64 room_1709_0 : 1;  
-    uint64 room_1809_0 : 1;  
-    uint64 room_1809_1 : 1;  
+    u64 room_1610_0 : 1;  
+    u64 room_1613_0 : 1;  
+    u64 room_1613_1 : 1;  
+    u64 room_1613_2 : 1;  
+    u64 room_1613_3 : 1;  
+    u64 room_1709_0 : 1;  
+    u64 room_1809_0 : 1;  
+    u64 room_1809_1 : 1;  
 
-    uint64 room_1809_2 : 1;  
-    uint64 room_1809_3 : 1;  
-    uint64 room_1810_0 : 1;  
-    uint64 room_1811_0 : 1;  
-    uint64 room_1811_1 : 1;  
-    uint64 room_1811_2 : 1;  
-    uint64 room_1811_3 : 1;  
-    uint64 room_1813_0 : 1;  
+    u64 room_1809_2 : 1;  
+    u64 room_1809_3 : 1;  
+    u64 room_1810_0 : 1;  
+    u64 room_1811_0 : 1;  
+    u64 room_1811_1 : 1;  
+    u64 room_1811_2 : 1;  
+    u64 room_1811_3 : 1;  
+    u64 room_1813_0 : 1;  
 
-    uint64 room_1813_1 : 1;  
-    uint64 room_1813_2 : 1;  
-    uint64 room_1816_0 : 1;  
-    uint64 room_1816_1 : 1;  
-    uint64 room_1816_2 : 1;  
-    uint64 room_1817_0 : 1;  
-    uint64 room_1817_1 : 1;  
-    uint64 room_1817_2 : 1;  
+    u64 room_1813_1 : 1;  
+    u64 room_1813_2 : 1;  
+    u64 room_1816_0 : 1;  
+    u64 room_1816_1 : 1;  
+    u64 room_1816_2 : 1;  
+    u64 room_1817_0 : 1;  
+    u64 room_1817_1 : 1;  
+    u64 room_1817_2 : 1;  
 
-    uint64 room_1817_3 : 1;  
-    uint64 unknown_10_1 : 1; 
-    uint64 unknown_10_2 : 1; 
-    uint64 unknown_10_3 : 1; 
-    uint64 room_1913_0 : 1;  
-    uint64 room_1913_1 : 1;  
+    u64 room_1817_3 : 1;  
+    u64 unknown_10_1 : 1; 
+    u64 unknown_10_2 : 1; 
+    u64 unknown_10_3 : 1; 
+    u64 room_1913_0 : 1;  
+    u64 room_1913_1 : 1;  
 } YellowButtonData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-    uint64 room_0412_0 : 1;
-    uint64 room_0412_1 : 1;
-    uint64 room_0412_2 : 1;
-    uint64 room_0412_3 : 1;
-    uint64 room_0612_0 : 1;
-    uint64 room_0612_1 : 1;
-    uint64 unknown_00_6 : 1;
-    uint64 unknown_00_7 : 1;
+    u64 room_0412_0 : 1;
+    u64 room_0412_1 : 1;
+    u64 room_0412_2 : 1;
+    u64 room_0412_3 : 1;
+    u64 room_0612_0 : 1;
+    u64 room_0612_1 : 1;
+    u64 unknown_00_6 : 1;
+    u64 unknown_00_7 : 1;
 
-    uint64 room_0813_0 : 1;
-    uint64 room_0813_1 : 1;
-    uint64 room_1013_0 : 1;
-    uint64 room_1013_1 : 1;
-    uint64 room_1405_0 : 1;
-    uint64 room_1405_1 : 1;
-    uint64 room_1405_2 : 1;
-    uint64 room_1410_0 : 1;
+    u64 room_0813_0 : 1;
+    u64 room_0813_1 : 1;
+    u64 room_1013_0 : 1;
+    u64 room_1013_1 : 1;
+    u64 room_1405_0 : 1;
+    u64 room_1405_1 : 1;
+    u64 room_1405_2 : 1;
+    u64 room_1410_0 : 1;
 
-    uint64 room_1410_1 : 1;
-    uint64 room_1410_2 : 1;
-    uint64 room_1615_0 : 1;
-    uint64 room_1615_1 : 1;
-    uint64 unknown_02_4 : 1;
-    uint64 unknown_02_5 : 1;
-    uint64 room_1913_0 : 1;
-    uint64 room_1916_0 : 1;
+    u64 room_1410_1 : 1;
+    u64 room_1410_2 : 1;
+    u64 room_1615_0 : 1;
+    u64 room_1615_1 : 1;
+    u64 unknown_02_4 : 1;
+    u64 unknown_02_5 : 1;
+    u64 room_1913_0 : 1;
+    u64 room_1916_0 : 1;
 
-    uint64 room_1916_1 : 1;
-    uint64 room_1916_2 : 1;
-    uint64 room_1916_3 : 1;
+    u64 room_1916_1 : 1;
+    u64 room_1916_2 : 1;
+    u64 room_1916_3 : 1;
 } PurpleButtonData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-    uint64 room_1002_0 : 1;
-    uint64 room_1102_0 : 1;
-    uint64 room_1105_0 : 1;
-    uint64 room_1302_0 : 1;
+    u64 room_1002_0 : 1;
+    u64 room_1102_0 : 1;
+    u64 room_1105_0 : 1;
+    u64 room_1302_0 : 1;
 } GreenButtonData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-    uint64 unknown_00_0 : 1;
-    uint64 unknown_00_1 : 1;
-    uint64 room_0404_0 : 1;
-    uint64 unknown_00_3 : 1;
-    uint64 room_0407_0 : 1;
-    uint64 room_0407_1 : 1;
-    uint64 room_0408_0 : 1;
-    uint64 room_0410_0 : 1;
+    u64 unknown_00_0 : 1;
+    u64 unknown_00_1 : 1;
+    u64 room_0404_0 : 1;
+    u64 unknown_00_3 : 1;
+    u64 room_0407_0 : 1;
+    u64 room_0407_1 : 1;
+    u64 room_0408_0 : 1;
+    u64 room_0410_0 : 1;
 
-    uint64 room_0412_0 : 1;
-    uint64 room_0412_1 : 1;
-    uint64 room_0416_0 : 1;
-    uint64 room_0504_0 : 1;
-    uint64 room_0505_0 : 1;
-    uint64 room_0510_0 : 1;
-    uint64 room_0511_0 : 1;
-    uint64 unknown_01_7 : 1;
+    u64 room_0412_0 : 1;
+    u64 room_0412_1 : 1;
+    u64 room_0416_0 : 1;
+    u64 room_0504_0 : 1;
+    u64 room_0505_0 : 1;
+    u64 room_0510_0 : 1;
+    u64 room_0511_0 : 1;
+    u64 unknown_01_7 : 1;
 
-    uint64 room_0513_0 : 1;
-    uint64 room_0604_0 : 1;
-    uint64 room_0606_0 : 1;
-    uint64 room_0608_0 : 1;
-    uint64 room_0609_0 : 1;
-    uint64 room_0609_1 : 1;
-    uint64 room_0611_0 : 1;
-    uint64 room_0613_0 : 1;
+    u64 room_0513_0 : 1;
+    u64 room_0604_0 : 1;
+    u64 room_0606_0 : 1;
+    u64 room_0608_0 : 1;
+    u64 room_0609_0 : 1;
+    u64 room_0609_1 : 1;
+    u64 room_0611_0 : 1;
+    u64 room_0613_0 : 1;
 
-    uint64 room_0617_0 : 1;
-    uint64 unknown_03_1 : 1;
-    uint64 unknown_03_2 : 1;
-    uint64 unknown_03_3 : 1;
-    uint64 room_0707_0 : 1;
-    uint64 room_0712_0 : 1;
-    uint64 room_0714_0 : 1;
-    uint64 unknown_03_7 : 1;
+    u64 room_0617_0 : 1;
+    u64 unknown_03_1 : 1;
+    u64 unknown_03_2 : 1;
+    u64 unknown_03_3 : 1;
+    u64 room_0707_0 : 1;
+    u64 room_0712_0 : 1;
+    u64 room_0714_0 : 1;
+    u64 unknown_03_7 : 1;
 
-    uint64 unknown_04_0 : 1;
-    uint64 room_0716_0 : 1;
-    uint64 room_0716_1 : 1;
-    uint64 room_0802_0 : 1;
-    uint64 room_0804_0 : 1;
-    uint64 room_0805_0 : 1;
-    uint64 room_0807_0 : 1;
-    uint64 room_0810_0 : 1;
+    u64 unknown_04_0 : 1;
+    u64 room_0716_0 : 1;
+    u64 room_0716_1 : 1;
+    u64 room_0802_0 : 1;
+    u64 room_0804_0 : 1;
+    u64 room_0805_0 : 1;
+    u64 room_0807_0 : 1;
+    u64 room_0810_0 : 1;
 
-    uint64 room_0812_0 : 1;
-    uint64 room_0814_0 : 1;
-    uint64 room_0906_0 : 1;
-    uint64 room_0910_0 : 1;
-    uint64 room_0910_1 : 1;
-    uint64 room_0911_0 : 1;
-    uint64 room_0911_1 : 1;
-    uint64 room_0912_0 : 1;
+    u64 room_0812_0 : 1;
+    u64 room_0814_0 : 1;
+    u64 room_0906_0 : 1;
+    u64 room_0910_0 : 1;
+    u64 room_0910_1 : 1;
+    u64 room_0911_0 : 1;
+    u64 room_0911_1 : 1;
+    u64 room_0912_0 : 1;
 
-    uint64 room_0913_0 : 1;
-    uint64 room_0915_0 : 1;
-    uint64 room_0915_1 : 1;
-    uint64 room_0916_0 : 1;
-    uint64 room_0917_0 : 1;
-    uint64 room_1002_0 : 1;
-    uint64 room_1002_1 : 1;
-    uint64 room_1003_0 : 1;
+    u64 room_0913_0 : 1;
+    u64 room_0915_0 : 1;
+    u64 room_0915_1 : 1;
+    u64 room_0916_0 : 1;
+    u64 room_0917_0 : 1;
+    u64 room_1002_0 : 1;
+    u64 room_1002_1 : 1;
+    u64 room_1003_0 : 1;
 
-    uint64 room_1004_0 : 1;
-    uint64 room_1004_1 : 1;
-    uint64 room_1005_0 : 1;
-    uint64 room_1007_0 : 1;
-    uint64 room_1015_0 : 1;
-    uint64 room_1016_0 : 1;
-    uint64 room_1017_0 : 1;
-    uint64 room_1102_0 : 1;
+    u64 room_1004_0 : 1;
+    u64 room_1004_1 : 1;
+    u64 room_1005_0 : 1;
+    u64 room_1007_0 : 1;
+    u64 room_1015_0 : 1;
+    u64 room_1016_0 : 1;
+    u64 room_1017_0 : 1;
+    u64 room_1102_0 : 1;
 
-    uint64 room_1103_0 : 1;
-    uint64 room_1103_1 : 1;
-    uint64 room_1110_0 : 1;
-    uint64 room_1110_1 : 1;
-    uint64 room_1114_0 : 1;
-    uint64 room_1202_0 : 1;
-    uint64 room_1203_0 : 1;
-    uint64 room_1204_0 : 1;
+    u64 room_1103_0 : 1;
+    u64 room_1103_1 : 1;
+    u64 room_1110_0 : 1;
+    u64 room_1110_1 : 1;
+    u64 room_1114_0 : 1;
+    u64 room_1202_0 : 1;
+    u64 room_1203_0 : 1;
+    u64 room_1204_0 : 1;
 
-    uint64 room_1204_1 : 1;
-    uint64 unknown_09_1 : 1;
-    uint64 room_1206_0 : 1;
-    uint64 room_1208_0 : 1;
-    uint64 room_1210_0 : 1;
-    uint64 unknown_09_5 : 1;
-    uint64 unknown_09_6 : 1;
-    uint64 unknown_09_7 : 1;
+    u64 room_1204_1 : 1;
+    u64 unknown_09_1 : 1;
+    u64 room_1206_0 : 1;
+    u64 room_1208_0 : 1;
+    u64 room_1210_0 : 1;
+    u64 unknown_09_5 : 1;
+    u64 unknown_09_6 : 1;
+    u64 unknown_09_7 : 1;
 
-    uint64 room_1216_0 : 1;
-    uint64 room_1303_0 : 1;
-    uint64 room_1305_0 : 1;
-    uint64 room_1305_1 : 1;
-    uint64 room_1313_0 : 1;
-    uint64 room_1314_0 : 1;
-    uint64 room_1314_1 : 1;
-    uint64 room_1404_0 : 1;
+    u64 room_1216_0 : 1;
+    u64 room_1303_0 : 1;
+    u64 room_1305_0 : 1;
+    u64 room_1305_1 : 1;
+    u64 room_1313_0 : 1;
+    u64 room_1314_0 : 1;
+    u64 room_1314_1 : 1;
+    u64 room_1404_0 : 1;
 
-    uint64 unknown_0B_0 : 1;
-    uint64 room_1411_0 : 1;
-    uint64 room_1412_0 : 1;
-    uint64 room_1413_0 : 1;
-    uint64 unknown_0B_4 : 1;
-    uint64 room_1416_0 : 1;
-    uint64 room_1514_0 : 1;
-    uint64 room_1514_1 : 1;
+    u64 unknown_0B_0 : 1;
+    u64 room_1411_0 : 1;
+    u64 room_1412_0 : 1;
+    u64 room_1413_0 : 1;
+    u64 unknown_0B_4 : 1;
+    u64 room_1416_0 : 1;
+    u64 room_1514_0 : 1;
+    u64 room_1514_1 : 1;
 
-    uint64 room_1515_0 : 1;
-    uint64 room_1516_0 : 1;
-    uint64 room_1517_0 : 1;
-    uint64 room_1603_0 : 1;
-    uint64 unknown_0C_4 : 1;
-    uint64 room_1607_0 : 1;
-    uint64 unknown_0C_6 : 1;
-    uint64 room_1709_0 : 1;
+    u64 room_1515_0 : 1;
+    u64 room_1516_0 : 1;
+    u64 room_1517_0 : 1;
+    u64 room_1603_0 : 1;
+    u64 unknown_0C_4 : 1;
+    u64 room_1607_0 : 1;
+    u64 unknown_0C_6 : 1;
+    u64 room_1709_0 : 1;
 
-    uint64 room_1710_0 : 1;
-    uint64 unknown_0D_1 : 1;
-    uint64 unknown_0D_2 : 1;
-    uint64 unknown_0D_3 : 1;
-    uint64 unknown_0D_4 : 1;
-    uint64 unknown_0D_5 : 1;
-    uint64 room_1816_0 : 1;
-    uint64 room_1907_0 : 1;
+    u64 room_1710_0 : 1;
+    u64 unknown_0D_1 : 1;
+    u64 unknown_0D_2 : 1;
+    u64 unknown_0D_3 : 1;
+    u64 unknown_0D_4 : 1;
+    u64 unknown_0D_5 : 1;
+    u64 room_1816_0 : 1;
+    u64 room_1907_0 : 1;
 
-    uint64 room_1916_0 : 1;
-    uint64 unknown_0E_1 : 1;
-    uint64 room_1917_0 : 1;
+    u64 room_1916_0 : 1;
+    u64 unknown_0E_1 : 1;
+    u64 room_1917_0 : 1;
 } FruitData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-    uint64 room_0405_0 : 1;
-    uint64 room_0407_0 : 1;
-    uint64 room_0408_0 : 1;
-    uint64 room_0417_0 : 1;
-    uint64 room_0509_0 : 1;
-    uint64 room_0511_0 : 1;
-    uint64 room_0603_0 : 1;
-    uint64 room_0603_1 : 1;
+    u64 room_0405_0 : 1;
+    u64 room_0407_0 : 1;
+    u64 room_0408_0 : 1;
+    u64 room_0417_0 : 1;
+    u64 room_0509_0 : 1;
+    u64 room_0511_0 : 1;
+    u64 room_0603_0 : 1;
+    u64 room_0603_1 : 1;
 
-    uint64 room_0603_2 : 1;
-    uint64 unknown_01_1 : 1;
-    uint64 room_0611_0 : 1;
-    uint64 room_0611_1 : 1;
-    uint64 unknown_01_4 : 1;
-    uint64 room_0707_0 : 1;
-    uint64 room_0710_0 : 1;
-    uint64 unknown_01_7 : 1;
+    u64 room_0603_2 : 1;
+    u64 unknown_01_1 : 1;
+    u64 room_0611_0 : 1;
+    u64 room_0611_1 : 1;
+    u64 unknown_01_4 : 1;
+    u64 room_0707_0 : 1;
+    u64 room_0710_0 : 1;
+    u64 unknown_01_7 : 1;
 
-    uint64 room_0716_0 : 1;
-    uint64 room_0805_0 : 1;
-    uint64 room_0805_1 : 1;
-    uint64 room_0805_2 : 1;
-    uint64 room_0904_0 : 1;
-    uint64 room_0905_0 : 1;
-    uint64 room_0905_1 : 1;
-    uint64 room_0905_2 : 1;
+    u64 room_0716_0 : 1;
+    u64 room_0805_0 : 1;
+    u64 room_0805_1 : 1;
+    u64 room_0805_2 : 1;
+    u64 room_0904_0 : 1;
+    u64 room_0905_0 : 1;
+    u64 room_0905_1 : 1;
+    u64 room_0905_2 : 1;
 
-    uint64 room_0905_3 : 1;
-    uint64 room_0906_0 : 1;
-    uint64 room_0906_1 : 1;
-    uint64 room_0911_0 : 1;
-    uint64 room_0915_0 : 1;
-    uint64 room_1014_0 : 1;
-    uint64 room_1015_0 : 1;
-    uint64 room_1112_0 : 1;
+    u64 room_0905_3 : 1;
+    u64 room_0906_0 : 1;
+    u64 room_0906_1 : 1;
+    u64 room_0911_0 : 1;
+    u64 room_0915_0 : 1;
+    u64 room_1014_0 : 1;
+    u64 room_1015_0 : 1;
+    u64 room_1112_0 : 1;
 
-    uint64 room_1112_1 : 1;
-    uint64 room_1210_0 : 1;
-    uint64 room_1210_1 : 1;
-    uint64 room_1214_0 : 1;
-    uint64 room_1305_0 : 1;
-    uint64 room_1306_0 : 1;
-    uint64 room_1306_1 : 1;
-    uint64 room_1306_2 : 1;
+    u64 room_1112_1 : 1;
+    u64 room_1210_0 : 1;
+    u64 room_1210_1 : 1;
+    u64 room_1214_0 : 1;
+    u64 room_1305_0 : 1;
+    u64 room_1306_0 : 1;
+    u64 room_1306_1 : 1;
+    u64 room_1306_2 : 1;
 
-    uint64 room_1306_3 : 1;
-    uint64 room_1311_0 : 1;
-    uint64 room_1314_0 : 1;
-    uint64 room_1406_0 : 1;
-    uint64 room_1406_1 : 1;
-    uint64 room_1406_2 : 1;
-    uint64 room_1406_3 : 1;
-    uint64 room_1407_0 : 1;
+    u64 room_1306_3 : 1;
+    u64 room_1311_0 : 1;
+    u64 room_1314_0 : 1;
+    u64 room_1406_0 : 1;
+    u64 room_1406_1 : 1;
+    u64 room_1406_2 : 1;
+    u64 room_1406_3 : 1;
+    u64 room_1407_0 : 1;
 
-    uint64 room_1407_1 : 1;
-    uint64 room_1407_2 : 1;
-    uint64 room_1411_0 : 1;
-    uint64 unknown_06_3 : 1;
-    uint64 room_1511_0 : 1;
-    uint64 room_1512_0 : 1;
-    uint64 room_1513_0 : 1;
-    uint64 unknown_06_7 : 1;
+    u64 room_1407_1 : 1;
+    u64 room_1407_2 : 1;
+    u64 room_1411_0 : 1;
+    u64 unknown_06_3 : 1;
+    u64 room_1511_0 : 1;
+    u64 room_1512_0 : 1;
+    u64 room_1513_0 : 1;
+    u64 unknown_06_7 : 1;
 
-    uint64 unknown_07_0 : 1;
-    uint64 room_1709_0 : 1;
-    uint64 room_1710_0 : 1;
-    uint64 unknown_07_3 : 1;
-    uint64 room_1808_0 : 1;
-    uint64 room_1809_0 : 1;
-    uint64 room_1810_0 : 1;
-    uint64 room_1810_1 : 1;
+    u64 unknown_07_0 : 1;
+    u64 room_1709_0 : 1;
+    u64 room_1710_0 : 1;
+    u64 unknown_07_3 : 1;
+    u64 room_1808_0 : 1;
+    u64 room_1809_0 : 1;
+    u64 room_1810_0 : 1;
+    u64 room_1810_1 : 1;
 } FirecrackerData <comment="Room coordinates are yx_id not xy_id">;
 
 
@@ -983,29 +984,29 @@ typedef struct {
 
 
 typedef struct {
-    uint32 room_0511_0 : 1;  
-    uint32 room_0617_0 : 1;  
-    uint32 room_0710_0 : 1;  
-    uint32 room_0811_0 : 1;  
-    uint32 unknown_00_4 : 1; 
-    uint32 room_1116_0 : 1;  
-    uint32 room_1117_0 : 1;  
-    uint32 room_1117_1 : 1;  
-    uint32 room_1414_0 : 1;  
-    uint32 room_1516_0 : 1;  
+    u32 room_0511_0 : 1;  
+    u32 room_0617_0 : 1;  
+    u32 room_0710_0 : 1;  
+    u32 room_0811_0 : 1;  
+    u32 unknown_00_4 : 1; 
+    u32 room_1116_0 : 1;  
+    u32 room_1117_0 : 1;  
+    u32 room_1117_1 : 1;  
+    u32 room_1414_0 : 1;  
+    u32 room_1516_0 : 1;  
 } ExplosionData <comment="Room coordinates are yx_id not xy_id">;
 
 
 typedef struct {
-  uint32 room_0511_0 : 1; 
-  uint32 room_0617_0 : 1; 
-  uint32 room_0710_0 : 1; 
-  uint32 room_1116_0 : 1; 
-  uint32 room_1117_0 : 1; 
-  uint32 room_1117_1 : 1; 
-  uint32 room_1414_0 : 1; 
-  uint32 room_1516_0 : 1; 
-  uint32 room_1907_0 : 1; 
+  u32 room_0511_0 : 1; 
+  u32 room_0617_0 : 1; 
+  u32 room_0710_0 : 1; 
+  u32 room_1116_0 : 1; 
+  u32 room_1117_0 : 1; 
+  u32 room_1117_1 : 1; 
+  u32 room_1414_0 : 1; 
+  u32 room_1516_0 : 1; 
+  u32 room_1907_0 : 1; 
 } DetonatorData <comment="Room coordinates are yx_id not xy_id">;
 
 
@@ -1046,160 +1047,160 @@ typedef struct {
 
 
 typedef struct {
-  uint16 room_0509_0 : 1; 
-  uint16 room_0909_0 : 1; 
-  uint16 room_1015_0 : 1; 
-  uint16 room_1109_0 : 1; 
-  uint16 room_1210_0 : 1; 
-  uint16 room_1308_0 : 1; 
-  uint16 room_1403_0 : 1; 
-  uint16 room_1414_0 : 1; 
+  u16 room_0509_0 : 1; 
+  u16 room_0909_0 : 1; 
+  u16 room_1015_0 : 1; 
+  u16 room_1109_0 : 1; 
+  u16 room_1210_0 : 1; 
+  u16 room_1308_0 : 1; 
+  u16 room_1403_0 : 1; 
+  u16 room_1414_0 : 1; 
 
-  uint16 room_1507_0 : 1; 
-  uint16 room_1615_0 : 1; 
-  uint16 room_1807_0 : 1; 
-  uint16 room_1808_0 : 1; 
-  uint16 room_1909_0 : 1; 
+  u16 room_1507_0 : 1; 
+  u16 room_1615_0 : 1; 
+  u16 room_1807_0 : 1; 
+  u16 room_1808_0 : 1; 
+  u16 room_1909_0 : 1; 
 } SquirrelData <comment="Room coordinates are yx_id not xy_id">;
 
 typedef struct {
-    ubyte TotalHearts;
-    ubyte MaxYellow;
-    ubyte UnknownHearts1 <hidden=true>;
-    ubyte UnknownHearts2<hidden=true>;
+    u8 TotalHearts <comment="This includes ALL hearts">;
+    u8 MaxYellow;
+    u16 GroundHogyear;
 } HPData;
 
 // part of the struct above?
 typedef struct { 
-  uint16 room_1816_0 : 1 <comment="left cat cage">;
+  u16 room_1816_0 : 1 <comment="left cat cage">;
 }  Uncategorized_00;
+
 
 typedef struct
 {
-    ushort Unknown : 1;
-    ushort Firecrackers : 1;
-    ushort Flute : 1;
-    ushort Lantern : 1;
-    ushort Top : 1;
-    ushort Disc : 1;
-    ushort BWand : 1;
-    ushort Yoyo : 1;
-    ushort Slink : 1;
-    ushort Remote : 1;
-    ushort Ball : 1;
-    ushort Wheel : 1;
-    ushort UVLight : 1;
+    u16 Unknown : 1;
+    u16 Firecrackers : 1;
+    u16 Flute : 1;
+    u16 Lantern : 1;
+    u16 Top : 1;
+    u16 Disc : 1;
+    u16 BWand : 1;
+    u16 Yoyo : 1;
+    u16 Slink : 1;
+    u16 Remote : 1;
+    u16 Ball : 1;
+    u16 Wheel : 1;
+    u16 UVLight : 1;
 } Equipment <optimize=false>;
 
 
 
 typedef struct  {
-  uint16 room_0604_0 : 1;
-  uint16 room_0608_0 : 1;
-  uint16 room_0704_0 : 1;
-  uint16 room_0706_0 : 1;
-  uint16 room_0906_0 : 1;
-  uint16 room_0915_0 : 1;
-  uint16 room_1305_0 : 1;
-  uint16 room_1310_0 : 1;
-  uint16 room_1316_0 : 1;
+  u16 room_0604_0 : 1;
+  u16 room_0608_0 : 1;
+  u16 room_0704_0 : 1;
+  u16 room_0706_0 : 1;
+  u16 room_0906_0 : 1;
+  u16 room_0915_0 : 1;
+  u16 room_1305_0 : 1;
+  u16 room_1310_0 : 1;
+  u16 room_1316_0 : 1;
 } CandlesData;
 
 
 typedef struct {
-  uint16 room_0608_0 : 1;
-  uint16 room_0704_0 : 1;
-  uint16 room_0706_0 : 1; 
-  uint16 unknown_00_3 : 1;
-  uint16 unknown_00_4 : 1;
-  uint16 unknown_00_5 : 1;
-  uint16 unknown_00_6 : 1;
-  uint16 room_1305_0 : 1;
+  u16 room_0608_0 : 1;
+  u16 room_0704_0 : 1;
+  u16 room_0706_0 : 1; 
+  u16 unknown_00_3 : 1;
+  u16 unknown_00_4 : 1;
+  u16 unknown_00_5 : 1;
+  u16 unknown_00_6 : 1;
+  u16 room_1305_0 : 1;
 
-  uint16 room_1310_0 : 1;
-  uint16 room_1316_0 : 1;
-  uint16 room_1407_0 : 1;
+  u16 room_1310_0 : 1;
+  u16 room_1316_0 : 1;
+  u16 room_1407_0 : 1;
 } GhostData;
 
 
 typedef struct {
-  uint16 unknown_00_0 : 1;
-  uint16 room_1811_0 : 1;
+  u16 unknown_00_0 : 1;
+  u16 room_1811_0 : 1;
 } Uncategorized_01;
 
 
 typedef struct {
-    ubyte None : 1;
-    ubyte SMedal : 1;
-    ubyte UnknownItem1 : 1;
-    ubyte HouseKey : 1;
-    ubyte OfficeKey : 1;
-    ubyte UnusedCageKey : 1;
-    ubyte EMedal : 1;
-    ubyte FPack : 1;
+    u8 None : 1;
+    u8 SMedal : 1;
+    u8 UnknownItem1 : 1;
+    u8 HouseKey : 1;
+    u8 OfficeKey : 1;
+    u8 UnusedCageKey : 1;
+    u8 EMedal : 1;
+    u8 FPack : 1;
 } OtherItems <optimize=false>;
 
 
 typedef struct { 
-    uint32 HouseOpened : 1  <comment="used the house key to open the house">;
-    uint32 unknown_00_1 : 1; 
-    uint32 ClosetOpened : 1  <comment="opened the closet to get the fanny pack">;
-    uint32 unknown_00_3 : 1; 
-    uint32 unknown_00_4 : 1; 
-    uint32 unknown_00_5 : 1; 
-    uint32 unknown_00_6 : 1; 
-    uint32 unknown_00_7 : 1; 
+    u32 HouseOpened : 1  <comment="used the house key to open the house">;
+    u32 unknown_00_1 : 1; 
+    u32 ClosetOpened : 1  <comment="opened the closet to get the fanny pack">;
+    u32 unknown_00_3 : 1; 
+    u32 unknown_00_4 : 1; 
+    u32 unknown_00_5 : 1; 
+    u32 unknown_00_6 : 1; 
+    u32 unknown_00_7 : 1; 
 
-    uint32 SwitchState : 1  <comment="state of the switches; 0 = left?, 1 = right?">;
-    uint32 MapCollected : 1; 
-    uint32 StampsCollected : 1; 
-    uint32 PencilCollected : 1; 
-    uint32 ChameleonDefeated : 1; 
-    uint32 CRing : 1; 
-    uint32 unknown_01_6 : 1; 
-    uint32 unknown_01_7 : 1; 
+    u32 SwitchState : 1  <comment="state of the switches; 0 = left?, 1 = right?">;
+    u32 MapCollected : 1; 
+    u32 StampsCollected : 1; 
+    u32 PencilCollected : 1; 
+    u32 ChameleonDefeated : 1; 
+    u32 CRing : 1; 
+    u32 unknown_01_6 : 1; 
+    u32 unknown_01_7 : 1; 
 
-    uint32 unknown_02_0 : 1; 
-    uint32 unknown_02_1 : 1; 
-    uint32 WokeUp : 1  <comment="start of the game">;
-    uint32 BBWandUpgrade : 1; 
-    uint32 ManticoreEgg65 : 1; 
-    uint32 unknown_02_5 : 1; 
-    uint32 unknown_02_6 : 1; 
-    uint32 unknown_02_7 : 1; 
+    u32 unknown_02_0 : 1; 
+    u32 unknown_02_1 : 1; 
+    u32 WokeUp : 1  <comment="start of the game">;
+    u32 BBWandUpgrade : 1; 
+    u32 ManticoreEgg65 : 1; 
+    u32 unknown_02_5 : 1; 
+    u32 unknown_02_6 : 1; 
+    u32 unknown_02_7 : 1; 
 
-    uint32 BatDefeated : 1  <comment="defeated the bat in room 0604">;
-    uint32 OstrichStart : 1  <comment="ostrich in the wheel in room 1913">;
-    uint32 OstrichDefeated : 1  <comment="defeated the ostrich">;
-    uint32 unknown_03_3 : 1; 
-    uint32 unknown_03_4 : 1; 
-    uint32 DiscInDog : 1  <comment="whether there is any disc placed in room 0908? just a guess, has something to do with the (mock) disc">;
-    uint32 GhostDogActive : 1  <comment="whether the ghost dog is active?">;
-    uint32 unknown_03_7 : 1; 
+    u32 BatDefeated : 1  <comment="defeated the bat in room 0604">;
+    u32 OstrichStart : 1  <comment="ostrich in the wheel in room 1913">;
+    u32 OstrichDefeated : 1  <comment="defeated the ostrich">;
+    u32 unknown_03_3 : 1; 
+    u32 unknown_03_4 : 1; 
+    u32 DiscInDog : 1  <comment="whether there is any disc placed in room 0908? just a guess, has something to do with the (mock) disc">;
+    u32 GhostDogActive : 1  <comment="whether the ghost dog is active?">;
+    u32 unknown_03_7 : 1; 
 } QuestState;
 
 
 typedef struct {
-    ubyte unknown_00_0 : 1; 
-    ubyte unknown_00_1 : 1; 
-    ubyte unknown_00_2 : 1; 
-    ubyte unknown_00_3 : 1; 
-    ubyte unknown_00_4 : 1; 
-    ubyte unknown_00_5 : 1; 
-    ubyte unknown_00_6 : 1; 
-    ubyte unknown_00_7 : 1; 
+    u8 unknown_00_0 : 1; 
+    u8 unknown_00_1 : 1; 
+    u8 unknown_00_2 : 1; 
+    u8 unknown_00_3 : 1; 
+    u8 unknown_00_4 : 1; 
+    u8 unknown_00_5 : 1; 
+    u8 unknown_00_6 : 1; 
+    u8 unknown_00_7 : 1; 
 } KangarooState;
 
 
 typedef struct {
-    ubyte unknown_00_0 : 1; 
-    ubyte chameleon : 1; 
-    ubyte unknown_00_2 : 1; 
-    ubyte unknown_00_3 : 1; 
-    ubyte unknown_00_4 : 1; 
-    ubyte unknown_00_5 : 1; 
-    ubyte unknown_00_6 : 1; 
-    ubyte aligator : 1; 
+    u8 unknown_00_0 : 1; 
+    u8 chameleon : 1; 
+    u8 unknown_00_2 : 1; 
+    u8 unknown_00_3 : 1; 
+    u8 unknown_00_4 : 1; 
+    u8 unknown_00_5 : 1; 
+    u8 unknown_00_6 : 1; 
+    u8 aligator : 1; 
 } FluteAnimalsEyes;
 
 
@@ -1225,110 +1226,110 @@ typedef struct {
 
 typedef struct
 {
-    ubyte StopWatch : 1;
-    ubyte Pedometer : 1;
-    ubyte PinkPhone : 1;
-    ubyte SouvenirCup : 1;
-    ubyte OrigamiFig : 1;
-    ubyte Rabbits : 1;
-    ubyte Owl : 1;
-    ubyte DecorativeRabbit : 1;
-    ubyte Fish : 1;
-    ubyte Donkey : 1;
-    ubyte Cat : 1;
-    ubyte MamaCha : 1;
-    ubyte Giraffe : 1;
-    ubyte IncenseBurner : 1;
-    ubyte Peacock : 1;
-    ubyte Otter : 1;
-    ubyte Duck : 1;
-    ubyte Figurine18 : 1 <hidden=true>;
-    ubyte Figurine19 : 1 <hidden=true>;
-    ubyte Figurine20 : 1 <hidden=true>;
-    ubyte Figurine21 : 1 <hidden=true>;
-    ubyte Figurine22 : 1 <hidden=true>;
-    ubyte Figurine23 : 1 <hidden=true>;
-    ubyte Figurine24 : 1 <hidden=true>;
-    ubyte Figurine25 : 1 <hidden=true>;
-    ubyte Figurine26 : 1 <hidden=true>;
-    ubyte Figurine27 : 1 <hidden=true>;
-    ubyte Figurine28 : 1 <hidden=true>;
-    ubyte Figurine29 : 1 <hidden=true>;
-    ubyte Figurine30 : 1 <hidden=true>;
-    ubyte Figurine31 : 1 <hidden=true>;
-    ubyte Figurine32 : 1 <hidden=true>;
+    u8 StopWatch : 1;
+    u8 Pedometer : 1;
+    u8 PinkPhone : 1;
+    u8 SouvenirCup : 1;
+    u8 OrigamiFig : 1;
+    u8 Rabbits : 1;
+    u8 Owl : 1;
+    u8 DecorativeRabbit : 1;
+    u8 Fish : 1;
+    u8 Donkey : 1;
+    u8 Cat : 1;
+    u8 MamaCha : 1;
+    u8 Giraffe : 1;
+    u8 IncenseBurner : 1;
+    u8 Peacock : 1;
+    u8 Otter : 1;
+    u8 Duck : 1;
+    u8 Unlockable18 : 1;
+    u8 Unlockable19 : 1;
+    u8 Unlockable20 : 1 <hidden=true>;
+    u8 Unlockable21 : 1 <hidden=true>;
+    u8 Unlockable22 : 1 <hidden=true>;
+    u8 Figurine23 : 1 <hidden=true>;
+    u8 Figurine24 : 1 <hidden=true>;
+    u8 Figurine25 : 1 <hidden=true>;
+    u8 Figurine26 : 1 <hidden=true>;
+    u8 Figurine27 : 1 <hidden=true>;
+    u8 Figurine28 : 1 <hidden=true>;
+    u8 Figurine29 : 1 <hidden=true>;
+    u8 Figurine30 : 1 <hidden=true>;
+    u8 Figurine31 : 1 <hidden=true>;
+    u8 Figurine32 : 1 <hidden=true>;
 }  Figurines <optimize=false>;
 
 
 // Header
 typedef struct {
-    uint32           Version       <comment="Save file version">;
+    u32           Version       <comment="Save file version">;
     AchievementData  Achievements;
-    uint32           UnknownData   <hidden=true>; // what other shared state is saved?
-    ubyte            SelectedSlot  <comment="Last selected/played save slot">;
-    ubyte            SaveHash      <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
-    ushort           Unk           <hidden=true>;  // always 00?
+    u32           FrameSeed     <comment="seed value based on frame counter that starts when game is booted and ends when last flame disappears in the intro">;
+    u8            SelectedSlot  <comment="Last selected/played save slot">;
+    u8            SaveHash      <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
+    u16           Unk           <hidden=true>;  // always 00?
     Figurines        Unlockables   <comment="Both figurines and global items">;
-    uint32           Reserved      <hidden=true>; // seems to be reserved data
+    u32           Reserved      <hidden=true>; // seems to be reserved data
 } Header <optimize=false>;
 
 
 // Options
 typedef struct {
-    ubyte Scanlines : 1;
-    ubyte Fullscreen : 1;
-    ubyte ShowTime : 1;
-    ubyte ShowSteps : 1;
-    ubyte Vibration : 1;
-    ubyte UnknownOption : 1;
-    ubyte Flashing : 1;
-    ubyte OverrideStyle : 1;
-    ubyte SwapCancel : 1;
-    ubyte IgnoreBGInput : 1;
-    ubyte UnknownOption2 : 1;
+    u8 Scanlines : 1;
+    u8 Fullscreen : 1;
+    u8 ShowTime : 1;
+    u8 ShowSteps : 1;
+    u8 Vibration : 1;
+    u8 UnknownOption : 1;
+    u8 Flashing : 1;
+    u8 OverrideStyle : 1;
+    u8 SwapCancel : 1;
+    u8 IgnoreBGInput : 1;
+    u8 UnknownOption2 : 1;
     Language Lang;
-    ubyte Unk[5] <hidden=true>;
+    u8 Unk[5] <hidden=true>;
     float SFX;
     float Music;
     ControllerStyle GamepadStyle;
     Graphics GFX;
-    ubyte Reserved[38] <hidden=true>;
+    u8 Reserved[38] <hidden=true>;
 } Options <optimize=false>;
 
 
 
 // SLOTS
 typedef struct {
-    ushort Year;
-    ubyte Month;
-    ubyte Day;
-    ubyte Hour;
-    ubyte Minutes;
-    ubyte Seconds;
-    ubyte Pad <hidden=true>;
+    u16 Year;
+    u8 Month;
+    u8 Day;
+    u8 Hour;
+    u8 Minutes;
+    u8 Seconds;
+    u8 Pad <hidden=true>;
 } Timestamp <optimize=false>;
 
 
 typedef struct
 {
-    ubyte Door1 : 1;
-    ubyte Door2 : 1;
-    ubyte Door3 : 1;
-    ubyte Door4 : 1;
-    ubyte Unk1 : 1;
-    ubyte Unk2 : 1;
-    ubyte Unk3 : 1;
-    ubyte Unk4 : 1;
+    u8 Door1 : 1;
+    u8 Door2 : 1;
+    u8 Door3 : 1;
+    u8 Door4 : 1;
+    u8 Unk1 : 1;
+    u8 Unk2 : 1;
+    u8 Unk3 : 1;
+    u8 Unk4 : 1;
 } EggRoomDoors;
 
 typedef struct {
-    uint32 X;
-    uint32 Y;
+    u32 X;
+    u32 Y;
 } SavedPos <optimize=false>;
 
 
 typedef struct {
-    ubyte FullMapRow[100] <comment="Whole world row, starting from right, each room is 5 bytes, each bit is one tile/pixel, total 40 horizontal tiles/pixesl per room">;
+    u8 FullMapRow[100] <comment="Whole world row, starting from right, each room is 5 bytes, each bit is one tile/pixel, total 40 horizontal tiles/pixesl per room">;
 } MinimapRow <optimize=false>;
 
 
@@ -1340,14 +1341,14 @@ typedef struct {
 
 typedef struct
 {
-    ushort X;
-    ushort Y;
+    u16 X;
+    u16 Y;
     StampType Stamp;
 } StampEntry;
 
 
 typedef struct {
-    ubyte TotalStamps;
+    u8 TotalStamps;
     StampType LastSelected;
     StampEntry PlacedStamps[64];
 } StampData;
@@ -1357,14 +1358,14 @@ typedef struct {
     // ---
     StampData        PlacedStamps <read=Str("%u", this.TotalStamps)>; // 387 bytes
     float            SimFloats[16] <comment="Unrelated to map data">;
-    uint32  Unk32    <hidden=true>;
+    u32  Unk32    <hidden=true>;
     // ---
     MinimapRowsData  RevealedMapData[24];
-    ubyte   Pad      <hidden=true>;
+    u8   Pad      <hidden=true>;
     MinimapRowsData  PencilMapData[24];
-    ubyte   Pad      <hidden=true>;
+    u8   Pad      <hidden=true>;
     MinimapRowsData  TileStateData[24] <comment="Deleted/erased static tiles">;
-    ubyte   Pad      <hidden=true>;
+    u8   Pad      <hidden=true>;
 } MapData <optimize=false>;
 
 
@@ -1412,27 +1413,46 @@ typedef struct
     PixelColor Pixel40 : 2;
 } MuralPixelRow <optimize=false>;
 
+typedef struct {
+    u16 Unlockable1 : 1;
+    u16 Unlockable2 : 1;
+    u16 Unlockable3 : 1;
+    u16 Unlockable4 : 1;
+    u16 Unlockable5 : 1;
+    u16 Unlockable6 : 1;
+    u16 Unlockable7 : 1;
+    u16 Unlockable8 : 1;
+    u16 Unlockable9 : 1;
+    u16 Unlockable10 : 1;
+    u16 Unlockable11 : 1;
+    u16 Unlockable12 : 1;
+    u16 Unlockable13 : 1;
+    u16 Unlockable14 : 1;
+    u16 Unlockable15 : 1;
+    u16 Unlockable16 : 1;
+} LUnlockable;
+
 
 typedef struct
 {
     Timestamp       SlotTime   <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     //----
     Cranks          CrankLevelsPerRoom;
-    ubyte           Reserved[80]  <hidden=true>;
-    uint64          ExtraKeyDoors <hidden=true>;
+    u8              Reserved[80]  <hidden=true>;
+    u64             ExtraKeyDoors <hidden=true>;
     KeyDoorData     KeyDoors      <comment="Ordering is unknown">;
-    ubyte           Pad2[104]     <hidden=true>;
-    uint32          Steps         <bgcolor=0xFFD2EE>;
+    u8              Pad2[104]     <hidden=true>;
+    u32             Steps         <bgcolor=0xFFD2EE>;
     FillData        FillLevels;
     // --
-    ubyte           Pad3[15]      <hidden=true>;
+    u8              Pad3[15]      <hidden=true>;
     ChestData       OpenedChests;
     ButtonDoorsData ButtonDoors;
     // --
     struct ButtonData
     {
         YellowButtonData  YellowButtons;
-        uint64            Unk64 <hidden=true>;
+        u64               Unk64 <hidden=true>;
         PurpleButtonData  PurpleButtons;
         GreenButtonData   GreenButtons;
     } Buttons <optimize=false>;
@@ -1446,49 +1466,54 @@ typedef struct
     SquirrelData     SpookedSquirrels;
     // --
     Uncategorized_00 UnkData;
-    uint16           Unk16          <hidden=true>;
-    uint16           FirecrackersPickedUp;
-    uint16           BubblesPopped;
-    uint16           Unk16          <hidden=true>;
-    ushort           TimesSaved;
-    ushort           Unk16          <hidden=true>;
-    ushort           Unk16          <hidden=true>;
-    ushort           Unk16          <hidden=true>;
-    ubyte            Unk8           <hidden=true>;
-    ubyte            KeysCount      <bgcolor=0xD2FFD6>;
-    ubyte            MatchesCount   <bgcolor=0xD2FFD6>;
-    ubyte            FCrackersCount <bgcolor=0xD2FFD6>;
+    u16           Unk16          <hidden=true>;
+    u16           FirecrackersPickedUp;
+    u16           BubblesPopped;
+    u16           Unk16          <hidden=true>;
+    u16           TimesSaved;
+    u16           Unk16          <hidden=true>;
+    u16           Unk16          <hidden=true>;
+    u16           Unk16          <hidden=true>;
+    u8            Unk8           <hidden=true>;
+    u8            KeysCount      <bgcolor=0xD2FFD6>;
+    u8            MatchesCount   <bgcolor=0xD2FFD6>;
+    u8            FCrackersCount <bgcolor=0xD2FFD6>;
     HPData           Hearts         <bgcolor=0xFFD2EE>;
-    ubyte            Unk8           <hidden=true>;
+    u8            Unk8           <hidden=true>;
     EggRoomDoors     EggRoom        <comment="it is unclear what other flags are">;
-    uint16           Unk16          <hidden=true>;
-    uint32           FramesIngame   <bgcolor=0xFFD2EE>;
-    uint32           FramesTotal    <bgcolor=0xFFD2EE>;
-    ubyte            Pad4[16]       <hidden=true>;
+    u16           Unk16          <hidden=true>;
+    u32           FramesIngame   <bgcolor=0xFFD2EE>;
+    u32           FramesTotal    <bgcolor=0xFFD2EE>;
+    u8            Pad4[16]       <hidden=true>;
     SavedPos         SavedRoomPos   <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
     Equipment        OwnedEquipment <bgcolor=0xD2FFD6>;
     OtherItems       Items          <bgcolor=0xD2FFD6>;
-    ubyte            Unk8           <hidden=true>;
+    u8            Unk8           <hidden=true>;
     CandlesData      CandlesLit;
-    ushort           HitsTaken      <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
-    ushort           Deaths         <bgcolor=0xFFD2EE>;
+    u16           HitsTaken      <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
+    u16           Deaths         <bgcolor=0xFFD2EE>;
     GhostData        FreightenedGhosts;
     Uncategorized_01 UnkData2;
-    ubyte            SelectedItem   <bgcolor=0xD2FFD6>;
-    ubyte            Unk8           <hidden=true>;
+    u8            SelectedItem   <bgcolor=0xD2FFD6>;
+    u8            Unk8           <hidden=true>;
     QuestState       QuestAndUpgrades;    
-    ubyte            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
-    ubyte            Unk_40[40]     <hidden=true>;
+    u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
+    u8            Unk_40[40]     <hidden=true>;
     KangarooState    Kangaroo;
-    uint32           Unk32          <hidden=true>;
+    u32           Unk32          <hidden=true>;
     FlameData        Flames;
-    ubyte            Unk8           <hidden=true>;
+    u8            Unk8           <hidden=true>;
     FluteAnimalsEyes Transient      <hidden=true>;
     Teleports        ActiveTeleports;
     MapData          Map;
     // ---
     MuralPixelRow    Mural[20];
-    ubyte            Unk_153[153]   <hidden=true>;
+    u8            Pad            <hidden=true>;
+    // --
+    u8            Unk_128[128]   <hidden=true>;
+    LUnlockable      LocalUnlocks   <hidden=true>;
+    u16           BerriesEatenWhenFull <comment="resets when hit or eat blue berry">;
+    u8            Pad_20[20]     <hidden=true>;
 } Slot <optimize=false, read=SlotSummary>;
 
 
@@ -1500,29 +1525,29 @@ typedef struct
 string SlotSummary(Slot &slot) {
     if (slot.FramesTotal <= 0)
         return "<empty>";
-    local ubyte hrs = (ubyte)((slot.FramesTotal * 16.66) / 1000 /60 / 60);
-    local uint32 numBunnies = numSetBits32(ReadUInt(startof(slot.Bunnies)));
-    local uint32 numEggs = numSetBits64(ReadUInt64(startof(slot.Eggs)));
+    local u8 hrs = (ubyte)((slot.FramesTotal * 16.66) / 1000 / 60 / 60);
+    local u32 numBunnies = numSetBits32(ReadUInt(startof(slot.Bunnies)));
+    local u32 numEggs = numSetBits64(ReadUInt64(startof(slot.Eggs)));
     return Str("%u:%u:%u %u.%u.%u :: (%u) - [%u hrs] - {%u/64} - {%u}", slot.SlotTime.Hour, slot.SlotTime.Minutes, slot.SlotTime.Seconds,  slot.SlotTime.Day, slot.SlotTime.Month, slot.SlotTime.Year, slot.Steps, hrs, numEggs, numBunnies);
 }
 
-uint32 numSetBits32(uint32 i) {
+u32 numSetBits32(u32 i) {
      i = i - ((i >> 1) & 0x55555555);
      i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
      return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
 }
 
-uint64 numSetBits64(uint64 i) {
+u64 numSetBits64(u64 i) {
     i = i - ((i >> 1) & 0x5555555555555555);
     i = (i & 0x3333333333333333) + ((i >> 2) & 0x3333333333333333);
     return (((i + (i >> 4)) & 0xF0F0F0F0F0F0F0F) * 0x101010101010101) >> 56;
 }
 
 
-ubyte CalculateHash()
+u8 CalculateHash()
 {
-    local ubyte total = 0;
-    local uint32 pos = 0;
+    local u8 total = 0;
+    local u32 pos = 0;
     while (pos <= 12) {
         total = total ^ ReadUByte(pos);
         pos++;
@@ -1536,7 +1561,7 @@ ubyte CalculateHash()
     return total;
 }
 
-void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
+void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 
 
 
@@ -1544,6 +1569,7 @@ void WriteHash(ubyte &b, string s) { b = CalculateHash(); }
 // =====================
 // PARSING
 // =====================
+LittleEndian();
 
 Header GlobalState <bgcolor=0xCACAFF>;
 Assert(GlobalState.Version == 9, "Unsupported version detected");
