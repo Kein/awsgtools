@@ -917,26 +917,26 @@ typedef struct {
   uint64 room_0502_0 : 1  <comment="forbidden egg">;
   uint64 room_0517_0 : 1  <comment="shadow egg">;
 
-  uint64 unknown_01_0 : 1 <comment="?">;
+  uint64 unknown_01_0 : 1 <comment="vanity egg">;
   uint64 room_0603_0 : 1  <comment="egg as a service">;
   uint64 room_0608_0 : 1  <comment="depraved egg">;
   uint64 room_0617_0 : 1  <comment="chaos egg">;
   uint64 unknown_01_4 : 1 <comment="upside down egg">;
-  uint64 unknown_01_5 : 1 <comment="?">;
+  uint64 unknown_01_5 : 1 <comment="evil egg">;
   uint64 room_0710_0 : 1  <comment="sweet egg">;
   uint64 room_0711_0 : 1  <comment="chocolate egg">;
 
   uint64 room_0717_0 : 1  <comment="value egg">;
   uint64 room_0802_0 : 1  <comment="plant egg">;
   uint64 room_0803_0 : 1  <comment="red egg">;
-  uint64 unknown_02_3 : 1 <comment="?">;
+  uint64 unknown_02_3 : 1 <comment="orange egg">;
   uint64 room_0810_0 : 1  <comment="sour egg">;
   uint64 room_0811_0 : 1  <comment="post-modern egg">;
   uint64 room_0814_0 : 1  <comment="universal basic egg">;
   uint64 room_0814_1 : 1  <comment="laissez-faire egg">;
 
   uint64 room_0815_0 : 1  <comment="zen egg">;
-  uint64 unknown_03_1 : 1 <comment="?">;
+  uint64 unknown_03_1 : 1 <comment="future egg">;
   uint64 room_0903_0 : 1  <comment="friendship egg">;
   uint64 room_unk : 1  <comment="truth egg">;
   uint64 room_0913_0 : 1  <comment="transcendental egg">;
@@ -967,18 +967,18 @@ typedef struct {
   uint64 room_1415_0 : 1  <comment="bubble egg">;
   uint64 room_1417_0 : 1  <comment="desert egg">;
   uint64 room_1506_0 : 1  <comment="clover egg">;
-  uint64 unknown_06_5 : 1 <comment="?">;
-  uint64 unknown_06_6 : 1 <comment="?">;
+  uint64 unknown_06_5 : 1 <comment="brick egg">;
+  uint64 unknown_06_6 : 1 <comment="neon egg">;
   uint64 room_1609_0 : 1  <comment="iridescent egg">;
 
   uint64 room_1614_0 : 1  <comment="rust egg">;
-  uint64 unknown_07_1 : 1 <comment="?">;
+  uint64 unknown_07_1 : 1 <comment="scarlet egg">;
   uint64 room_1713_0 : 1  <comment="sapphire egg">;
   uint64 room_1714_0 : 1  <comment="ruby egg">;
   uint64 room_1715_0 : 1  <comment="jade egg">;
   uint64 room_1716_0 : 1  <comment="obsidian egg">;
-  uint64 unknown_07_6 : 1 <comment="?">;
-  uint64 unknown_07_7 : 1 <comment="?">;
+  uint64 unknown_07_6 : 1 <comment="crystal egg">;
+  uint64 unknown_07_7 : 1 <comment="golden egg">;
 } EggData  <comment="Room coordinates are yx_id not xy_id">;
 
 
@@ -1010,38 +1010,38 @@ typedef struct {
 
 
 typedef struct {
-    uint32 Bunny1 : 1;
+    uint32 Tutorial : 1        <comment="statue 4">;
     uint32 IllegallBunny1 : 1;
-    uint32 Bunny3 : 1;
-    uint32 Bunny4 : 1;
-    uint32 Bunny5 : 1;
+    uint32 Origami : 1         <comment="statue 17">;
+    uint32 Crow : 1            <comment="statue 10">;
+    uint32 Ghost : 1           <comment="statue 9">;
     uint32 IllegallBunny2 : 1;
-    uint32 Bunny7 : 1;
-    uint32 Jungle : 1;
-    uint32 Bunny9 : 1;
-    uint32 Bunny10 : 1;
-    uint32 Bunny11 : 1;
-    uint32 ChinChilla : 1;
+    uint32 FishMural : 1       <comment="statue 8">;
+    uint32 MapNumbers : 1      <comment="statue 5">;
+    uint32 TV : 1              <comment="statue 16">;
+    uint32 UV : 1              <comment="statue 7">;
+    uint32 Bulb : 1            <comment="statue 13">;
+    uint32 Chinchilla : 1      <comment="statue 2">;
     uint32 IllegallBunny3 : 1;
     uint32 IllegallBunny4 : 1;
     uint32 IllegallBunny5 : 1;
-    uint32 Bunny16 : 1;
+    uint32 BunnyMural : 1      <comment="statue 1">;
     uint32 IllegallBunny6 : 1;
     uint32 IllegallBunny7 : 1;
     uint32 IllegallBunny8 : 1;
     uint32 IllegallBunny9 : 1;
     uint32 IllegallBunny10 : 1;
     uint32 IllegallBunny11 : 1;
-    uint32 Bunny23 : 1;
+    uint32 Duck : 1            <comment="statue 11">;
     uint32 IllegallBunny12 : 1;
     uint32 IllegallBunny13 : 1;
-    uint32 Bunny26 : 1;
+    uint32 GhostDog : 1        <comment="statue 18">;
     uint32 IllegallBunny14 : 1;
     uint32 IllegallBunny15 : 1;
-    uint32 Bunny29 : 1;
+    uint32 Dream : 1           <comment="statue 12">;
     uint32 IllegallBunny16 : 1;
-    uint32 Bunny31 : 1;
-    uint32 Bunny32 : 1;
+    uint32 FloorIsLava : 1     <comment="statue 14">;
+    uint32 SpikeRoom : 1       <comment="statue 20">;
 } BunnyData;
 
 
