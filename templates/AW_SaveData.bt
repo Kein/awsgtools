@@ -1402,6 +1402,7 @@ typedef struct
     PixelColor Pixel40 : 2;
 } MuralPixelRow <optimize=false>;
 
+
 typedef struct {
     u16 Unlockable1 : 1;
     u16 Unlockable2 : 1;
@@ -1489,9 +1490,9 @@ typedef struct {
     u8            Unk8           <hidden=true>;
     QuestState    QuestsAndUpgrades;
     u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
-    u8            Unk_40[29]     <hidden=true>;
-    KangarooState Kangaroo;
-    u32           Unk32          <hidden=true>;
+    u8            Unk_3[3]       <hidden=true>;
+    KangarooState Kangaroo[3];
+    u8            Unk_6[6]       <hidden=true>;
     FlameData     Flames;
     u8            Unk8           <hidden=true>;
     // ---
@@ -1586,10 +1587,10 @@ void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 // ===================================================
 // PATTERN PARSING
 // ===================================================
-
 LittleEndian(); // ensure LE
 
 Header GlobalState <bgcolor=0xCACAFF>;
 Assert(GlobalState.Version == 9, "Unsupported version detected");
 Slot Slots[3]; // <bgcolor=0xD2F2FF>;
 Options Config     <bgcolor=0xFFD2EE>;
+    
