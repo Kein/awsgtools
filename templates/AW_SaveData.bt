@@ -5,23 +5,22 @@
 //   Authors: Kein, apocalyptech, just-ero, lipsum 
 //   Version: 0.5
 //   Purpose: Parser for Animal Well save game data
-//  Category: Game
-// File Mask: *.sav
+//   Category: Game
+//   File Mask: *.sav
 //   History: 
 //     0.1a  - Initial release
 //     0.3   - Added most of the basic data. Ready to use.
 //     0.3.1 - Added Stopwatch, Pedometer, Cring. Minimap and pencil data.
 //             Renamed a few things.
 //     0.4   - Added A LOT of new data points courtesy of ero/just_ero
-//     0.5   - Added ,ore research from ero/lipsum/apo
+//     0.5   - Added more research from ero/lipsum/apo
 //---------------------------------------------------------
 
-// =====================
-// DEFINITIONS
-// =====================
+// ===================================================
+// DECALRATIONS
+// ===================================================
 
 // ImHex <-> 010 aliasing
-// -------------------------------
 typedef ubyte u8;
 typedef uint16 u16;
 typedef ushort u16;
@@ -32,10 +31,10 @@ typedef int16 s16;
 typedef int32 s32;
 typedef int64 s64;
 
+
 // -------------------------------
 // ENUMS
 // -------------------------------
-
 enum <u8> PixelColor { N=0, B, R, Y };
 
 enum <u8> ControllerStyle
@@ -99,7 +98,6 @@ enum <u16> StampType {
 // -------------------------------
 // HEADER
 // -------------------------------
-
 typedef struct {
     u32 PLATINUM : 1;
     u32 EXPLORER : 1 <comment="Find the map">;
@@ -167,6 +165,16 @@ typedef struct {
 // -------------------------------
 // SLOT
 // -------------------------------
+typedef struct {
+    u16 Year;
+    u8 Month;
+    u8 Day;
+    u8 Hour;
+    u8 Minutes;
+    u8 Seconds;
+    u8 pad <hidden=true>;
+} Timestamp;
+
 
 typedef struct { 
     u16 Crank_0604_0;
@@ -194,6 +202,7 @@ typedef struct {
     u16 Crank_0818;
     u16 unknown_2E;
 } CrankData;
+
 
 typedef struct { 
     u64 Door_00_0 : 1;
@@ -1126,14 +1135,6 @@ typedef struct {
     u16 Squirrel_0919 : 1;
 } SquirrelData;
 
-typedef struct {
-    u8 TotalHearts <comment="This includes ALL hearts">;
-    u8 MaxYellow;
-    u16 GroundHogYear;
-} HPData;
-
-
-
 typedef struct { 
     u16 CatCage_1618_0 : 1;
     u16 CatCage_1618_1 : 1;
@@ -1144,8 +1145,14 @@ typedef struct {
 }  CatData;
 
 
-typedef struct
-{
+typedef struct {
+    u8 TotalHearts <comment="This includes ALL hearts">;
+    u8 MaxYellow;
+    u16 GroundHogYear;
+} HPData;
+
+
+typedef struct {
     u16 Unknown : 1;
     u16 Firecrackers : 1;
     u16 Flute : 1;
@@ -1195,7 +1202,7 @@ typedef struct {
 typedef struct {
   u16 Unk_00_0 : 1;
   u16 Uncategorized_1811 : 1 <comment="Large, button-powered door in room (18, 11).">;
-} Uncategorized_01;
+} Uncategorized1;
 
 
 typedef struct {
@@ -1290,24 +1297,6 @@ typedef struct {
     FlameState VFlame; 
     FlameState GFlame; 
 } FlameData;
-
-
-
-
-
-
-
-
-// SLOTS
-typedef struct {
-    u16 Year;
-    u8 Month;
-    u8 Day;
-    u8 Hour;
-    u8 Minutes;
-    u8 Seconds;
-    u8 Pad <hidden=true>;
-} Timestamp <optimize=false>;
 
 
 typedef struct
@@ -1433,13 +1422,12 @@ typedef struct {
 } LUnlockable;
 
 
-typedef struct
-{
+typedef struct {
     Timestamp       SlotTime   <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     //----
     CrankData       CrankLevelsPerRoom;
     u8              Reserved[80]  <hidden=true>;
-    u64             ExtraKeyDoors <hidden=true>;
+    u64             ExtraKeyDoors <comment="This is door state data too, but unknown/unmapped">;
     KeyDoorData     KeyDoors      <comment="Ordering is unknown">;
     u8              Pad2[104]     <hidden=true>;
     u32             Steps         <bgcolor=0xFFD2EE>;
@@ -1449,7 +1437,7 @@ typedef struct
     ChestData       OpenedChests;
     ButtonDoorsData ButtonDoors;
     // --
-    struct ButtonData
+    struct ButtonsSection
     {
         YellowButtonData  YellowButtons;
         u64               Unk64 <hidden=true>;
@@ -1457,18 +1445,21 @@ typedef struct
         GreenButtonData   GreenButtons;
     } Buttons <optimize=false>;
     // --
-    FruitData        PickedFuits;
-    FirecrackerData  PickedFCrackers;
+    struct PickableSection {
+        FruitData        PickedUpFuits;
+        FirecrackerData  PickedUpFCrackers;
+    } Pickables;
+    // --
     EggData          Eggs;
     ExplosionData    Explosions;
     DetonatorData    Detonators;
     BunnyData        Bunnies;
-    SquirrelData     SpookedSquirrels;
-    // --
-    CatData UnkData;
+    SquirrelData     SquirrelsQuest;
+    CatData          CatQuest;
+    //------------
     u16           Unk16          <hidden=true>;
-    u16           FirecrackersPickedUp;
-    u16           BubblesPopped;
+    u16           TotalFCkersPickedUp;
+    u16           TotalBubblesPopped;
     u16           Unk16          <hidden=true>;
     u16           TimesSaved;
     u16           Unk16          <hidden=true>;
@@ -1478,40 +1469,40 @@ typedef struct
     u8            KeysCount      <bgcolor=0xD2FFD6>;
     u8            MatchesCount   <bgcolor=0xD2FFD6>;
     u8            FCrackersCount <bgcolor=0xD2FFD6>;
-    HPData           Hearts         <bgcolor=0xFFD2EE>;
+    HPData        Hearts         <bgcolor=0xFFD2EE>;
     u8            Unk8           <hidden=true>;
-    EggRoomDoors     EggRoom        <comment="it is unclear what other flags are">;
+    EggRoomDoors  EggRoomState   <comment="it is unclear what other flags are">;
     u16           Unk16          <hidden=true>;
     u32           FramesIngame   <bgcolor=0xFFD2EE>;
     u32           FramesTotal    <bgcolor=0xFFD2EE>;
     u8            Pad4[16]       <hidden=true>;
-    SavedPos         SavedRoomPos   <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
-    Equipment        OwnedEquipment <bgcolor=0xD2FFD6>;
-    OtherItems       Items          <bgcolor=0xD2FFD6>;
+    SavedPos      SavedRoomPos   <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
+    Equipment     OwnedEquipment <bgcolor=0xD2FFD6>;
+    OtherItems    Items          <bgcolor=0xD2FFD6>;
     u8            Unk8           <hidden=true>;
-    CandlesData      CandlesLit;
+    CandlesData   CandlesLit;
     u16           HitsTaken      <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
     u16           Deaths         <bgcolor=0xFFD2EE>;
-    GhostData        FreightenedGhosts;
-    Uncategorized_01 UnkData2;
+    GhostData     FreightenedGhosts;
+    Uncategorized1 UnkData2;
     u8            SelectedItem   <bgcolor=0xD2FFD6>;
     u8            Unk8           <hidden=true>;
-    QuestState       QuestAndUpgrades;    
+    QuestState    QuestsAndUpgrades;
     u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
     u8            Unk_40[29]     <hidden=true>;
-    KangarooState    Kangaroo;
+    KangarooState Kangaroo;
     u32           Unk32          <hidden=true>;
-    FlameData        Flames;
+    FlameData     Flames;
     u8            Unk8           <hidden=true>;
-    TPSeenData      TeleportsSeen;
-    TPActiveData    TeleportsActivated;
-    MapData          Map;
     // ---
+    TPSeenData    TeleportsSeen;
+    TPActiveData  TeleportsActivated;
+    MapData       Map;
     MuralPixelRow    Mural[20];
+    // ---
     u8            Pad            <hidden=true>;
-    // --
     u8            Unk_128[128]   <hidden=true>;
-    LUnlockable      LocalUnlocks   <hidden=true>;
+    LUnlockable   LocalUnlocks   <comment="mimics some data from unlockables?">;
     u16           BerriesEatenWhenFull <comment="resets when hit or eat blue berry">;
     u8            Pad_20[20]     <hidden=true>;
 } Slot <optimize=false, read=SlotSummary>;
@@ -1592,9 +1583,10 @@ void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 
 
 
-// =====================
+// ===================================================
 // PATTERN PARSING
-// =====================
+// ===================================================
+
 LittleEndian(); // ensure LE
 
 Header GlobalState <bgcolor=0xCACAFF>;
