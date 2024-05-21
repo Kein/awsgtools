@@ -2,8 +2,8 @@
 //--- 010 Editor v14.0 Binary Template
 //
 //      File: AW_SaveData.bt
-//   Authors: Kein, apocalyptech
-//   Version: 0.3
+//   Authors: Kein, apocalyptech, just-ero, lipsum 
+//   Version: 0.5
 //   Purpose: Parser for Animal Well save game data
 //  Category: Game
 // File Mask: *.sav
@@ -13,6 +13,7 @@
 //     0.3.1 - Added Stopwatch, Pedometer, Cring. Minimap and pencil data.
 //             Renamed a few things.
 //     0.4   - Added A LOT of new data points courtesy of ero/just_ero
+//     0.5   - Added ,ore research from ero/lipsum/apo
 //---------------------------------------------------------
 
 // =====================
