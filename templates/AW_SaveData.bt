@@ -30,6 +30,9 @@ typedef byte s8;
 typedef int16 s16;
 typedef int32 s32;
 typedef int64 s64;
+
+// -------------------------------
+// ENUMS
 // -------------------------------
 
 enum <u8> PixelColor { N=0, B, R, Y };
@@ -92,6 +95,10 @@ enum <u16> StampType {
 };
 
 
+// -------------------------------
+// HEADER
+// -------------------------------
+
 typedef struct {
     u32 PLATINUM : 1;
     u32 EXPLORER : 1 <comment="Find the map">;
@@ -116,7 +123,8 @@ typedef struct {
     u32 EXIT : 1 <comment="Leave the well">;
 } AchievementData;
 
-// Global
+
+// Global UNLOCKABLES
 typedef struct {
     u32 StopWatch : 1;
     u32 Pedometer : 1;
@@ -141,6 +149,23 @@ typedef struct {
 } UnlockableData;
 
 
+typedef struct {
+    u32              Version       <comment="Save file version">;
+    AchievementData  Achievements;
+    u32              FrameSeed     <comment="seed value based on frame counter that starts when game is booted and ends when last flame disappears in the intro">;
+    u8               SelectedSlot  <comment="Last selected/played save slot">;
+    u8               SaveHash      <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
+    u8               SaveEditNoted <comment="only relevant at runtime">;
+    u8               Unk           <hidden=true>;
+    UnlockableData   Unlockables   <comment="Both figurines and global items">;
+    u32              Reserved      <hidden=true>;
+} Header <optimize=false>;
+
+
+
+// -------------------------------
+// SLOT
+// -------------------------------
 
 typedef struct { 
     u16 Crank_0604_0;
@@ -167,7 +192,7 @@ typedef struct {
     u16 unknown_2A;
     u16 Crank_0818;
     u16 unknown_2E;
-} Cranks;
+} CrankData;
 
 typedef struct { 
     u64 Door_00_0 : 1;
@@ -1268,41 +1293,7 @@ typedef struct {
 
 
 
-// Header
-typedef struct {
-    u32              Version       <comment="Save file version">;
-    AchievementData  Achievements;
-    u32              FrameSeed     <comment="seed value based on frame counter that starts when game is booted and ends when last flame disappears in the intro">;
-    u8               SelectedSlot  <comment="Last selected/played save slot">;
-    u8               SaveHash      <write=WriteHash, comment="This needs to be updated every time before you load the file!">;
-    u8               SaveEditNoted <comment="only relevant at runtime">;
-    u8               Unk           <hidden=true>;
-    UnlockableData   Unlockables   <comment="Both figurines and global items">;
-    u32              Reserved      <hidden=true>;
-} Header <optimize=false>;
 
-
-// Options
-typedef struct {
-    u8 Scanlines : 1;
-    u8 Fullscreen : 1;
-    u8 ShowTime : 1;
-    u8 ShowSteps : 1;
-    u8 Vibration : 1;
-    u8 ForcedSaveMode : 1;
-    u8 Flashing : 1;
-    u8 OverrideStyle : 1;
-    u8 SwapCancel : 1;
-    u8 IgnoreBGInput : 1;
-    u8 UnknownOption2 : 1;
-    Language Lang;
-    u8 Unk[5] <hidden=true>;
-    float SFX;
-    float Music;
-    ControllerStyle GamepadStyle;
-    Graphics GFX;
-    u8 Reserved[38] <hidden=true>;
-} Options <optimize=false>;
 
 
 
@@ -1445,7 +1436,7 @@ typedef struct
 {
     Timestamp       SlotTime   <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     //----
-    Cranks          CrankLevelsPerRoom;
+    CrankData       CrankLevelsPerRoom;
     u8              Reserved[80]  <hidden=true>;
     u64             ExtraKeyDoors <hidden=true>;
     KeyDoorData     KeyDoors      <comment="Ordering is unknown">;
@@ -1527,7 +1518,34 @@ typedef struct
 
 
 // =====================
-// FUNCTIONS
+// OPTIONS
+// =====================
+
+typedef struct {
+    u8 Scanlines : 1;
+    u8 Fullscreen : 1;
+    u8 ShowTime : 1;
+    u8 ShowSteps : 1;
+    u8 Vibration : 1;
+    u8 ForcedSaveMode : 1;
+    u8 Flashing : 1;
+    u8 OverrideStyle : 1;
+    u8 SwapCancel : 1;
+    u8 IgnoreBGInput : 1;
+    u8 UnknownOption2 : 1;
+    Language Lang;
+    u8 Unk[5]       <hidden=true>;
+    float SFX;
+    float Music;
+    ControllerStyle GamepadStyle;
+    Graphics GFX;
+    u8 Reserved[38] <hidden=true>;
+} Options <optimize=false>;
+
+
+
+// =====================
+// HELPER FUNCTIONS
 // =====================
 
 string SlotSummary(Slot &slot) {
@@ -1551,7 +1569,7 @@ u64 numSetBits64(u64 i) {
     return (((i + (i >> 4)) & 0xF0F0F0F0F0F0F0F) * 0x101010101010101) >> 56;
 }
 
-
+// Hash handling
 u8 CalculateHash()
 {
     local u8 total = 0;
@@ -1573,13 +1591,12 @@ void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 
 
 
-
 // =====================
-// PARSING
+// PATTERN PARSING
 // =====================
-LittleEndian();
+LittleEndian(); // ensure LE
 
 Header GlobalState <bgcolor=0xCACAFF>;
 Assert(GlobalState.Version == 9, "Unsupported version detected");
 Slot Slots[3]; // <bgcolor=0xD2F2FF>;
-Options Config <bgcolor=0xFFD2EE>;
+Options Config     <bgcolor=0xFFD2EE>;
