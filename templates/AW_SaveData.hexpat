@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 //--- ImHex v14.0 Binary Template
 //
-//      File: AW_SaveData.bt
+//   File: AW_SaveData.bt
 //   Authors: Kein
 //   Version: 0.1
 //   Purpose: Parser for Animal Well save game data

@@ -12,7 +12,7 @@ After you done making changes, enter **any** value into `GlobalState -> SaveHash
 
 ## ImHex
 AW_SaveData.hexpat is a port of the 010 template to open-source [ImHex](https://imhex.werwolv.net/)
-Currently it lacks some of the features of the base 010 template.
+It lacks some of the features of the base 010 template like previews for some data, but otherwise indentical.
 
 
 # Tools
