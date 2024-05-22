@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-//--- imHex v14.0 Binary Template
+//--- ImHex v14.0 Binary Template
 //
 //      File: AW_SaveData.bt
 //   Authors: Kein
@@ -1577,13 +1577,12 @@ struct Options {
 // HELPER FUNCTIONS
 // =====================
 
-fn SlotSummary(auto slot) {
+fn SlotSummary(ref auto slot) {
     if (slot.FramesTotal <= 0)
         return "<empty>";
     u8 hrs = u8((slot.FramesTotal * 16.66) / 1000 / 60 / 60);
-    // hardcoded offsets LOL ImHex
-    u32 numBunnies = numSetBits32(std::mem::read_unsigned(addressof(slot.Bunnies)+24, 4));
-    u64 numEggs = numSetBits64(std::mem::read_unsigned(addressof(slot.Eggs)+24, 8));
+    u32 numBunnies = numSetBits32(std::mem::read_unsigned(addressof(slot.Bunnies), 4));
+    u64 numEggs = numSetBits64(std::mem::read_unsigned(addressof(slot.Eggs), 8));
     return std::format("{:d}:{:d}:{:d} {:d}.{:d}.{:d} :: ({:d}) - [{:d} hrs] - ({:d}/64) - ({:d})", slot.SlotTime.Hour, slot.SlotTime.Minutes, slot.SlotTime.Seconds,  slot.SlotTime.Day, slot.SlotTime.Month, slot.SlotTime.Year, slot.Steps, hrs, numEggs, numBunnies);
 };
 
@@ -1619,7 +1618,6 @@ fn CalculateHash()
 
 fn WriteHash(str v) { return CalculateHash(); };
 fn ReadHash(u8 hash) { return hash; };
-
 
 
 // ===================================================
