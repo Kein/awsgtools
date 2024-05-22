@@ -1296,21 +1296,33 @@ typedef struct {
 
 
 typedef struct {
-    float Unk_00;
-    float Unk_04;
-
+    float ShardPosX;
+    float ShardPosY;
     u8 EncounterRoomX;
     u8 EncounterRoomY;
     KangarooShardState ShardState; // u8
-    u8 Unk_0B;
-} LKangarooState;
+    u8 EncounterID;
+} LKangEncData;
 
 
 typedef struct {
-    u8 UnkState;
+    u8 EncounterIDNext;
     KangaroStatus Status;
 } GKangarooState;
 
+
+typedef struct {
+    u16 GameStarted : 1;
+    u16 Unknown1 : 1;
+    u16 ReadyToHatch : 1;
+    u16 ShowHPbar : 1;
+    u16 Unknown1 : 1;
+    u16 Unknown3 : 1;
+    u16 Unknown4 : 1;
+    u16 Unknown5 : 1;
+
+    u16 pad : 8 <hidden=true>;
+} StartupState;
 
 typedef struct {
     float ElevatorPos;
@@ -1568,9 +1580,10 @@ typedef struct {
     ManticoreState BlueManticore;
     ManticoreState RedManticore;
     u16            Pad       <hidden=true>;
-    LKangarooState KangarooPerLoc[3];
-    GKangarooState KangarooCurr;
-    u8            Unk_4[4]       <hidden=true>;
+    LKangEncData   KangarooEncounters[3];
+    GKangarooState KangarooState;
+    u8            Unk_2[2]       <hidden=true>;
+    StartupState  StartFlags;
     FlameData     Flames;
     u8            Unk8_5           <hidden=true>;
     // ---

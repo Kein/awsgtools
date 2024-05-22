@@ -1285,19 +1285,32 @@ bitfield QuestState {
 
 
 struct LKangarooState {
-    float Unk_00;
-    float Unk_04;
-
+    float ShardPosX;
+    float ShardPosY;
     u8 EncounterRoomX;
     u8 EncounterRoomY;
-    KangarooShardState ShardState; // u8
-    u8 Unk_0B;
+    KangarooShardState ShardState;
+    u8 EncounterID;
 };
 
 
 struct GKangarooState {
-    u8 UnkState;
+    u8 EncounterIDNext;
     KangaroStatus Status;
+};
+
+
+struct StartupState {
+    GameStarted : 1;
+    Unknown1 : 1;
+    ReadyToHatch : 1;
+    ShowHPbar : 1;
+    Unknown1 : 1;
+    Unknown3 : 1;
+    Unknown4 : 1;
+    Unknown5 : 1;
+
+    pad : 8 <hidden=true>;
 };
 
 
@@ -1556,9 +1569,10 @@ struct Slot {
     ManticoreState BlueManticore;
     ManticoreState RedManticore;
     u16            Pad       [[hidden]];
-    LKangarooState KangarooPerLoc[3];
-    GKangarooState KangarooCurr;
-    u8            Unk_4[4]       [[hidden]];
+    LKangEncData   KangarooEncounters[3];
+    GKangarooState KangarooState;
+    u8             Unk_2[2]       [[hidden]];
+    StartupState   StartFlags;
     FlameData     Flames;
     u8            Unk8_5           [[hidden]];
     // ---
