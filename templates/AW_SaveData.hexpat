@@ -1629,7 +1629,9 @@ struct File {
 File file @ 0x00;
 
 
-/*
+
+
+/* TODO:
 std::mem::Section Mural = std::mem::create_section("Mural");
 
 struct Data {
@@ -1639,14 +1641,6 @@ struct Data {
 Data data  @ 0x00 in Mural;
 data.RGBAData[0] = 1;
 u8 mural[200] @ 0x26EC7;
-
-std::print("Size: {:d}", sizeof(data.RGBAData));
-std::print("FullP: {:08b}", u8(mural[0]));
-std::print("Pixel1 {:08b}", u8(mural[0] & 0b00000011));  
-std::print("Pixel2 {:08b}", u8((mural[0] & 0b00001100) >> 2));
-std::print("Pixel3 {:08b}", u8((mural[0] & 0b00110000) >> 4));
-std::print("Pixel4 {:08b}", u8((mural[0] & 0b11000000) >> 6));
-
 
 fn twobit_to_rgba(ref auto _rawData, ref auto rgbaBuf) {
 
@@ -1670,24 +1664,3 @@ fn to_rgba_pixel(u8 bbPixel) {
 };
 
 twobit_to_rgba(mural, data.RGBAData);
-
-
-
-
-
-
-import std.sys;
-import std.io;
-import std.core;
-
-import type.magic;
-import type.size;
-
-struct FDT {
-    u64 Test;
-};
-
-//std::mem::MagicSearch<"\x41\x57\x41\x56\x56\x57\x53\x48\x83\xEC\x60\x48\x8B\x1D", FDT> fdt @ std::mem::base_address();
-u64 test = std::mem::find_sequence(0,0x41,0x57,0x41,0x56,0x56,0x57,0x53,0x48,0x83,0xEC,0x60,0x48,0x8B,0x1D);
-std::print("Size: {:ld}", test);
-*/
