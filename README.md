@@ -11,7 +11,8 @@ After you done making changes, enter **any** value into `GlobalState -> SaveHash
 
 
 ## ImHex
-In progerss
+AW_SaveData.hexpat is a port of the 010 template to open-source [ImHex](https://imhex.werwolv.net/)
+Currently it lacks some of the features of the base 010 template.
 
 
 # Tools
