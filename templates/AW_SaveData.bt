@@ -35,7 +35,12 @@ typedef int64 s64;
 // -------------------------------
 // ENUMS
 // -------------------------------
-enum <u8> PixelColor { N=0, B, R, Y };
+enum <u8> PixelColor {
+    N=0,
+    B,
+    R,
+    Y
+};
 
 enum <u8> ControllerStyle
 {
@@ -120,6 +125,7 @@ typedef struct {
     u32 TRAVEL_FLUTE : 1 <comment="Find another way to get around">;
     u32 WALK_THE_DOG : 1 <comment="Find a different way to get around">;
     u32 EXIT : 1 <comment="Leave the well">;
+    u32 pad : 11 <hidden=true>;
 } AchievementData;
 
 
@@ -204,7 +210,7 @@ typedef struct {
 } CrankData;
 
 
-typedef struct { 
+typedef struct { //bf
     u64 Door_00_0 : 1;
     u64 Door_00_1 : 1;
     u64 Door_00_2 : 1;
@@ -459,6 +465,7 @@ typedef struct {
     u64 unknown_0C_2 : 1;
     u64 unknown_0C_3 : 1;
     u64 room_1908_0 : 1;
+    u64 pad : 27 <hidden=true>;
 } ChestData <comment="Room coordinates are yx_id not xy_id">;
 
 
@@ -568,6 +575,7 @@ typedef struct {
     u64 unknown_0B_3 : 1;
     u64 unknown_0B_4 : 1;
     u64 room_1916_0 : 1;
+    u64 pad : 34 <hidden=true>;
 } ButtonDoorsData;
 
 
@@ -722,6 +730,7 @@ typedef struct {
     u64 Unk_10_3 : 1;
     u64 Button_1319_0 : 1;
     u64 Button_1319_1 : 1;
+    u64 pad : 58  <hidden=true>;
 } YellowButtonData;
 
 
@@ -756,6 +765,7 @@ typedef struct {
     u64 Button_1619_1 : 1;
     u64 Button_1619_2 : 1;
     u64 Button_1619_3 : 1;
+    u64 pad : 37 <hidden=true>;
 } PurpleButtonData;
 
 
@@ -767,6 +777,7 @@ typedef struct {
     u64 Unk_00_4 : 1;
     u64 Button_1519 : 1;
     u64 Button_1719 : 1;
+    u64 pad : 57 <hidden=true>;
 } GreenButtonData <comment="Room coordinates are yx_id not xy_id">;
 
 
@@ -900,6 +911,7 @@ typedef struct {
     u64 room_1916_0 : 1;
     u64 unknown_0E_1 : 1;
     u64 room_1917_0 : 1;
+    u64 pad : 13 <hidden=true>;
 } FruitData <comment="Room coordinates are yx_id not xy_id">;
 
 
@@ -1065,6 +1077,7 @@ typedef struct {
 
     u32 Explosion_1414 : 1;
     u32 Explosion_1615 : 1;
+    u32 pad : 22 <hidden=true>;
 } ExplosionData;
 
 
@@ -1079,6 +1092,7 @@ typedef struct {
     u32 Detonator_1615 : 1;
 
     u32 Detonator_0719 : 1;
+    u32 pad : 23 <hidden=true>;
 } DetonatorData;
 
 
@@ -1133,7 +1147,10 @@ typedef struct {
     u16 Squirrel_0718 : 1;
     u16 Squirrel_0818 : 1;
     u16 Squirrel_0919 : 1;
+
+    u16 pad : 3 <hidden=true>;
 } SquirrelData;
+
 
 typedef struct { 
     u16 CatCage_1618_0 : 1;
@@ -1142,6 +1159,8 @@ typedef struct {
     u16 CatCage_1419_0 : 1;
     u16 CatCage_1419_1 : 1;
     u16 WheelCage : 1;
+
+    u16 pad : 10 <hidden=true>;
 }  CatData;
 
 
@@ -1161,15 +1180,18 @@ typedef struct {
     u16 Disc : 1;
     u16 BWand : 1;
     u16 Yoyo : 1;
+
     u16 Slink : 1;
     u16 Remote : 1;
     u16 Ball : 1;
     u16 Wheel : 1;
     u16 UVLight : 1;
-} Equipment <optimize=false>;
+
+    u16 pad : 3 <hidden=true>;
+} Equipment;
 
 
-typedef struct  {
+typedef struct {
     u16 Candle_0406 : 1;
     u16 Candle_0806 : 1;
     u16 Candle_0407 : 1;
@@ -1180,28 +1202,34 @@ typedef struct  {
     u16 Candle_1013 : 1;
 
     u16 Candle_1613 : 1;
+    
+    u16 pad : 7 <hidden=true>;
 } CandlesData;
 
 
 typedef struct {
-  u16 Ghost_0806_0 : 1;
-  u16 Ghost_0407_0 : 1;
-  u16 Ghost_0607_0 : 1;
-  u16 Unk_00_3 : 1;
-  u16 Unk_00_4 : 1;
-  u16 Unk_00_5 : 1;
-  u16 Unk_00_6 : 1;
-  u16 Ghost_0513_0 : 1;
+    u16 Ghost_0806_0 : 1;
+    u16 Ghost_0407_0 : 1;
+    u16 Ghost_0607_0 : 1;
+    u16 Unk_00_3 : 1;
+    u16 Unk_00_4 : 1;
+    u16 Unk_00_5 : 1;
+    u16 Unk_00_6 : 1;
+    u16 Ghost_0513_0 : 1;
 
-  u16 Ghost_1013_0 : 1;
-  u16 Ghost_1613_0 : 1;
-  u16 Ghost_0714_0 : 1;
+    u16 Ghost_1013_0 : 1;
+    u16 Ghost_1613_0 : 1;
+    u16 Ghost_0714_0 : 1;
+
+    u16 pad : 5 <hidden=true>;
 } GhostData;
 
 
 typedef struct {
-  u16 Unk_00_0 : 1;
-  u16 Uncategorized_1811 : 1 <comment="Large, button-powered door in room (18, 11).">;
+    u16 Unk_00_0 : 1;
+    u16 Uncategorized_1811 : 1 <comment="Large, button-powered door in room (18, 11).">;
+
+    u16 pad : 14 <hidden=true>;
 } Uncategorized1;
 
 
@@ -1274,10 +1302,12 @@ typedef struct {
 
 
 typedef struct {
-  u8 BlueRat : 1 <comment="0 down, 1 up">;
-  u8 RedRat : 1  <comment=" 0 right, 1 left">;
-  u8 Ostrich : 1 <comment=" 0 right, 1 left">;
-  u8 Dog : 1     <comment="0 down, 1 up">;
+    u8 BlueRat : 1 <comment="0 down, 1 up">;
+    u8 RedRat : 1  <comment=" 0 right, 1 left">;
+    u8 Ostrich : 1 <comment=" 0 right, 1 left">;
+    u8 Dog : 1     <comment="0 down, 1 up">;
+
+    u8 pad : 4 <hidden=true>;
 } ElevatorsData;
 
 
@@ -1313,8 +1343,7 @@ typedef struct {
 } FlameData;
 
 
-typedef struct
-{
+typedef struct {
     u8 Door1 : 1;
     u8 Door2 : 1;
     u8 Door3 : 1;
@@ -1336,14 +1365,12 @@ typedef struct {
 } MinimapRow <optimize=false>;
 
 
-
 typedef struct {
     MinimapRow GridRoomRow[22] <comment="22 full world rows, denoting height of a room">;
 } MinimapRowsData <optimize=false>;
 
 
-typedef struct
-{
+typedef struct {
     u16 X;
     u16 Y;
     StampType Stamp;
@@ -1365,16 +1392,15 @@ typedef struct {
     u8               pad3[3]       <hidden=true>;
     // ---
     MinimapRowsData  RevealedMapData[24];
-    u8   Pad      <hidden=true>;
+    u8   Pad1      <hidden=true>;
     MinimapRowsData  PencilMapData[24];
-    u8   Pad      <hidden=true>;
+    u8   Pad2      <hidden=true>;
     MinimapRowsData  TileStateData[24] <comment="Deleted/erased static tiles">;
-    u8   Pad      <hidden=true>;
+    u8   Pad3      <hidden=true>;
 } MapData <optimize=false>;
 
 
-typedef struct
-{
+typedef struct {
     PixelColor Pixel1 : 2;
     PixelColor Pixel2 : 2;
     PixelColor Pixel3 : 2;
@@ -1437,6 +1463,19 @@ typedef struct {
     u16 Unlockable16 : 1;
 } LUnlockable;
 
+typedef struct {
+    YellowButtonData  YellowButtons;
+    u64               Unk64 <hidden=true>;
+    PurpleButtonData  PurpleButtons;
+    GreenButtonData   GreenButtons;
+} ButtonsSection;
+
+
+typedef struct {
+    FruitData        PickedUpFuits;
+    FirecrackerData  PickedUpFCrackers;
+} PickableSection;
+
 
 typedef struct {
     Timestamp       SlotTime   <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
@@ -1453,18 +1492,9 @@ typedef struct {
     ChestData       OpenedChests;
     ButtonDoorsData ButtonDoors;
     // --
-    struct ButtonsSection
-    {
-        YellowButtonData  YellowButtons;
-        u64               Unk64 <hidden=true>;
-        PurpleButtonData  PurpleButtons;
-        GreenButtonData   GreenButtons;
-    } Buttons <optimize=false>;
+    ButtonsSection Buttons;
     // --
-    struct PickableSection {
-        FruitData        PickedUpFuits;
-        FirecrackerData  PickedUpFCrackers;
-    } Pickables;
+    PickableSection Pickables;
     // --
     EggData          Eggs;
     ExplosionData    Explosions;
@@ -1473,48 +1503,48 @@ typedef struct {
     SquirrelData     SquirrelsQuest;
     CatData          CatQuest;
     //------------
-    u16           Unk16          <hidden=true>;
+    u16           Unk16_1          <hidden=true>;
     u16           TotalFCkersPickedUp;
     u16           TotalBubblesPopped;
-    u16           Unk16          <hidden=true>;
+    u16           Unk16_2          <hidden=true>;
     u16           TimesSaved;
-    u16           Unk16          <hidden=true>;
-    u16           Unk16          <hidden=true>;
-    u16           Unk16          <hidden=true>;
-    u8            Unk8           <hidden=true>;
+    u16           Unk16_3          <hidden=true>;
+    u16           Unk16_4          <hidden=true>;
+    u16           Unk16_5          <hidden=true>;
+    u8            Unk8_1           <hidden=true>;
     u8            KeysCount      <bgcolor=0xD2FFD6>;
     u8            MatchesCount   <bgcolor=0xD2FFD6>;
     u8            FCrackersCount <bgcolor=0xD2FFD6>;
     HPData        Hearts         <bgcolor=0xFFD2EE>;
-    u8            Unk8           <hidden=true>;
+    u8            Unk8_2           <hidden=true>;
     EggRoomDoors  EggRoomState   <comment="it is unclear what other flags are">;
-    u16           Unk16          <hidden=true>;
+    u16           Unk16_6          <hidden=true>;
     u32           FramesIngame   <bgcolor=0xFFD2EE>;
     u32           FramesTotal    <bgcolor=0xFFD2EE>;
     u8            Pad4[16]       <hidden=true>;
     SavedPos      SavedRoomPos   <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
     Equipment     OwnedEquipment <bgcolor=0xD2FFD6>;
     OtherItems    Items          <bgcolor=0xD2FFD6>;
-    u8            Unk8           <hidden=true>;
+    u8            Unk8_3           <hidden=true>;
     CandlesData   CandlesLit;
     u16           HitsTaken      <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
     u16           Deaths         <bgcolor=0xFFD2EE>;
     GhostData     FreightenedGhosts;
     Uncategorized1 UnkData2;
     u8            SelectedItem   <bgcolor=0xD2FFD6>;
-    u8            Unk8           <hidden=true>;
+    u8            Unk8_4           <hidden=true>;
     QuestState    QuestsAndUpgrades;
     u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
     u8            pad_3[3]       <hidden=true>;
     LKangarooState Kangaroo[3];
     u8            Unk_6[6]       <hidden=true>;
     FlameData     Flames;
-    u8            Unk8           <hidden=true>;
+    u8            Unk8_5           <hidden=true>;
     // ---
     TPSeenData    TeleportsSeen;
     TPActiveData  TeleportsActivated;
     MapData       Map;
-    MuralPixelRow    Mural[20];
+    MuralPixelRow Mural[20];
     // ---
     u8            Pad            <hidden=true>;
     u8            Unk_128[128]   <hidden=true>;
@@ -1528,7 +1558,6 @@ typedef struct {
 // =====================
 // OPTIONS
 // =====================
-
 typedef struct {
     u8 Scanlines : 1;
     u8 Fullscreen : 1;
@@ -1538,9 +1567,15 @@ typedef struct {
     u8 ForcedSaveMode : 1;
     u8 Flashing : 1;
     u8 OverrideStyle : 1;
+
     u8 SwapCancel : 1;
     u8 IgnoreBGInput : 1;
-    u8 UnknownOption2 : 1;
+    u8 pad : 6      <hidden=true>;
+} Toggles;
+
+
+typedef struct {
+    Toggles ToggleSettings;
     Language Lang;
     u8 Unk[5]       <hidden=true>;
     float SFX;
@@ -1549,7 +1584,6 @@ typedef struct {
     Graphics GFX;
     u8 Reserved[38] <hidden=true>;
 } Options <optimize=false>;
-
 
 
 // =====================
@@ -1561,7 +1595,7 @@ string SlotSummary(Slot &slot) {
         return "<empty>";
     local u8 hrs = (ubyte)((slot.FramesTotal * 16.66) / 1000 / 60 / 60);
     local u32 numBunnies = numSetBits32(ReadUInt(startof(slot.Bunnies)));
-    local u32 numEggs = numSetBits64(ReadUInt64(startof(slot.Eggs)));
+    local u64 numEggs = numSetBits64(ReadUInt64(startof(slot.Eggs)));
     return Str("%u:%u:%u %u.%u.%u :: (%u) - [%u hrs] - {%u/64} - {%u}", slot.SlotTime.Hour, slot.SlotTime.Minutes, slot.SlotTime.Seconds,  slot.SlotTime.Day, slot.SlotTime.Month, slot.SlotTime.Year, slot.Steps, hrs, numEggs, numBunnies);
 }
 
