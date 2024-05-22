@@ -1482,7 +1482,7 @@ typedef struct {
     //----
     CrankData       CrankLevelsPerRoom;
     u8              Reserved[80]  <hidden=true>;
-    u64             ExtraKeyDoors <comment="This is door state data too, but unknown/unmapped">;
+    u64             ExtraKeyDoors <format=binary, comment="This is door state data too, but unknown/unmapped">;
     KeyDoorData     KeyDoors      <comment="Ordering is unknown">;
     u8              Pad2[104]     <hidden=true>;
     u32             Steps         <bgcolor=0xFFD2EE>;

@@ -17,3 +17,7 @@ It lacks some of the features of the base 010 template like previews for some da
 
 # Tools
 In progress
+
+
+# Contributing
+If you plan to contribute to template tables, make sure to ALWAYS explictly pad any of the bitfields (structs). This is because ImHex does no padding by default so the conversion can't be straightfoward. Inline declarations of structs 010 allwos also cannot be used for the same reasons.

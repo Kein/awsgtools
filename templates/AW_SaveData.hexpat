@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-//--- ImHex v14.0 Binary Template
+//--- ImHex v1.33.x Binary Template
 //
 //   File: AW_SaveData.bt
 //   Authors: Kein
