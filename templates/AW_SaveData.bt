@@ -88,6 +88,12 @@ enum <u8> KangarooShardState {
     Inserted
 };
 
+enum <u8> KangaroStatus {
+    Idle = 0,
+    RunningAway,
+    Attacking
+};
+
 enum <u16> StampType {
     Chest = 0,
     Heart,
@@ -1296,19 +1302,37 @@ typedef struct {
 
 
 typedef struct {
-    u8 unkState;
-    u8 Status <comment="byte for the kangaroo's state, i think. 0 = idle, 1 = running away, 2 = attacking">;
+    u8 UnkState;
+    KangaroStatus Status;
 } GKangarooState;
 
 
 typedef struct {
+    float ElevatorPos;
+    float ElevatorSpeed;
+} ElevatorsSimData;
+
+
+typedef struct {
     u8 BlueRat : 1 <comment="0 down, 1 up">;
-    u8 RedRat : 1  <comment=" 0 right, 1 left">;
-    u8 Ostrich : 1 <comment=" 0 right, 1 left">;
-    u8 Dog : 1     <comment="0 down, 1 up">;
+    u8 RedRat  : 1 <comment="0 right, 1 left">;
+    u8 Ostrich : 1 <comment="0 right, 1 left">;
+    u8 Dog     : 1 <comment="0 down, 1 up">;
 
     u8 pad : 4 <hidden=true>;
-} ElevatorsData;
+} ElevatorDirData;
+
+
+typedef struct {
+    u8 Evelator1 : 1;
+    u8 Evelator2 : 1;
+    u8 Evelator3 : 1;
+    u8 Evelator4 : 1;
+    u8 Evelator5 : 1;
+    u8 Evelator6 : 1;
+    u8 Evelator7 : 1;
+    u8 Evelator8 : 1;
+} ElevatorsActive;
 
 
 typedef struct {
@@ -1387,9 +1411,10 @@ typedef struct {
 typedef struct {
     // ---
     StampData        PlacedStamps  <read=Str("%u", this.TotalStamps)>; // 387 bytes
-    float            SimFloats[16] <comment="Unrelated to map data">;
-    ElevatorsData    ElevatorStates;
-    u8               pad3[3]       <hidden=true>;
+    ElevatorsSimData ElevatorStates1[8];
+    ElevatorDirData  ElevatorStates2;
+    ElevatorsActive  EnabledElevators;
+    u8               pad2[2]       <hidden=true>;
     // ---
     MinimapRowsData  RevealedMapData[24];
     u8   Pad1      <hidden=true>;
@@ -1536,8 +1561,9 @@ typedef struct {
     QuestState    QuestsAndUpgrades;
     u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
     u8            pad_3[3]       <hidden=true>;
-    LKangarooState Kangaroo[3];
-    u8            Unk_6[6]       <hidden=true>;
+    LKangarooState KangarooPerLoc[3];
+    GKangarooState KangarooCurr;
+    u8            Unk_4[4]       <hidden=true>;
     FlameData     Flames;
     u8            Unk8_5           <hidden=true>;
     // ---

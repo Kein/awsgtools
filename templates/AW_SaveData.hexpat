@@ -80,6 +80,12 @@ enum KangarooShardState: u8 {
     Inserted
 };
 
+enum KangaroStatusL u8 {
+    Idle = 0,
+    RunningAway,
+    Attacking
+};
+
 enum StampType : u16 {
     Chest = 0,
     Heart,
@@ -1283,18 +1289,36 @@ struct LKangarooState {
 
 
 struct GKangarooState {
-    u8 unkState;
-    u8 Status [[comment("byte for the kangaroo's state, i think. 0 = idle, 1 = running away, 2 = attacking")]];
+    u8 UnkState;
+    KangaroStatus Status;
 };
 
 
-bitfield ElevatorsData {
+struct ElevatorsSimData {
+    float ElevatorPos;
+    float ElevatorSpeed;
+};
+
+
+bitfield ElevatorDirData {
     BlueRat : 1 [[comment("0 down, 1 up")]];
     RedRat : 1  [[comment(" 0 right, 1 left")]];
     Ostrich : 1 [[comment(" 0 right, 1 left")]];
     Dog : 1     [[comment("0 down, 1 up")]];
 
     pad : 4 [[hidden]];
+};
+
+
+bitfield ElevatorsActive {
+    u8 Evelator1 : 1;
+    u8 Evelator2 : 1;
+    u8 Evelator3 : 1;
+    u8 Evelator4 : 1;
+    u8 Evelator5 : 1;
+    u8 Evelator6 : 1;
+    u8 Evelator7 : 1;
+    u8 Evelator8 : 1;
 };
 
 
@@ -1375,8 +1399,10 @@ struct MapData {
     // ---
     StampData        PlacedStamps; // 387 bytes
     float            SimFloats[16] [[comment("Unrelated to map data")]];
-    ElevatorsData    ElevatorStates;
-    u8               pad3[3]       [[hidden]];
+    ElevatorsSimData ElevatorStates1[8];
+    ElevatorDirData  ElevatorStates2;
+    ElevatorsActive  EnabledElevators;
+    u8               pad2[2]       [[hidden]];
     // ---
     MinimapRowsData  RevealedMapData[24];
     u8   Pad1      [[hidden]];
@@ -1523,8 +1549,9 @@ struct Slot {
     QuestState    QuestsAndUpgrades;
     u8            GlobalProgress [[comment("some kinda progress? changed to 2 on the credits")]];
     u8            pad_3[3]       [[hidden]];
-    LKangarooState Kangaroo[3];
-    u8            Unk_6[6]       [[hidden]];
+    LKangarooState KangarooPerLoc[3];
+    GKangarooState KangarooCurr;
+    u8            Unk_4[4]       [[hidden]];
     FlameData     Flames;
     u8            Unk8_5           [[hidden]];
     // ---
