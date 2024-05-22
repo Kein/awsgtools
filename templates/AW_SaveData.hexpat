@@ -1395,15 +1395,14 @@ struct StampData {
 };
 
 
-struct MapData {
-    // ---
-    StampData        PlacedStamps; // 387 bytes
-    float            SimFloats[16] [[comment("Unrelated to map data")]];
-    ElevatorsSimData ElevatorStates1[8];
-    ElevatorDirData  ElevatorStates2;
+struct ElevatorsData {
+    ElevatorsSimData ElevatorPhysics[8];
+    ElevatorDirData  ElevatorDirections;
     ElevatorsActive  EnabledElevators;
-    u8               pad2[2]       [[hidden]];
-    // ---
+};
+
+
+struct MapData {
     MinimapRowsData  RevealedMapData[24];
     u8   Pad1      [[hidden]];
     MinimapRowsData  PencilMapData[24];
@@ -1557,6 +1556,10 @@ struct Slot {
     // ---
     TPSeenData    TeleportsSeen;
     TPActiveData  TeleportsActivated;
+    StampData     PlacedStamps;
+    ElevatorsData Elevators;
+    u8            MuralSelX;
+    u8            MuralSelY;
     MapData       Map;
     MuralPixelRow Mural[20];
     // ---

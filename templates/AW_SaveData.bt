@@ -1409,13 +1409,13 @@ typedef struct {
 
 
 typedef struct {
-    // ---
-    StampData        PlacedStamps  <read=Str("%u", this.TotalStamps)>; // 387 bytes
-    ElevatorsSimData ElevatorStates1[8];
-    ElevatorDirData  ElevatorStates2;
+    ElevatorsSimData ElevatorPhysics[8];
+    ElevatorDirData  ElevatorDirections;
     ElevatorsActive  EnabledElevators;
-    u8               pad2[2]       <hidden=true>;
-    // ---
+} ElevatorsData;
+
+
+typedef struct {
     MinimapRowsData  RevealedMapData[24];
     u8   Pad1      <hidden=true>;
     MinimapRowsData  PencilMapData[24];
@@ -1487,6 +1487,7 @@ typedef struct {
     u16 Unlockable15 : 1;
     u16 Unlockable16 : 1;
 } LUnlockable;
+
 
 typedef struct {
     YellowButtonData  YellowButtons;
@@ -1569,6 +1570,10 @@ typedef struct {
     // ---
     TPSeenData    TeleportsSeen;
     TPActiveData  TeleportsActivated;
+    StampData     PlacedStamps;
+    ElevatorsData Elevators;
+    u8            MuralSelX;
+    u8            MuralSelY;
     MapData       Map;
     MuralPixelRow Mural[20];
     // ---
