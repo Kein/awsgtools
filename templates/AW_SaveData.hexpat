@@ -16,11 +16,16 @@
 // ===================================================
 #pragma loop_limit 500000
 #pragma endian little
+#pragma allow_edits
 
 #include <std/mem.pat>
 import std.io;
 import std.string;
 
+// -------------------------------
+// SETTINGS (ImHex)
+// -------------------------------
+bool UpdateHash in;
 
 // -------------------------------
 // ENUMS
@@ -1629,6 +1634,8 @@ struct File {
 File file @ 0x00;
 
 
+if (UpdateHash)
+    file.GlobalState.SaveHash = CalculateHash();
 
 
 /* TODO:
