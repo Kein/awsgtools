@@ -1324,14 +1324,14 @@ typedef struct {
 
 
 typedef struct {
-    u8 Evelator1 : 1;
-    u8 Evelator2 : 1;
-    u8 Evelator3 : 1;
-    u8 Evelator4 : 1;
-    u8 Evelator5 : 1;
-    u8 Evelator6 : 1;
-    u8 Evelator7 : 1;
-    u8 Evelator8 : 1;
+    u8 Elevator1 : 1;
+    u8 Elevator2 : 1;
+    u8 Elevator3 : 1;
+    u8 Elevator4 : 1;
+    u8 Elevator5 : 1;
+    u8 Elevator6 : 1;
+    u8 Elevator7 : 1;
+    u8 Elevator8 : 1;
 } ElevatorsActive;
 
 

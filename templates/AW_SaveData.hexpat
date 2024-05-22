@@ -73,14 +73,14 @@ enum FlameState : u8 {
     FlameUsed
 };
 
-enum KangarooShardState: u8 {
+enum KangarooShardState : u8 {
     None,
     Dropped,
     PickedUp,
     Inserted
 };
 
-enum KangaroStatusL u8 {
+enum KangaroStatus : u8 {
     Idle = 0,
     RunningAway,
     Attacking
@@ -1311,14 +1311,14 @@ bitfield ElevatorDirData {
 
 
 bitfield ElevatorsActive {
-    u8 Evelator1 : 1;
-    u8 Evelator2 : 1;
-    u8 Evelator3 : 1;
-    u8 Evelator4 : 1;
-    u8 Evelator5 : 1;
-    u8 Evelator6 : 1;
-    u8 Evelator7 : 1;
-    u8 Evelator8 : 1;
+    Elevator1 : 1;
+    Elevator2 : 1;
+    Elevator3 : 1;
+    Elevator4 : 1;
+    Elevator5 : 1;
+    Elevator6 : 1;
+    Elevator7 : 1;
+    Elevator8 : 1;
 };
 
 
