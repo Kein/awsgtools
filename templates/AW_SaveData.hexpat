@@ -97,6 +97,13 @@ enum StampType : u16 {
     Question
 };
 
+
+enum ManticoreState : u8 {
+    Unknown = 0,
+    Overworld,
+    InSpace
+};
+
 // -------------------------------
 // HEADER
 // -------------------------------
@@ -1258,13 +1265,13 @@ bitfield QuestState {
     InsertedSMedal : 1;
 
     Unk_02_0 : 1;
-    Unk_02_1 : 1;
+    WingsAcquired : 1;
     WokeUp : 1 [[comment("Whether the flower at the start of the game was exited.")]];
     BBWandUpgrade : 1;
     ManticoreEgg65 : 1;
     EMedalInserted : 1;
-    Unk_02_6 : 1;
-    Unk_02_7 : 1;
+    SingularityActive : 1;
+    ManticoreEggPlaced : 1;
 
     BatDefeated : 1;
     OstrichFreed : 1;
@@ -1546,8 +1553,9 @@ struct Slot {
     u8            SelectedItem   [[color("D2FFD6")]];
     u8            Unk8_4           [[hidden]];
     QuestState    QuestsAndUpgrades;
-    u8            GlobalProgress [[comment("some kinda progress? changed to 2 on the credits")]];
-    u8            pad_3[3]       [[hidden]];
+    ManticoreState BlueManticore;
+    ManticoreState RedManticore;
+    u16            Pad       [[hidden]];
     LKangarooState KangarooPerLoc[3];
     GKangarooState KangarooCurr;
     u8            Unk_4[4]       [[hidden]];

@@ -105,6 +105,11 @@ enum <u16> StampType {
     Question
 };
 
+enum <u8> ManticoreState {
+    Unknown = 0,
+    Overworld,
+    InSpace
+};
 
 // -------------------------------
 // HEADER
@@ -1266,18 +1271,18 @@ typedef struct {
     u32 StampsCollected : 1;
     u32 PencilCollected : 1;
     u32 ChameleonDefeated : 1;
-    u32 CheaterRingCollected : 1;
+    u32 CRingCollected : 1;
     u32 EatenByChameleon : 1;
     u32 InsertedSMedal : 1;
 
     u32 Unk_02_0 : 1;
-    u32 Unk_02_1 : 1;
+    u32 WingsAcquired : 1;
     u32 WokeUp : 1 <comment="Whether the flower at the start of the game was exited.">;
     u32 BBWandUpgrade : 1;
     u32 ManticoreEgg65 : 1;
     u32 EMedalInserted : 1;
-    u32 Unk_02_6 : 1;
-    u32 Unk_02_7 : 1;
+    u32 SingularityActive : 1;
+    u32 ManticoreEggPlaced : 1;
 
     u32 BatDefeated : 1;
     u32 OstrichFreed : 1;
@@ -1560,8 +1565,9 @@ typedef struct {
     u8            SelectedItem   <bgcolor=0xD2FFD6>;
     u8            Unk8_4           <hidden=true>;
     QuestState    QuestsAndUpgrades;
-    u8            GlobalProgress <comment="some kinda progress? changed to 2 on the credits">;
-    u8            pad_3[3]       <hidden=true>;
+    ManticoreState BlueManticore;
+    ManticoreState RedManticore;
+    u16            Pad       <hidden=true>;
     LKangarooState KangarooPerLoc[3];
     GKangarooState KangarooCurr;
     u8            Unk_4[4]       <hidden=true>;
