@@ -1431,14 +1431,89 @@ typedef struct {
     ElevatorsActive  EnabledElevators;
 } ElevatorsData;
 
+/*
+typedef struct {
+    local int64 pos = FTell();
+    local u32 t = 0;
+    for (t = 1; t <= 22; t++) {
+        u8 Row1[5];
+        FSeek(FTell() + 95);
+    }
+    FSeek(pos + 5);
+} Room <optimize=false>;
+*/
 
 typedef struct {
-    MinimapRowsData  RevealedMapData[24];
-    u8   Pad1      <hidden=true>;
-    MinimapRowsData  PencilMapData[24];
-    u8   Pad2      <hidden=true>;
+    local int64 pos = FTell();
+    u8 TileRow1[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow2[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow3[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow4[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow5[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow6[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow7[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow8[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow9[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow10[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow11[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow12[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow13[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow14[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow15[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow16[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow17[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow18[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow19[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow20[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow21[5] <format=binary>;
+    FSeek(FTell() + 95);
+    u8 TileRow22[5] <format=binary>;
+    FSeek(pos + 5);
+} Room <optimize=false>;
+
+typedef struct {
+    local u32 r = 0; // rooms/columns
+    for (r = 1; r <= 20; r++)
+        Room room;
+} RoomRow <optimize=false>;
+
+typedef struct {
+    local u32 b = 0; // blocks
+    local int64 gpos = FTell();
+    for (b = 1; b <= 24; b++) {
+        RoomRow roomRow;
+        FSeek(gpos + (b * 2200));
+     }
+} MapRow <optimize=false>;
+
+typedef struct {
+    //MinimapRowsData  RevealedMapData[24];
+    MapRow           RevealedMapData;
+    u8               Pad1              <hidden=true>;
+    MinimapRowsData  PencilMapData[24] <bgcolor=0xFFD2EE>;
+    u8               Pad2              <hidden=true>;
     MinimapRowsData  TileStateData[24] <comment="Deleted/erased static tiles">;
-    u8   Pad3      <hidden=true>;
+    u8               Pad3      <hidden=true>;
 } MapData <optimize=false>;
 
 
