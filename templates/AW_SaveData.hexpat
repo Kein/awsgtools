@@ -145,7 +145,7 @@ bitfield UnlockableData {
     Cat : 1;
     Fish : 1;
     Donkey : 1;
-    Penguin : 1;
+    DecoRabbit : 1;
     MamaCha : 1;
     Giraffe : 1;
     IncenseBurner : 1;

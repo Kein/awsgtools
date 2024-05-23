@@ -152,7 +152,7 @@ typedef struct {
     u32 Cat : 1;
     u32 Fish : 1;
     u32 Donkey : 1;
-    u32 Penguin : 1;
+    u32 DecoRabbit : 1;
     u32 MamaCha : 1;
     u32 Giraffe : 1;
     u32 IncenseBurner : 1;
