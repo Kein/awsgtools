@@ -19,6 +19,7 @@
 #pragma allow_edits
 
 #include <std/mem.pat>
+import std.math;
 import std.io;
 import std.string;
 
@@ -26,6 +27,11 @@ import std.string;
 // SETTINGS (ImHex)
 // -------------------------------
 bool UpdateHash in;
+u8   SlotForVisuals in;
+bool ShowMural in;
+bool ShowMinimap in;
+bool ShowPencil in;
+bool ShowDestroyed in;
 
 // -------------------------------
 // ENUMS
@@ -140,12 +146,12 @@ bitfield UnlockableData {
     PinkPhone : 1;
     SouvenirCup : 1;
     OrigamiFig : 1;
-    TwoRabbits : 1;
+    Rabbits : 1;
     Owl : 1;
-    Cat : 1;
+    DecorativeRabbit : 1;
     Fish : 1;
     Donkey : 1;
-    DecoRabbit : 1;
+    Cat : 1;
     MamaCha : 1;
     Giraffe : 1;
     IncenseBurner : 1;
@@ -153,7 +159,7 @@ bitfield UnlockableData {
     Otter : 1;
     Duck : 1;
     Unlockable18 : 1 [[hidden]];
-    Unlockable19 : 1 [[comment("set by game, we dont know why")]];
+    PedometerWChest : 1;
     reserved : 12 [[hidden]];
 };
 
@@ -1247,7 +1253,7 @@ bitfield OtherItems {
 
 bitfield QuestState { 
     HouseOpened : 1 [[comment("used the house key to open the house")]];
-    unknown_00_1 : 1; 
+    OfficeOpened : 1; 
     ClosetOpened : 1  [[comment("opened the closet to get the fanny pack")]];
     unknown_00_3 : 1; 
     unknown_00_4 : 1; 
@@ -1264,12 +1270,12 @@ bitfield QuestState {
     EatenByChameleon : 1;
     InsertedSMedal : 1;
 
-    Unk_02_0 : 1;
+    EMedalInserted : 1;
     WingsAcquired : 1;
     WokeUp : 1 [[comment("Whether the flower at the start of the game was exited.")]];
     BBWandUpgrade : 1;
     ManticoreEgg65 : 1;
-    EMedalInserted : 1;
+    AllCandlesLit : 1;
     SingularityActive : 1;
     ManticoreEggPlaced : 1;
 
@@ -1284,7 +1290,7 @@ bitfield QuestState {
 };
 
 
-struct LKangarooState {
+struct LKangEncData {
     float ShardPosX;
     float ShardPosY;
     u8 EncounterRoomX;
@@ -1300,17 +1306,17 @@ struct GKangarooState {
 };
 
 
-struct StartupState {
+bitfield StartupState {
     GameStarted : 1;
     Unknown1 : 1;
     ReadyToHatch : 1;
     ShowHPbar : 1;
-    Unknown1 : 1;
+    Unknown2 : 1;
     Unknown3 : 1;
     Unknown4 : 1;
     Unknown5 : 1;
 
-    pad : 8 <hidden=true>;
+    pad : 8 [[hidden]];
 };
 
 
@@ -1568,7 +1574,7 @@ struct Slot {
     QuestState    QuestsAndUpgrades;
     ManticoreState BlueManticore;
     ManticoreState RedManticore;
-    u16            Pad       [[hidden]];
+    u16            Pad16        [[hidden]];
     LKangEncData   KangarooEncounters[3];
     GKangarooState KangarooState;
     u8             Unk_2[2]       [[hidden]];
@@ -1585,7 +1591,7 @@ struct Slot {
     MapData       Map;
     MuralPixelRow Mural[20];
     // ---
-    u8            Pad            [[hidden]];
+    u8            Pad8           [[hidden]];
     u8            Unk_128[128]   [[hidden]];
     LUnlockable   LocalUnlocks   [[comment("mimics some data from unlockables?")]];
     u16           BerriesEatenWhenFull [[comment("resets when hit or eat blue berry")]];
@@ -1684,23 +1690,44 @@ struct File {
 File file @ 0x00;
 
 
-if (UpdateHash)
-    file.GlobalState.SaveHash = CalculateHash();
 
+/*
+// ===================================================
+// IMHEX EXCLUSIVE
+// ===================================================
 
-/* TODO:
-std::mem::Section Mural = std::mem::create_section("Mural");
+// bitmaks for bit-to-pixel lookup
+u8 bitmask[8];
+bitmask[0] = 1;
+bitmask[1] = 2;
+bitmask[2] = 4;
+bitmask[3] = 8;
+bitmask[4] = 16;
+bitmask[5] = 32;
+bitmask[6] = 84;
+bitmask[7] = 128;
 
-struct Data {
-  u32 RGBAData[800];
-} [[hex::visualize("bitmap", RGBAData, 40, 20)]];
+// LUT for RGBA
+u32 LUT[2];
+LUT[0] = 0xFF000000;
+LUT[1] = 0xFFFFFFFF;
 
-Data data  @ 0x00 in Mural;
-data.RGBAData[0] = 1;
-u8 mural[200] @ 0x26EC7;
+struct RGBA<auto size, auto width, auto height> {
+  u32 data[size]; // 422400
+} [[hex::visualize("bitmap", data, width, height)]];
+
+std::mem::Section Minimap = std::mem::create_section("Minimap");
+std::mem::Section Pencil = std::mem::create_section("Pencil");
+std::mem::Section DestroyedTiles = std::mem::create_section("DestroyedTiles");
+std::mem::Section Mural  = std::mem::create_section("Mural");
+// --
+RGBA<422400, 800, 528> minimap @ 0x00 in Minimap;
+RGBA<422400, 800, 528> pencil @ 0x00 in Pencil;
+RGBA<422400, 800, 528> destroyed @ 0x00 in DestroyedTiles;
+RGBA<800, 40,20> mural @ 0x00 in Mural;
+// --
 
 fn twobit_to_rgba(ref auto _rawData, ref auto rgbaBuf) {
-
     for (u32 i = 0, i < 200, i = i + 1) {
         u32 rgbaIdx = (i * 4);
         rgbaBuf[rgbaIdx] = to_rgba_pixel(u8(_rawData[i] & 0b00000011));
@@ -1709,6 +1736,25 @@ fn twobit_to_rgba(ref auto _rawData, ref auto rgbaBuf) {
         rgbaBuf[rgbaIdx+3] = to_rgba_pixel(u8((_rawData[i] & 0b11000000) >> 6));
     }
 };
+
+
+fn onebit_to_rgba(ref auto _raw, ref auto rgbaBuf) {
+    for (u32 i = 0, i < sizeof(_raw), i = i + 1)
+    {
+        u32 idx = (i * 8); // index in rgba buffer
+        rgbaBuf[idx]   = LUT[u8((_raw[i] & bitmask[0]) != 0)];
+        rgbaBuf[idx+1] = LUT[u8((_raw[i] & bitmask[1]) != 0)];
+        rgbaBuf[idx+2] = LUT[u8((_raw[i] & bitmask[2]) != 0)];
+        rgbaBuf[idx+3] = LUT[u8((_raw[i] & bitmask[3]) != 0)];
+        rgbaBuf[idx+4] = LUT[u8((_raw[i] & bitmask[4]) != 0)];
+        rgbaBuf[idx+5] = LUT[u8((_raw[i] & bitmask[5]) != 0)];
+        rgbaBuf[idx+6] = LUT[u8((_raw[i] & bitmask[6]) != 0)];
+        rgbaBuf[idx+7] = LUT[u8((_raw[i] & bitmask[7]) != 0)];
+    }
+};
+
+// nth bit is set?
+fn nthBitSet (u8 b, u8 n) { return ((b & bitmask[n]) != 0); };
 
 // returns u32 RGBA
 fn to_rgba_pixel(u8 bbPixel) {
@@ -1720,5 +1766,32 @@ fn to_rgba_pixel(u8 bbPixel) {
     return 0xFF2f1409;
 };
 
-twobit_to_rgba(mural, data.RGBAData);
+
+// Main Post-process actions
+
+u8 slot = std::math::clamp(SlotForVisuals-1, 0, 2);
+if (UpdateHash) {
+    std::print("Updating hash...");
+    parsed.GlobalState.SaveHash = CalculateHash();
+}
+
+if (ShowMural) {
+    u8 temp[200] @ addressof(file.Slots[slot].Mural);
+    twobit_to_rgba(temp, mural.data);
+};
+
+if (ShowPencil) {
+    u8 temp[52800] @ addressof(file.Slots[slot].Map.PencilMapData);
+    onebit_to_rgba(temp, pencil.data);
+};
+
+if (ShowMinimap) {
+    u8 temp[52800] @ addressof(file.Slots[slot].Map.RevealedMapData);
+    onebit_to_rgba(temp, minimap.data);
+};
+
+if (ShowDestroyed) {
+    u8 temp[52800] @ addressof(file.Slots[slot].Map.TileStateData);
+    onebit_to_rgba(temp, destroyed.data);
+};
 */

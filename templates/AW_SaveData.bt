@@ -160,7 +160,7 @@ typedef struct {
     u32 Otter : 1;
     u32 Duck : 1;
     u32 Unlockable18 : 1 <hidden=true>;
-    u32 Unlockable19 : 1 <comment="set by game, we dont know why">;
+    u32 PedometerWChest : 1;
     u32 reserved : 12 <hidden=true>;
 } UnlockableData;
 
@@ -1258,7 +1258,7 @@ typedef struct {
 
 typedef struct { 
     u32 HouseOpened : 1 <comment="used the house key to open the house">;
-    u32 unknown_00_1 : 1; 
+    u32 OfficeOpened : 1; 
     u32 ClosetOpened : 1  <comment="opened the closet to get the fanny pack">;
     u32 unknown_00_3 : 1; 
     u32 unknown_00_4 : 1; 
@@ -1275,12 +1275,12 @@ typedef struct {
     u32 EatenByChameleon : 1;
     u32 InsertedSMedal : 1;
 
-    u32 Unk_02_0 : 1;
+    u32 EMedalInserted : 1;
     u32 WingsAcquired : 1;
     u32 WokeUp : 1 <comment="Whether the flower at the start of the game was exited.">;
     u32 BBWandUpgrade : 1;
     u32 ManticoreEgg65 : 1;
-    u32 EMedalInserted : 1;
+    u32 AllCandlesLit : 1;
     u32 SingularityActive : 1;
     u32 ManticoreEggPlaced : 1;
 
