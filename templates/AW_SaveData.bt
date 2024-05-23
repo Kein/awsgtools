@@ -147,12 +147,12 @@ typedef struct {
     u32 PinkPhone : 1;
     u32 SouvenirCup : 1;
     u32 OrigamiFig : 1;
-    u32 Rabbits : 1;
+    u32 TwoRabbits : 1;
     u32 Owl : 1;
-    u32 DecorativeRabbit : 1;
+    u32 Cat : 1;
     u32 Fish : 1;
     u32 Donkey : 1;
-    u32 Cat : 1;
+    u32 Penguin : 1;
     u32 MamaCha : 1;
     u32 Giraffe : 1;
     u32 IncenseBurner : 1;
