@@ -218,139 +218,25 @@ typedef struct {
     u16 unknown_2A;
     u16 Crank_0818;
     u16 unknown_2E;
+    u16 Reserved25;
+    u16 Reserved26;
+    u16 Reserved27;
+    u16 Reserved28;
+    u16 Reserved29;
+    u16 Reserved30;
+    u16 Reserved31;
+    u16 Reserved32;
 } CrankData;
 
 
-typedef struct { //bf
-    u64 Door_00_0 : 1;
-    u64 Door_00_1 : 1;
-    u64 Door_00_2 : 1;
-    u64 Door_00_3 : 1;
-    u64 Door_00_4 : 1;
-    u64 Door_00_5 : 1;
-    u64 Door_00_6 : 1;
-    u64 Door_00_7 : 1;
-    u64 Door_01_0 : 1;
-    u64 Door_01_1 : 1;
-    u64 Door_01_2 : 1;
-    u64 Door_01_3 : 1;
-    u64 Door_01_4 : 1;
-    u64 Door_01_5 : 1;
-    u64 Door_01_6 : 1;
-    u64 Door_01_7 : 1;
-    u64 Door_02_0 : 1;
-    u64 Door_02_1 : 1;
-    u64 Door_02_2 : 1;
-    u64 Door_02_3 : 1;
-    u64 Door_02_4 : 1;
-    u64 Door_02_5 : 1;
-    u64 Door_02_6 : 1;
-    u64 Door_02_7 : 1;
-    u64 Door_03_0 : 1;
-    u64 Door_03_1 : 1;
-    u64 Door_03_2 : 1;
-    u64 Door_03_3 : 1;
-    u64 Door_03_4 : 1;
-    u64 Door_03_5 : 1;
-    u64 Door_03_6 : 1;
-    u64 Door_03_7 : 1;
-    u64 Door_04_0 : 1;
-    u64 Door_04_1 : 1;
-    u64 Door_04_2 : 1;
-    u64 Door_04_3 : 1;
-    u64 Door_04_4 : 1;
-    u64 Door_04_5 : 1;
-    u64 Door_04_6 : 1;
-    u64 Door_04_7 : 1;
-    u64 Door_05_0 : 1;
-    u64 Door_05_1 : 1;
-    u64 Door_05_2 : 1;
-    u64 Door_05_3 : 1;
-    u64 Door_05_4 : 1;
-    u64 Door_05_5 : 1;
-    u64 Door_05_6 : 1;
-    u64 Door_05_7 : 1;
-    u64 Door_06_0 : 1;
-    u64 Door_06_1 : 1;
-    u64 Door_06_2 : 1;
-    u64 Door_06_3 : 1;
-    u64 Door_06_4 : 1;
-    u64 Door_06_5 : 1;
-    u64 Door_06_6 : 1;
-    u64 Door_06_7 : 1;
-    u64 Door_07_0 : 1;
-    u64 Door_07_1 : 1;
-    u64 Door_07_2 : 1;
-    u64 Door_07_3 : 1;
-    u64 Door_07_4 : 1;
-    u64 Door_07_5 : 1;
-    u64 Door_07_6 : 1;
-    u64 Door_07_7 : 1;
-    u64 Door_08_0 : 1;
-    u64 Door_08_1 : 1;
-    u64 Door_08_2 : 1;
-    u64 Door_08_3 : 1;
-    u64 Door_08_4 : 1;
-    u64 Door_08_5 : 1;
-    u64 Door_08_6 : 1;
-    u64 Door_08_7 : 1;
-    u64 Door_09_0 : 1;
-    u64 Door_09_1 : 1;
-    u64 Door_09_2 : 1;
-    u64 Door_09_3 : 1;
-    u64 Door_09_4 : 1;
-    u64 Door_09_5 : 1;
-    u64 Door_09_6 : 1;
-    u64 Door_09_7 : 1;
-    u64 Door_0A_0 : 1;
-    u64 Door_0A_1 : 1;
-    u64 Door_0A_2 : 1;
-    u64 Door_0A_3 : 1;
-    u64 Door_0A_4 : 1;
-    u64 Door_0A_5 : 1;
-    u64 Door_0A_6 : 1;
-    u64 Door_0A_7 : 1;
-    u64 Door_0B_0 : 1;
-    u64 Door_0B_1 : 1;
-    u64 Door_0B_2 : 1;
-    u64 Door_0B_3 : 1;
-    u64 Door_0B_4 : 1;
-    u64 Door_0B_5 : 1;
-    u64 Door_0B_6 : 1;
-    u64 Door_0B_7 : 1;
-    u64 Door_0C_0 : 1;
-    u64 Door_0C_1 : 1;
-    u64 Door_0C_2 : 1;
-    u64 Door_0C_3 : 1;
-    u64 Door_0C_4 : 1;
-    u64 Door_0C_5 : 1;
-    u64 Door_0C_6 : 1;
-    u64 Door_0C_7 : 1;
-    u64 Door_0D_0 : 1;
-    u64 Door_0D_1 : 1;
-    u64 Door_0D_2 : 1;
-    u64 Door_0D_3 : 1;
-    u64 Door_0D_4 : 1;
-    u64 Door_0D_5 : 1;
-    u64 Door_0D_6 : 1;
-    u64 Door_0D_7 : 1;
-    u64 Door_0E_0 : 1;
-    u64 Door_0E_1 : 1;
-    u64 Door_0E_2 : 1;
-    u64 Door_0E_3 : 1;
-    u64 Door_0E_4 : 1;
-    u64 Door_0E_5 : 1;
-    u64 Door_0E_6 : 1;
-    u64 Door_0E_7 : 1;
-    u64 Door_0F_0 : 1;
-    u64 Door_0F_1 : 1;
-    u64 Door_0F_2 : 1;
-    u64 Door_0F_3 : 1;
-    u64 Door_0F_4 : 1;
-    u64 Door_0F_5 : 1;
-    u64 Door_0F_6 : 1;
-    u64 Door_0F_7 : 1;
-} KeyDoorData <comment="Ordering unknown">;
+typedef struct {
+    u32 ry : 8;
+    u32 rx : 8;
+    u32 ty : 8;
+    u32 tx : 6;
+    u32 unk : 2; // only saw 0 in save, code also checks 1
+} ToggleDWData <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, _ )>;
+
 
 
 typedef struct {
@@ -1241,7 +1127,7 @@ typedef struct {
     u16 Uncategorized_1811 : 1 <comment="Large, button-powered door in room (18, 11).">;
 
     u16 pad : 14 <hidden=true>;
-} Uncategorized1;
+} Uncat1;
 
 
 typedef struct {
@@ -1467,7 +1353,7 @@ typedef struct {
 typedef struct {
     MapRow           RevealedMapData  <comment="First 4 rows from the top and last 4 rows at the bottom are padding/empty. Same applies to first and last 2 rooms in a row">;
     u8               Pad1             <hidden=true>;
-    MapRow           PencilMapData    <bgcolor=0xFFD2EE>;
+    MapRow           PencilMapData    <comment="Pencil drawings">;
     u8               Pad2             <hidden=true>;
     MapRow           TileStateData    <comment="Deleted/erased static tiles">;
     u8               Pad3             <hidden=true>;
@@ -1553,13 +1439,11 @@ typedef struct {
 
 
 typedef struct {
-    Timestamp       SlotTime   <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
-    //----
-    CrankData       CrankLevelsPerRoom;
-    u8              Reserved[80]  <hidden=true>;
-    u64             ExtraKeyDoors <format=binary, comment="This is door state data too, but unknown/unmapped">;
-    KeyDoorData     KeyDoors      <comment="Ordering is unknown">;
-    u8              Pad2[104]     <hidden=true>;
+    Timestamp       SlotTime      <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
+    CrankData       CranksPerRoom;
+    u8              Reserved[64]  <hidden=true>; // unknown, always 00
+    ToggleDWData    Doors[16];
+    ToggleDWData    Walls[16];
     u32             Steps         <bgcolor=0xFFD2EE>;
     FillData        FillLevels;
     // --
@@ -1571,68 +1455,66 @@ typedef struct {
     // --
     PickableSection Pickables;
     // --
-    EggData          Eggs;
-    ExplosionData    Explosions;
-    DetonatorData    Detonators;
-    BunnyData        Bunnies;
-    SquirrelData     SquirrelsQuest;
-    CatData          CatQuest;
+    EggData         Eggs;
+    ExplosionData   Explosions;
+    DetonatorData   Detonators;
+    BunnyData       Bunnies;
+    SquirrelData    SquirrelsQuest;
+    CatData         CatQuest;
     //------------
-    u16           Unk16_1          <hidden=true>;
+    u16           Unk16_1           <hidden=true>;
     u16           TotalFCkersPickedUp;
     u16           TotalBubblesPopped;
-    u16           Unk16_2          <hidden=true>;
+    u16           Unk16_2           <hidden=true>;
     u16           TimesSaved;
-    u16           Unk16_3          <hidden=true>;
-    u16           Unk16_4          <hidden=true>;
-    u16           Unk16_5          <hidden=true>;
-    u8            Unk8_1           <hidden=true>;
-    u8            KeysCount      <bgcolor=0xD2FFD6>;
-    u8            MatchesCount   <bgcolor=0xD2FFD6>;
-    u8            FCrackersCount <bgcolor=0xD2FFD6>;
-    HPData        Hearts         <bgcolor=0xFFD2EE>;
-    u8            Unk8_2           <hidden=true>;
-    EggRoomDoors  EggRoomState   <comment="it is unclear what other flags are">;
-    u16           Unk16_6          <hidden=true>;
-    u32           FramesIngame   <bgcolor=0xFFD2EE>;
-    u32           FramesTotal    <bgcolor=0xFFD2EE>;
-    u8            Pad4[16]       <hidden=true>;
-    SavedPos      SavedRoomPos   <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
-    Equipment     OwnedEquipment <bgcolor=0xD2FFD6>;
-    OtherItems    Items          <bgcolor=0xD2FFD6>;
-    u8            Unk8_3           <hidden=true>;
+    u8            DoorsIdx          <comment="keeps track of doors array index">;
+    u8            unk8_6[6]         <hidden=true>;
+    u8            KeysCount         <bgcolor=0xD2FFD6>;
+    u8            MatchesCount      <bgcolor=0xD2FFD6>;
+    u8            FCrackersCount    <bgcolor=0xD2FFD6>;
+    HPData        Hearts            <bgcolor=0xFFD2EE>;
+    u8            WallsIdx          <comment="keeps track of Walls array index">;
+    EggRoomDoors  EggRoomState      <comment="it is unclear what other flags are">;
+    u16           Unk16_6           <hidden=true>;
+    u32           FramesIngame      <bgcolor=0xFFD2EE>;
+    u32           FramesTotal       <bgcolor=0xFFD2EE>;
+    u8            Pad4[16]          <hidden=true>;
+    SavedPos      SavedRoomPos      <bgcolor=0xCACAFF, read=Str("[%u, %u]", this.X, this.Y)>;    
+    Equipment     OwnedEquipment    <bgcolor=0xD2FFD6>;
+    OtherItems    Items             <bgcolor=0xD2FFD6>;
+    u8            Unk8_3            <hidden=true>;
     CandlesData   CandlesLit;
-    u16           HitsTaken      <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
-    u16           Deaths         <bgcolor=0xFFD2EE>;
+    u16           HitsTaken         <bgcolor=0xFFD2EE, comment="This updates along with death counter, but the relation is not known">;
+    u16           Deaths            <bgcolor=0xFFD2EE>;
     GhostData     FreightenedGhosts;
-    Uncategorized1 UnkData2;
-    u8            SelectedItem   <bgcolor=0xD2FFD6>;
-    u8            Unk8_4           <hidden=true>;
-    QuestState    QuestsAndUpgrades;
+    Uncat1        UnkData2;
+    u8            SelectedItem          <bgcolor=0xD2FFD6>;
+    u8            Unk8_4                <hidden=true>;
+    QuestState     QuestsAndUpgrades;
     ManticoreState BlueManticore;
     ManticoreState RedManticore;
-    u16            Pad       <hidden=true>;
+    u16            Pad16                <hidden=true>;
     LKangEncData   KangarooEncounters[3];
     GKangarooState KangarooState;
-    u8            Unk_2[2]       <hidden=true>;
-    StartupState  StartFlags;
-    FlameData     Flames;
-    u8            Unk8_5           <hidden=true>;
+    u8             Unk_2[2]             <hidden=true>;
+    StartupState   StartFlags;
+    FlameData      Flames;
+    u8             Unk8_5               <hidden=true>;
     // ---
-    TPSeenData    TeleportsSeen;
-    TPActiveData  TeleportsActivated;
-    StampData     PlacedStamps;
-    ElevatorsData Elevators;
-    u8            MuralSelX;
-    u8            MuralSelY;
-    MapData       Map;
-    MuralPixelRow Mural[20];
+    TPSeenData     TeleportsSeen;
+    TPActiveData   TeleportsActivated;
+    StampData      PlacedStamps;
+    ElevatorsData  Elevators;
+    u8             MuralSelX;
+    u8             MuralSelY;
+    MapData        Map;
+    MuralPixelRow  Mural[20];
     // ---
-    u8            Pad            <hidden=true>;
-    u8            Unk_128[128]   <hidden=true>;
-    LUnlockable   LocalUnlocks   <comment="mimics some data from unlockables?">;
-    u16           BerriesEatenWhenFull <comment="resets when hit or eat blue berry">;
-    u8            Pad_20[20]     <hidden=true>;
+    u8             Pad8                 <hidden=true>;
+    u8             Unk_128[128]         <hidden=true>;
+    LUnlockable    LocalUnlocks         <comment="mimics some data from unlockables?">;
+    u16            BerriesEatenWhenFull <comment="resets when hit or eat blue berry">;
+    u8             Pad_20[20]           <hidden=true>;
 } Slot <optimize=false, read=SlotSummary>;
 
 
@@ -1737,4 +1619,3 @@ Header GlobalState <bgcolor=0xCACAFF>;
 Assert(GlobalState.Version == 9, "Unsupported version detected");
 Slot Slots[3]; // <bgcolor=0xD2F2FF>;
 Options Config     <bgcolor=0xFFD2EE>;
-    

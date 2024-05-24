@@ -216,139 +216,24 @@ struct CrankData {
     u16 unknown_2A;
     u16 Crank_0818;
     u16 unknown_2E;
+    u16 Reserved25;
+    u16 Reserved26;
+    u16 Reserved27;
+    u16 Reserved28;
+    u16 Reserved29;
+    u16 Reserved30;
+    u16 Reserved31;
+    u16 Reserved32;
 };
 
 
-bitfield KeyDoorData { 
-    Door_00_0 : 1;
-    Door_00_1 : 1;
-    Door_00_2 : 1;
-    Door_00_3 : 1;
-    Door_00_4 : 1;
-    Door_00_5 : 1;
-    Door_00_6 : 1;
-    Door_00_7 : 1;
-    Door_01_0 : 1;
-    Door_01_1 : 1;
-    Door_01_2 : 1;
-    Door_01_3 : 1;
-    Door_01_4 : 1;
-    Door_01_5 : 1;
-    Door_01_6 : 1;
-    Door_01_7 : 1;
-    Door_02_0 : 1;
-    Door_02_1 : 1;
-    Door_02_2 : 1;
-    Door_02_3 : 1;
-    Door_02_4 : 1;
-    Door_02_5 : 1;
-    Door_02_6 : 1;
-    Door_02_7 : 1;
-    Door_03_0 : 1;
-    Door_03_1 : 1;
-    Door_03_2 : 1;
-    Door_03_3 : 1;
-    Door_03_4 : 1;
-    Door_03_5 : 1;
-    Door_03_6 : 1;
-    Door_03_7 : 1;
-    Door_04_0 : 1;
-    Door_04_1 : 1;
-    Door_04_2 : 1;
-    Door_04_3 : 1;
-    Door_04_4 : 1;
-    Door_04_5 : 1;
-    Door_04_6 : 1;
-    Door_04_7 : 1;
-    Door_05_0 : 1;
-    Door_05_1 : 1;
-    Door_05_2 : 1;
-    Door_05_3 : 1;
-    Door_05_4 : 1;
-    Door_05_5 : 1;
-    Door_05_6 : 1;
-    Door_05_7 : 1;
-    Door_06_0 : 1;
-    Door_06_1 : 1;
-    Door_06_2 : 1;
-    Door_06_3 : 1;
-    Door_06_4 : 1;
-    Door_06_5 : 1;
-    Door_06_6 : 1;
-    Door_06_7 : 1;
-    Door_07_0 : 1;
-    Door_07_1 : 1;
-    Door_07_2 : 1;
-    Door_07_3 : 1;
-    Door_07_4 : 1;
-    Door_07_5 : 1;
-    Door_07_6 : 1;
-    Door_07_7 : 1;
-    Door_08_0 : 1;
-    Door_08_1 : 1;
-    Door_08_2 : 1;
-    Door_08_3 : 1;
-    Door_08_4 : 1;
-    Door_08_5 : 1;
-    Door_08_6 : 1;
-    Door_08_7 : 1;
-    Door_09_0 : 1;
-    Door_09_1 : 1;
-    Door_09_2 : 1;
-    Door_09_3 : 1;
-    Door_09_4 : 1;
-    Door_09_5 : 1;
-    Door_09_6 : 1;
-    Door_09_7 : 1;
-    Door_0A_0 : 1;
-    Door_0A_1 : 1;
-    Door_0A_2 : 1;
-    Door_0A_3 : 1;
-    Door_0A_4 : 1;
-    Door_0A_5 : 1;
-    Door_0A_6 : 1;
-    Door_0A_7 : 1;
-    Door_0B_0 : 1;
-    Door_0B_1 : 1;
-    Door_0B_2 : 1;
-    Door_0B_3 : 1;
-    Door_0B_4 : 1;
-    Door_0B_5 : 1;
-    Door_0B_6 : 1;
-    Door_0B_7 : 1;
-    Door_0C_0 : 1;
-    Door_0C_1 : 1;
-    Door_0C_2 : 1;
-    Door_0C_3 : 1;
-    Door_0C_4 : 1;
-    Door_0C_5 : 1;
-    Door_0C_6 : 1;
-    Door_0C_7 : 1;
-    Door_0D_0 : 1;
-    Door_0D_1 : 1;
-    Door_0D_2 : 1;
-    Door_0D_3 : 1;
-    Door_0D_4 : 1;
-    Door_0D_5 : 1;
-    Door_0D_6 : 1;
-    Door_0D_7 : 1;
-    Door_0E_0 : 1;
-    Door_0E_1 : 1;
-    Door_0E_2 : 1;
-    Door_0E_3 : 1;
-    Door_0E_4 : 1;
-    Door_0E_5 : 1;
-    Door_0E_6 : 1;
-    Door_0E_7 : 1;
-    Door_0F_0 : 1;
-    Door_0F_1 : 1;
-    Door_0F_2 : 1;
-    Door_0F_3 : 1;
-    Door_0F_4 : 1;
-    Door_0F_5 : 1;
-    Door_0F_6 : 1;
-    Door_0F_7 : 1;
-} [[comment("Ordering unknown")]];
+bitfield ToggleDWData {
+    ry : 8;
+    rx : 8;
+    ty : 8;
+    tx : 6;
+    unk : 2; // only saw 0 in save, code also checks 1
+}; // <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, _ )>;
 
 
 struct FillData {
@@ -1231,7 +1116,7 @@ bitfield GhostData {
 };
 
 
-bitfield Uncategorized1 {
+bitfield Uncat1 {
     Unk_00_0 : 1;
     Uncategorized_1811 : 1 [[comment("Large, button-powered door in room (18, 11).")]];
 
@@ -1428,13 +1313,85 @@ struct ElevatorsData {
 };
 
 
+struct TileRow {
+    u8 data8[5];
+} [[format_read("readTileRow")]]; // format_write("writeTileRow") write does not work in Imhex
+
+
+struct Room {
+    u64 pos = $;
+    TileRow tileRow0;
+    $ = $ + 95;
+    TileRow tileRow1;
+    $ = $ + 95;
+    TileRow tileRow2;
+    $ = $ + 95;
+    TileRow tileRow3;
+    $ = $ + 95;
+    TileRow tileRow4;
+    $ = $ + 95;
+    TileRow tileRow5;
+    $ = $ + 95;
+    TileRow tileRow6;
+    $ = $ + 95;
+    TileRow tileRow7;
+    $ = $ + 95;
+    TileRow tileRow8;
+    $ = $ + 95;
+    TileRow tileRow9;
+    $ = $ + 95;
+    TileRow tileRow10;
+    $ = $ + 95;
+    TileRow tileRow11;
+    $ = $ + 95;
+    TileRow tileRow12;
+    $ = $ + 95;
+    TileRow tileRow13;
+    $ = $ + 95;
+    TileRow tileRow14;
+    $ = $ + 95;
+    TileRow tileRow15;
+    $ = $ + 95;
+    TileRow tileRow16;
+    $ = $ + 95;
+    TileRow tileRow17;
+    $ = $ + 95;
+    TileRow tileRow18;
+    $ = $ + 95;
+    TileRow tileRow19;
+    $ = $ + 95;
+    TileRow tileRow20;
+    $ = $ + 95;
+    TileRow tileRow21;
+    $ = $ + 95;
+    TileRow tileRow22;
+    $ = (pos + 5);
+};
+
+s32 cr = -1;
+fn processRow(auto pos) {
+    cr = cr + 1;
+    $ = (pos + (cr * 2200));
+    return cr < 24;
+};
+
+struct RoomRow {
+        Room room[20];
+};
+
+struct MapRow {
+    u64 gpos = $;
+    RoomRow roomRow[while(processRow(gpos))];
+};
+
+
 struct MapData {
-    MinimapRowsData  RevealedMapData[24];
-    u8   Pad1      [[hidden]];
-    MinimapRowsData  PencilMapData[24];
-    u8   Pad2      [[hidden]];
-    MinimapRowsData  TileStateData[24] [[comment("Deleted/erased static tiles")]];
-    u8   Pad3      [[hidden]];
+    MapRow           RevealedMapData  [[comment("First 4 rows from the top and last 4 rows at the bottom are padding/empty. Same applies to first and last 2 rooms in a row")]];
+    u8               Pad1             [[hidden]];
+    MapRow           PencilMapData    [[comment("Pencil drawings")]];
+    u8               Pad2             [[hidden]];
+    MapRow           TileStateData    [[comment("Deleted/erased static tiles")]];
+    u8               Pad3             [[hidden]];
 };
 
 
@@ -1516,13 +1473,11 @@ struct PickableSection {
 
 
 struct Slot {
-    Timestamp       SlotTime   [[color("FFD2EE")]];
-    //----
-    CrankData       CrankLevelsPerRoom;
-    u8              Reserved[80]  [[hidden]];
-    u64             ExtraKeyDoors [[comment("This is door state data too, but unknown/unmapped")]];
-    KeyDoorData     KeyDoors      [[comment("Ordering is unknown")]];
-    u8              Pad2[104]     [[hidden]];
+    Timestamp       SlotTime      [[color("FFD2EE")]];
+    CrankData       CranksPerRoom;
+    u8              Reserved[64]  [[hidden]]; // unknown, always 00
+    ToggleDWData    Doors[16];
+    ToggleDWData    Walls[16];
     u32             Steps         [[color("FFD2EE")]];
     FillData        FillLevels;
     // --
@@ -1534,68 +1489,66 @@ struct Slot {
     // --
     PickableSection Pickables;
     // --
-    EggData          Eggs;
-    ExplosionData    Explosions;
-    DetonatorData    Detonators;
-    BunnyData        Bunnies;
-    SquirrelData     SquirrelsQuest;
-    CatData          CatQuest;
+    EggData         Eggs;
+    ExplosionData   Explosions;
+    DetonatorData   Detonators;
+    BunnyData       Bunnies;
+    SquirrelData    SquirrelsQuest;
+    CatData         CatQuest;
     //------------
-    u16           Unk16_1          [[hidden]];
+    u16           Unk16_1           [[hidden]];
     u16           TotalFCkersPickedUp;
     u16           TotalBubblesPopped;
-    u16           Unk16_2          [[hidden]];
+    u16           Unk16_2           [[hidden]];
     u16           TimesSaved;
-    u16           Unk16_3          [[hidden]];
-    u16           Unk16_4          [[hidden]];
-    u16           Unk16_5          [[hidden]];
-    u8            Unk8_1           [[hidden]];
-    u8            KeysCount      [[color("D2FFD6")]];
-    u8            MatchesCount   [[color("D2FFD6")]];
-    u8            FCrackersCount [[color("D2FFD6")]];
-    HPData        Hearts         [[color("FFD2EE")]];
-    u8            Unk8_2           [[hidden]];
-    EggRoomDoors  EggRoomState   [[comment("it is unclear what other flags are")]];
-    u16           Unk16_6          [[hidden]];
-    u32           FramesIngame   [[color("FFD2EE")]];
-    u32           FramesTotal    [[color("FFD2EE")]];
-    u8            Pad4[16]       [[hidden]];
-    SavedPos      SavedRoomPos   [[color("CACAFF")]];
-    Equipment     OwnedEquipment [[color("D2FFD6")]];
-    OtherItems    Items          [[color("D2FFD6")]];
-    u8            Unk8_3           [[hidden]];
+    u8            DoorsIdx          [[comment("keeps track of doors array index")]];
+    u8            unk8_6[6]         [[hidden]];
+    u8            KeysCount         [[color("D2FFD6")]];
+    u8            MatchesCount      [[color("D2FFD6")]];
+    u8            FCrackersCount    [[color("D2FFD6")]];
+    HPData        Hearts            [[color("FFD2EE")]];
+    u8            WallsIdx          [[comment("keeps track of Walls array index")]];
+    EggRoomDoors  EggRoomState      [[comment("it is unclear what other flags are")]];
+    u16           Unk16_6           [[hidden]];
+    u32           FramesIngame      [[color("FFD2EE")]];
+    u32           FramesTotal       [[color("FFD2EE")]];
+    u8            Pad4[16]          [[hidden]];
+    SavedPos      SavedRoomPos      [[color("CACAFF")]];
+    Equipment     OwnedEquipment    [[color("D2FFD6")]];
+    OtherItems    Items             [[color("D2FFD6")]];
+    u8            Unk8_3            [[hidden]];
     CandlesData   CandlesLit;
-    u16           HitsTaken      [[color("FFD2EE"), comment("This updates along with death counter, but the relation is not known")]];
-    u16           Deaths         [[color("FFD2EE")]];
+    u16           HitsTaken         [[color("FFD2EE"), comment("This updates along with death counter, but the relation is not known")]];
+    u16           Deaths            [[color("FFD2EE")]];
     GhostData     FreightenedGhosts;
-    Uncategorized1 UnkData2;
-    u8            SelectedItem   [[color("D2FFD6")]];
-    u8            Unk8_4           [[hidden]];
-    QuestState    QuestsAndUpgrades;
+    Uncat1        UnkData2;
+    u8            SelectedItem          [[color("D2FFD6")]];
+    u8            Unk8_4                [[hidden]];
+    QuestState     QuestsAndUpgrades;
     ManticoreState BlueManticore;
     ManticoreState RedManticore;
-    u16            Pad16        [[hidden]];
+    u16            Pad16                [[hidden]];
     LKangEncData   KangarooEncounters[3];
     GKangarooState KangarooState;
-    u8             Unk_2[2]       [[hidden]];
+    u8             Unk_2[2]             [[hidden]];
     StartupState   StartFlags;
-    FlameData     Flames;
-    u8            Unk8_5           [[hidden]];
+    FlameData      Flames;
+    u8             Unk8_5               [[hidden]];
     // ---
-    TPSeenData    TeleportsSeen;
-    TPActiveData  TeleportsActivated;
-    StampData     PlacedStamps;
-    ElevatorsData Elevators;
-    u8            MuralSelX;
-    u8            MuralSelY;
-    MapData       Map;
-    MuralPixelRow Mural[20];
+    TPSeenData     TeleportsSeen;
+    TPActiveData   TeleportsActivated;
+    StampData      PlacedStamps;
+    ElevatorsData  Elevators;
+    u8             MuralSelX;
+    u8             MuralSelY;
+    MapData        Map;
+    MuralPixelRow  Mural[20];
     // ---
-    u8            Pad8           [[hidden]];
-    u8            Unk_128[128]   [[hidden]];
-    LUnlockable   LocalUnlocks   [[comment("mimics some data from unlockables?")]];
-    u16           BerriesEatenWhenFull [[comment("resets when hit or eat blue berry")]];
-    u8            Pad_20[20]     [[hidden]];
+    u8             Pad8                 [[hidden]];
+    u8             Unk_128[128]         [[hidden]];
+    LUnlockable    LocalUnlocks         [[comment("mimics some data from unlockables?")]];
+    u16            BerriesEatenWhenFull [[comment("resets when hit or eat blue berry")]];
+    u8             Pad_20[20]           [[hidden]];
 } [[format_read("SlotSummary")]];
 
 
@@ -1656,6 +1609,15 @@ fn numSetBits64(u64 i) {
     return u8((((i + (i >> 4)) & 0xF0F0F0F0F0F0F0F) * 0x101010101010101) >> 56);
 };
 
+// Generic algo for map tiles
+fn readTileRow(TileRow tr) {
+    return std::format("{:08b}{:08b}{:08b}{:08b}{:08b}", tr.data8[0], tr.data8[1], tr.data8[2], tr.data8[3], tr.data8[4]);
+};
+
+fn writeTileRow(str v) {
+    return "";
+};
+
 // Hash handling
 fn CalculateHash()
 {
@@ -1677,10 +1639,10 @@ fn CalculateHash()
 fn WriteHash(str v) { return CalculateHash(); };
 fn ReadHash(u8 hash) { return hash; };
 
-
 // ===================================================
 // PATTERN PARSING
 // ===================================================
+
 struct File {
     Header GlobalState;
     Slot Slots[3];
@@ -1696,37 +1658,47 @@ File file @ 0x00;
 // IMHEX EXCLUSIVE
 // ===================================================
 
-// bitmaks for bit-to-pixel lookup
-u8 bitmask[8];
-bitmask[0] = 1;
-bitmask[1] = 2;
-bitmask[2] = 4;
-bitmask[3] = 8;
-bitmask[4] = 16;
-bitmask[5] = 32;
-bitmask[6] = 84;
-bitmask[7] = 128;
-
 // LUT for RGBA
 u32 LUT[2];
 LUT[0] = 0xFF000000;
 LUT[1] = 0xFFFFFFFF;
 
-struct RGBA<auto size, auto width, auto height> {
-  u32 data[size]; // 422400
+// Structs
+bitfield BPP {
+    p0 : 1;
+    p1 : 1;
+    p2 : 1;
+    p3 : 1;
+    p4 : 1;
+    p5 : 1;
+    p6 : 1;
+    p7 : 1;
+};
+
+struct OB { u32 ob[8]; };
+
+struct RGBAMural<auto size, auto width, auto height> {
+    u32 data[size];
 } [[hex::visualize("bitmap", data, width, height)]];
 
+struct RGBA<auto size, auto width, auto height> {
+    OB data[size]; // 422400
+} [[hex::visualize("bitmap", data, width, height)]];
+
+
+// Sections
 std::mem::Section Minimap = std::mem::create_section("Minimap");
 std::mem::Section Pencil = std::mem::create_section("Pencil");
 std::mem::Section DestroyedTiles = std::mem::create_section("DestroyedTiles");
 std::mem::Section Mural  = std::mem::create_section("Mural");
 // --
-RGBA<422400, 800, 528> minimap @ 0x00 in Minimap;
-RGBA<422400, 800, 528> pencil @ 0x00 in Pencil;
-RGBA<422400, 800, 528> destroyed @ 0x00 in DestroyedTiles;
-RGBA<800, 40,20> mural @ 0x00 in Mural;
+RGBA<52800, 800, 528> minimap @ 0x00 in Minimap;
+RGBA<52800, 800, 528> pencil @ 0x00 in Pencil;
+RGBA<52800, 800, 528> destroyed @ 0x00 in DestroyedTiles;
+RGBAMural<800, 40,20>  mural @ 0x00 in Mural;
 // --
 
+// Functions
 fn twobit_to_rgba(ref auto _rawData, ref auto rgbaBuf) {
     for (u32 i = 0, i < 200, i = i + 1) {
         u32 rgbaIdx = (i * 4);
@@ -1737,24 +1709,33 @@ fn twobit_to_rgba(ref auto _rawData, ref auto rgbaBuf) {
     }
 };
 
+fn doLUT(BPP b) {
+    OB ob;
+    ob.ob[0]=LUT[b.p0];
+    ob.ob[1]=LUT[b.p1];
+    ob.ob[2]=LUT[b.p2];
+    ob.ob[3]=LUT[b.p3];
+    ob.ob[4]=LUT[b.p4];
+    ob.ob[5]=LUT[b.p5];
+    ob.ob[6]=LUT[b.p6];
+    ob.ob[7]=LUT[b.p7];
+    return ob;
+};
 
-fn onebit_to_rgba(ref auto _raw, ref auto rgbaBuf) {
-    for (u32 i = 0, i < sizeof(_raw), i = i + 1)
+
+fn mapbyteFill(auto type, auto b, auto idx) {
+    match(type)
     {
-        u32 idx = (i * 8); // index in rgba buffer
-        rgbaBuf[idx]   = LUT[u8((_raw[i] & bitmask[0]) != 0)];
-        rgbaBuf[idx+1] = LUT[u8((_raw[i] & bitmask[1]) != 0)];
-        rgbaBuf[idx+2] = LUT[u8((_raw[i] & bitmask[2]) != 0)];
-        rgbaBuf[idx+3] = LUT[u8((_raw[i] & bitmask[3]) != 0)];
-        rgbaBuf[idx+4] = LUT[u8((_raw[i] & bitmask[4]) != 0)];
-        rgbaBuf[idx+5] = LUT[u8((_raw[i] & bitmask[5]) != 0)];
-        rgbaBuf[idx+6] = LUT[u8((_raw[i] & bitmask[6]) != 0)];
-        rgbaBuf[idx+7] = LUT[u8((_raw[i] & bitmask[7]) != 0)];
+        (1): { pencil.data[idx] = doLUT(b); }
+        (2): { minimap.data[idx] = doLUT(b); }
+        (3): { destroyed.data[idx] = doLUT(b); }
     }
 };
 
-// nth bit is set?
-fn nthBitSet (u8 b, u8 n) { return ((b & bitmask[n]) != 0); };
+struct MapByte<auto type> {
+    BPP b;
+    mapbyteFill(type, b, std::core::array_index());
+};
 
 // returns u32 RGBA
 fn to_rgba_pixel(u8 bbPixel) {
@@ -1781,17 +1762,6 @@ if (ShowMural) {
 };
 
 if (ShowPencil) {
-    u8 temp[52800] @ addressof(file.Slots[slot].Map.PencilMapData);
-    onebit_to_rgba(temp, pencil.data);
-};
-
-if (ShowMinimap) {
-    u8 temp[52800] @ addressof(file.Slots[slot].Map.RevealedMapData);
-    onebit_to_rgba(temp, minimap.data);
-};
-
-if (ShowDestroyed) {
-    u8 temp[52800] @ addressof(file.Slots[slot].Map.TileStateData);
-    onebit_to_rgba(temp, destroyed.data);
+    MapByte<1> temp[52800] @ addressof(file.Slots[slot].Map.PencilMapData);
 };
 */
