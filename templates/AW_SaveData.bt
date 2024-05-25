@@ -231,12 +231,12 @@ typedef struct {
 
 
 typedef struct {
-    u32 ry : 8;
-    u32 rx : 8;
-    u32 ty : 8;
-    u32 tx : 6;
-    u32 unk : 2; // only saw 0 in save, code also checks 1
-} ToggleDWData <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, unk)>;
+    u32 roomY : 8;
+    u32 roomX : 8;
+    u32 tileY : 8;
+    u32 tileX : 6;
+    u32 layer: 2; // only saw 0 in save, code also checks 1
+} TileId <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, unk)>;
 
 
 
@@ -1289,17 +1289,6 @@ typedef struct {
 } SavedPos <optimize=false>;
 
 
-// deprecated
-typedef struct {
-    u8 FullMapRow[100] <comment="Whole world row, starting from right, each room is 5 bytes, each bit is one tile/pixel, total 40 horizontal tiles/pixesl per room">;
-} MinimapRow <optimize=false>;
-
-// deprecated
-typedef struct {
-    MinimapRow GridRoomRow[22] <comment="22 full world rows, denoting height of a room">;
-} MinimapRowsData <optimize=false>;
-
-
 typedef struct {
     u16 X;
     u16 Y;
@@ -1351,6 +1340,7 @@ typedef struct {
         FSeek(gpos + (b * 2200));
      }
 } MapRow <optimize=false>;
+
 
 typedef struct {
     MapRow           RevealedMapData  <comment="First 4 rows from the top and last 4 rows at the bottom are padding/empty. Same applies to first and last 2 rooms in a row">;
@@ -1510,10 +1500,10 @@ typedef struct {
     u8             MuralSelX;
     u8             MuralSelY;
     MapData        Map;
-    MuralPixelRow  Mural[20];
+    MuralPixelRow  Mural[20]            <comment="mural piece id = frame_seed % 50">;
     // ---
-    StalactState   BigStalactites[16];
-    u8             Unk_17[17]          <hidden=true>;
+    StalactState   BigStalactites[16]   <comment="r0704 - #0, r0406 - ## 1 2 3 4 5 6 7, r0507 - ## 8 9 10 11 12 13">;
+    u8             Unk_17[17]           <hidden=true>;
     u64            SmallStalactites[8];
     u64            Icecles[4];
     LUnlockable    LocalUnlocks         <comment="mimics some data from unlockables?">;
@@ -1552,6 +1542,7 @@ typedef struct {
     Graphics GFX;
     u8 Reserved[38] <hidden=true>;
 } Options <optimize=false>;
+
 
 
 // =====================
@@ -1612,14 +1603,24 @@ u8 CalculateHash()
 
 void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 
-
+int64 MemoryMatch() {
+    if (Strstr(GetFileName(), ".exe") > -1 && ReadUInt64(GetCursorPos()) == 5211605222123722561)
+    {
+        Printf("Trying to find savefile offset in process' memory...\n");
+        local u32 offset = ReadUInt(GetCursorPos() + 14);
+        local int64 pointer = ReadUInt64(GetCursorPos() + 18 + offset);
+        return AddressFileToLocal(pointer+1024);
+    }
+    return 0;
+}
 
 // ===================================================
 // PATTERN PARSING
 // ===================================================
 LittleEndian(); // ensure LE
+FSeek(MemoryMatch());
 
-Header GlobalState <bgcolor=0xCACAFF>;
+Header GlobalState  <bgcolor=0xCACAFF>;
 Assert(GlobalState.Version == 9, "Unsupported version detected");
-Slot Slots[3]; // <bgcolor=0xD2F2FF>;
-Options Config     <bgcolor=0xFFD2EE>;
+Slot Slots[3];      //<bgcolor=0xD2F2FF>;
+Options Config      <bgcolor=0xFFD2EE>;
