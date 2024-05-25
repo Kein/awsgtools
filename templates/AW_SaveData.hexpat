@@ -17,6 +17,7 @@
 #pragma loop_limit 500000
 #pragma endian little
 #pragma allow_edits
+#pragma pattern_limit 500000
 
 #include <std/mem.pat>
 import std.math;
@@ -1313,77 +1314,41 @@ struct ElevatorsData {
 };
 
 
+// Map data
+s32 cr = -1;
+u64 pos = $;
+u64 posMap = $;
+
+fn processRoomRow() {
+    std::print("Starting pos: {}", $);
+    cr = cr + 1;
+    $ = (posMap + (cr * 2200));
+    std::print("Skipped pos: {}", $);
+    return cr < 24;
+};
+
 struct TileRow {
     u8 data8[5];
+    padding[95];
 } [[format_read("readTileRow")]]; // format_write("writeTileRow") write does not work in Imhex
 
 
 struct Room {
-    u64 pos = $;
-    TileRow tileRow0;
-    $ = $ + 95;
-    TileRow tileRow1;
-    $ = $ + 95;
-    TileRow tileRow2;
-    $ = $ + 95;
-    TileRow tileRow3;
-    $ = $ + 95;
-    TileRow tileRow4;
-    $ = $ + 95;
-    TileRow tileRow5;
-    $ = $ + 95;
-    TileRow tileRow6;
-    $ = $ + 95;
-    TileRow tileRow7;
-    $ = $ + 95;
-    TileRow tileRow8;
-    $ = $ + 95;
-    TileRow tileRow9;
-    $ = $ + 95;
-    TileRow tileRow10;
-    $ = $ + 95;
-    TileRow tileRow11;
-    $ = $ + 95;
-    TileRow tileRow12;
-    $ = $ + 95;
-    TileRow tileRow13;
-    $ = $ + 95;
-    TileRow tileRow14;
-    $ = $ + 95;
-    TileRow tileRow15;
-    $ = $ + 95;
-    TileRow tileRow16;
-    $ = $ + 95;
-    TileRow tileRow17;
-    $ = $ + 95;
-    TileRow tileRow18;
-    $ = $ + 95;
-    TileRow tileRow19;
-    $ = $ + 95;
-    TileRow tileRow20;
-    $ = $ + 95;
-    TileRow tileRow21;
-    $ = $ + 95;
-    TileRow tileRow22;
+    pos = $;
+    TileRow tileRow[22];
     $ = (pos + 5);
 };
 
-s32 cr = -1;
-fn processRow(auto pos) {
-    cr = cr + 1;
-    $ = (pos + (cr * 2200));
-    return cr < 24;
-};
-
 struct RoomRow {
-        Room room[20];
+    Room room[20];
 };
 
 struct MapRow {
-    u64 gpos = $;
-    RoomRow roomRow[while(processRow(gpos))];
+    RoomRow roomRow[24] @ $[std::core::array_index()];
 };
 
+
+// Map data
 
 struct MapData {
     MapRow           RevealedMapData  [[comment("First 4 rows from the top and last 4 rows at the bottom are padding/empty. Same applies to first and last 2 rooms in a row")]];

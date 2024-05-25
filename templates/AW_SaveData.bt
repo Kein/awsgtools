@@ -111,6 +111,16 @@ enum <u8> ManticoreState {
     InSpace
 };
 
+enum <u8> StalactState {
+    Undefined = 0,
+    CrackedOnce,
+    CrackedTwice,
+    OnTheFloor,
+    CrackedFallen,
+    CrackedMoreFallen,
+    Broken
+};
+
 // -------------------------------
 // HEADER
 // -------------------------------
@@ -194,39 +204,30 @@ typedef struct {
 
 
 typedef struct { 
-    u16 Crank_0604_0;
-    u16 Crank_0604_1;
-    u16 Crank_0805;
-    u16 Crank_0506;
-    u16 Crank_0307;
-    u16 Crank_0509;
-    u16 Crank_0709;
-    u16 Crank_0711_0;
-    u16 Crank_0711_1;
-    u16 Crank_0713;
-    u16 Crank_1013;
-    u16 Crank_1213_0;
-    u16 Crank_1213_1;
-    u16 Crank_0415_0;
-    u16 Crank_0415_1;
-    u16 Crank_0415_2;
-    u16 Crank_0217_0;
-    u16 Crank_0217_1;
-    u16 Crank_0617;
-    u16 Crank_1517;
-    u16 unknown_28;
-    u16 unknown_2A;
-    u16 Crank_0818;
-    u16 unknown_2E;
-    u16 Reserved25;
-    u16 Reserved26;
-    u16 Reserved27;
-    u16 Reserved28;
-    u16 Reserved29;
-    u16 Reserved30;
-    u16 Reserved31;
-    u16 Reserved32;
-} CrankData;
+    s16 r0604_t3012;
+    s16 r0604_t3220;
+    s16 r0805_t1107;
+    s16 r0506_t3015;
+    s16 r0307_t2806;
+    s16 r0509_t2512;
+    s16 r0709_t2512;
+    s16 r0711_t1617;
+    s16 r0711_t3617;
+    s16 r0713_t3112;
+    s16 r1013_t1814;
+    s16 r1213_t3108;
+    s16 r1213_t1512;
+    s16 r0415_t3707;
+    s16 r0415_t0508;
+    s16 r0415_t2419;
+    s16 r0217_t1512;
+    s16 r0217_t2312;
+    s16 r0617_t3718;
+    s16 r1517_t1816;
+    s16 r1517_t2016;
+    s16 r1517_t2216;
+    s16 r0818_t2812;
+} CrankData <comment="roomXY_tileXY">;
 
 
 typedef struct {
@@ -245,6 +246,7 @@ typedef struct {
     u8 Fill_0415_1 <comment="Which would make this the 0th one instead.">;
     u8 Fill_0415_2;
     u8 Fill_0415_3;
+    u8 pad[11] <hidden=true>;
 } FillData;
 
 
@@ -1441,13 +1443,13 @@ typedef struct {
 typedef struct {
     Timestamp       SlotTime      <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     CrankData       CranksPerRoom;
-    u8              Reserved[64]  <hidden=true>; // unknown, always 00
+    u8              Reserved[82]  <hidden=true>; // unknown, always 00?
     ToggleDWData    Doors[16];
     ToggleDWData    Walls[16];
     u32             Steps         <bgcolor=0xFFD2EE>;
     FillData        FillLevels;
     // --
-    u8              Pad3[15]      <hidden=true>;
+    u8              Pad3[4]      <hidden=true>;
     ChestData       OpenedChests;
     ButtonDoorsData ButtonDoors;
     // --
@@ -1510,11 +1512,13 @@ typedef struct {
     MapData        Map;
     MuralPixelRow  Mural[20];
     // ---
-    u8             Pad8                 <hidden=true>;
-    u8             Unk_128[128]         <hidden=true>;
+    StalactState   BigStalactites[16];
+    u8             Unk_17[17]          <hidden=true>;
+    u64            SmallStalactites[8];
+    u64            Icecles[4];
     LUnlockable    LocalUnlocks         <comment="mimics some data from unlockables?">;
     u16            BerriesEatenWhenFull <comment="resets when hit or eat blue berry">;
-    u8             Pad_20[20]           <hidden=true>;
+    u8             Reserved2[20]        <hidden=true>;
 } Slot <optimize=false, read=SlotSummary>;
 
 
