@@ -236,7 +236,7 @@ typedef struct {
     u32 ty : 8;
     u32 tx : 6;
     u32 unk : 2; // only saw 0 in save, code also checks 1
-} ToggleDWData <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, _ )>;
+} ToggleDWData <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, unk)>;
 
 
 
