@@ -23,6 +23,7 @@
 import std.math;
 import std.io;
 import std.string;
+import std.core;
 
 // -------------------------------
 // SETTINGS (ImHex)
@@ -228,12 +229,12 @@ struct CrankData {
 };
 
 
-bitfield ToggleDWData {
-    ry : 8;
-    rx : 8;
-    ty : 8;
-    tx : 6;
-    unk : 2; // only saw 0 in save, code also checks 1
+bitfield TileID {
+    roomY : 8;
+    roomX : 8;
+    tileY : 8;
+    tileX : 6;
+    layer: 2; // only saw 0 in save, code also checks 1
 }; // <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, _ )>;
 
 
@@ -1315,40 +1316,41 @@ struct ElevatorsData {
 
 
 // Map data
-s32 cr = -1;
-u64 pos = $;
-u64 posMap = $;
+u64 addrmap[22];
+u64 pos;
+fn initializeAddresses(ref auto addrmap) {
+    for (u32 i=0,i<22,i+=1)
+        addrmap[i] = i * 100 + $;
+};
 
-fn processRoomRow() {
-    std::print("Starting pos: {}", $);
-    cr = cr + 1;
-    $ = (posMap + (cr * 2200));
-    std::print("Skipped pos: {}", $);
-    return cr < 24;
+fn updateAddresses(ref auto addrmap) {
+    for (u32 i=0,i<22,i+=1)
+        addrmap[i] = addrmap[i] + 5;
 };
 
 struct TileRow {
-    u8 data8[5];
-    padding[95];
-} [[format_read("readTileRow")]]; // format_write("writeTileRow") write does not work in Imhex
-
+    u8 data8[5] @ addrmap[std::core::array_index()][[inline]];
+} [[format_read("readTileRow")]];
 
 struct Room {
-    pos = $;
-    TileRow tileRow[22];
-    $ = (pos + 5);
+    if (std::core::array_index() == 0)
+        initializeAddresses(addrmap);
+    else
+        updateAddresses(addrmap);
+    TileRow tileRows[22];
 };
 
 struct RoomRow {
-    Room room[20];
+    $ = pos + std::core::array_index() * 2200; // ensure we advance to the next 2200 bytes properly
+    Room roomsRow[20];
 };
 
 struct MapRow {
-    RoomRow roomRow[24] @ $[std::core::array_index()];
+    pos = $;
+    RoomRow RowsOfRooms[24][[inline]];
+    padding[2200]; // we use padding to advance cursor at the end because lol imhex
 };
 
-
-// Map data
 
 struct MapData {
     MapRow           RevealedMapData  [[comment("First 4 rows from the top and last 4 rows at the bottom are padding/empty. Same applies to first and last 2 rooms in a row")]];
@@ -1441,8 +1443,8 @@ struct Slot {
     Timestamp       SlotTime      [[color("FFD2EE")]];
     CrankData       CranksPerRoom;
     u8              Reserved[64]  [[hidden]]; // unknown, always 00
-    ToggleDWData    Doors[16];
-    ToggleDWData    Walls[16];
+    TileID    Doors[16];
+    TileID    Walls[16];
     u32             Steps         [[color("FFD2EE")]];
     FillData        FillLevels;
     // --
@@ -1575,7 +1577,7 @@ fn numSetBits64(u64 i) {
 };
 
 // Generic algo for map tiles
-fn readTileRow(TileRow tr) {
+fn readTileRow(ref auto tr) {
     return std::format("{:08b}{:08b}{:08b}{:08b}{:08b}", tr.data8[0], tr.data8[1], tr.data8[2], tr.data8[3], tr.data8[4]);
 };
 

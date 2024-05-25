@@ -1314,7 +1314,6 @@ typedef struct {
     u8 data8[5] <format=binary>;
 } TileRow <read=readTileRow, write=writeTileRow>;
 
-
 typedef struct {
     local int64 pos = FTell();
     local u32 t = 0;
@@ -1324,7 +1323,6 @@ typedef struct {
     }
     FSeek(pos + 5);
 } Room <optimize=false>;
-
 
 typedef struct {
     local u32 r = 0; // rooms/columns
@@ -1604,7 +1602,8 @@ u8 CalculateHash()
 void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 
 int64 MemoryMatch() {
-    if (Strstr(GetFileName(), ".exe") > -1 && ReadUInt64(GetCursorPos()) == 5211605222123722561)
+    local int64 pos = GetCursorPos();
+    if (Strstr(GetFileName(), ".exe") > -1 && ReadUInt64(pos) == 0x4853575656415741 && ReadUInt64(pos+8) == 0x9FD61D8B4860EC83)
     {
         Printf("Trying to find savefile offset in process' memory...\n");
         local u32 offset = ReadUInt(GetCursorPos() + 14);
