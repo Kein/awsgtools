@@ -236,7 +236,7 @@ typedef struct {
     u32 tileY : 8;
     u32 tileX : 6;
     u32 layer: 2; // only saw 0 in save, code also checks 1
-} TileId <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, unk)>;
+} TileID <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, unk)>;
 
 
 
@@ -1434,8 +1434,8 @@ typedef struct {
     Timestamp       SlotTime      <bgcolor=0xFFD2EE, read=Str("%u:%u:%u %u.%u.%u", this.Hour, this.Minutes, this.Seconds,  this.Day, this.Month, this.Year)>;
     CrankData       CranksPerRoom;
     u8              Reserved[82]  <hidden=true>; // unknown, always 00?
-    ToggleDWData    Doors[16];
-    ToggleDWData    Walls[16];
+    TileID          Doors[16];
+    TileID          Walls[16];
     u32             Steps         <bgcolor=0xFFD2EE>;
     FillData        FillLevels;
     // --
