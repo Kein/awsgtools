@@ -1620,6 +1620,6 @@ LittleEndian(); // ensure LE
 FSeek(MemoryMatch());
 
 Header GlobalState  <bgcolor=0xCACAFF>;
-Assert(GlobalState.Version == 9, "Unsupported version detected");
+Assert(GlobalState.Version == 9, "Unsupported version detected\n");
 Slot Slots[3];      //<bgcolor=0xD2F2FF>;
 Options Config      <bgcolor=0xFFD2EE>;

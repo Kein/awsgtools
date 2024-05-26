@@ -12,6 +12,8 @@ To edit your savedata:
  5. ONLY modify the savefile values though Template Results! Ignore Inspector.
  6. After you are done making the changes, enter **999**  into `GlobalState -> SaveHash` field, press Enter - it will calculate save hash. **Re-save** the file. If you forget this step... well, you will see.
 
+ If you want to use the template at runtime, to edit live game state, in-game - open the Animal Well process, run search for hex bytes `41 57 41 56 56 57 53 48 83 EC 60 48 8B 1D` and then just run the template.
+
 
 ## ImHex
 AW_SaveData.hexpat is a port of the 010 template to open-source [ImHex](https://imhex.werwolv.net/)
