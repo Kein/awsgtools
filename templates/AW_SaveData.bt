@@ -1603,7 +1603,7 @@ void WriteHash(u8 &b, string s) { b = CalculateHash(); }
 
 int64 MemoryMatch() {
     local int64 pos = GetCursorPos();
-    if (Strstr(GetFileName(), ".exe") > -1 && ReadUInt64(pos) == 0x4853575656415741 && ReadUInt64(pos+8) == 0x9FD61D8B4860EC83)
+    if (Strstr(GetFileName(), ".exe") > -1 && Checksum(CHECKSUM_CRC16, pos, 14) == 43115)
     {
         Printf("Trying to find savefile offset in process' memory...\n");
         local u32 offset = ReadUInt(GetCursorPos() + 14);
