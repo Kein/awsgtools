@@ -1204,7 +1204,7 @@ typedef struct {
     u16 Unknown1 : 1;
     u16 ReadyToHatch : 1;
     u16 ShowHPbar : 1;
-    u16 Unknown1 : 1;
+    u16 DropHouseKey : 1;
     u16 Unknown3 : 1;
     u16 Unknown4 : 1;
     u16 Unknown5 : 1;
@@ -1526,19 +1526,22 @@ typedef struct {
 
     u8 SwapCancel : 1;
     u8 IgnoreBGInput : 1;
-    u8 pad : 6      <hidden=true>;
+    u8 GamepadSpeakerOff : 1; // reverted?
+    u8 pad : 5      <hidden=true>;
 } Toggles;
 
 
 typedef struct {
-    Toggles ToggleSettings;
-    Language Lang;
-    u8 Unk[5]       <hidden=true>;
-    float SFX;
-    float Music;
+    Toggles         ToggleSettings;
+    Language        Lang;
+    u8              DemoMode <comment="possible demo mode toggle, crashes the game">;
+    u8              Unknown  <comment="always set to 1">;
+    u8              Unk[3]       <hidden=true>;
+    float           SFX;
+    float           Music;
     ControllerStyle GamepadStyle;
-    Graphics GFX;
-    u8 Reserved[38] <hidden=true>;
+    Graphics        GFX;
+    u8              Reserved[38] <hidden=true>;
 } Options <optimize=false>;
 
 
