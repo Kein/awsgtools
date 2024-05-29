@@ -240,10 +240,10 @@ bitfield TileID {
 
 struct FillData {
     u8 Fill_0711;
-    u8 Fill_0415_0 [[comment("Potentially incorrect.")]];
-    u8 Fill_0415_1 [[comment("Which would make this the 0th one instead.")]];
-    u8 Fill_0415_2;
-    u8 Fill_0415_3;
+    u8 Fill_0415;
+    u8 Fill_0217_0;
+    u8 Fill_0217_1;
+    u8 Fill_0217_2;
 };
 
 bitfield ChestData {
