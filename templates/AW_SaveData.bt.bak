@@ -236,7 +236,7 @@ typedef struct {
     u32 tileY : 8;
     u32 tileX : 6;
     u32 layer: 2; // only saw 0 in save, code also checks 1
-} TileID <read=Str( "%02d %02d %02d %02d %02d", roomX, roomY, tileX, tileY, layer)>;
+} TileID <read=Str( "%02d %02d %02d %02d %02d", rx, ry, tx, ty, unk)>;
 
 
 
