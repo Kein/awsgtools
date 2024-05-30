@@ -675,6 +675,21 @@ bitfield GreenButtonData {
 } [[comment("Room coordinates are yx_id not xy_id")]];
 
 
+bitfield PinkButtonData {
+    Button_r1204_t3502_l0 : 1 [[comment("Illegal Bunny 1")]];
+    Button_r0205_t0103_l0 : 1 [[comment("Spike Bunny")]];
+    Button_r0706_t1902_l0 : 1 [[comment("Floor is Lava Bunny")]];
+    Button_r0307_t0106_l0 : 1 [[comment("Illegal Bunny 2")]];
+    Button_r1307_t3203_l0 : 1 [[comment("Map Number Bunny")]];
+    Button_r1008_t3319_l0 : 1 [[comment("Elevator Dog Wheel")]];
+    Button_r0209_t2606_l0 : 1 [[comment("Chinchilla Bunny")]];
+    Button_r0613_t3808_l0 : 1 [[comment("Bulb Bunny")]];
+    Button_r1313_t1503_l0 : 1 [[comment("Illegal Bunny")]];
+    Button_r0219_t3615_l0 : 1 [[comment("Lower Portal Nexus")]];
+    pad : 6 [[hidden]];
+};
+
+
 bitfield FruitData {
     unknown_00_0 : 1;
     unknown_00_1 : 1;
@@ -1468,8 +1483,9 @@ struct Slot {
     u16           TotalBubblesPopped;
     u16           Unk16_2           [[hidden]];
     u16           TimesSaved;
-    u8            DoorsIdx          [[comment("keeps track of doors array index")]];
-    u8            unk8_6[6]         [[hidden]];
+    u16           DoorsIdx          [[comment("keeps track of doors array index")]];
+    PinkButtonData PinkButtons;
+    u8            unk8_3[3]         [[hidden]];
     u8            KeysCount         [[color("D2FFD6")]];
     u8            MatchesCount      [[color("D2FFD6")]];
     u8            FCrackersCount    [[color("D2FFD6")]];

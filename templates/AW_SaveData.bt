@@ -681,6 +681,21 @@ typedef struct {
 
 
 typedef struct {
+    u16 Button_r1204_t3502_l0 : 1 <comment="Illegal Bunny 1">;
+    u16 Button_r0205_t0103_l0 : 1 <comment="Spike Bunny">;
+    u16 Button_r0706_t1902_l0 : 1 <comment="Floor is Lava Bunny">;
+    u16 Button_r0307_t0106_l0 : 1 <comment="Illegal Bunny 2">;
+    u16 Button_r1307_t3203_l0 : 1 <comment="Map Number Bunny">;
+    u16 Button_r1008_t3319_l0 : 1 <comment="Elevator Dog Wheel">;
+    u16 Button_r0209_t2606_l0 : 1 <comment="Chinchilla Bunny">;
+    u16 Button_r0613_t3808_l0 : 1 <comment="Bulb Bunny">;
+    u16 Button_r1313_t1503_l0 : 1 <comment="Illegal Bunny 3">;
+    u16 Button_r0219_t3615_l0 : 1 <comment="Lower Portal Nexus">;
+    u16 pad : 6 <hidden=true>;
+} PinkButtonData;
+
+
+typedef struct {
     u64 unknown_00_0 : 1;
     u64 unknown_00_1 : 1;
     u64 room_0404_0 : 1;
@@ -1457,8 +1472,9 @@ typedef struct {
     u16           TotalBubblesPopped;
     u16           Unk16_2           <hidden=true>;
     u16           TimesSaved;
-    u8            DoorsIdx          <comment="keeps track of doors array index">;
-    u8            unk8_6[6]         <hidden=true>;
+    u16           DoorsIdx          <comment="keeps track of doors array index">;
+    PinkButtonData PinkButtons;
+    u8            unk8_3[3]         <hidden=true>;
     u8            KeysCount         <bgcolor=0xD2FFD6>;
     u8            MatchesCount      <bgcolor=0xD2FFD6>;
     u8            FCrackersCount    <bgcolor=0xD2FFD6>;
