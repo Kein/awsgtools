@@ -1256,18 +1256,6 @@ typedef struct {
 
 
 typedef struct {
-    u8 Unk_00_0 : 1 <comment="Potentially reserved for Eel, but unused?">;
-    u8 Chameleon : 1;
-    u8 Fish : 1;
-    u8 Bear : 1;
-    u8 Dog : 1;
-    u8 Bird : 1;
-    u8 Cat : 1;
-    u8 Hippo : 1;
-} TPSeenData;
-
-
-typedef struct {
     u8 unk  : 1 <hidden=true>;
     u8 Frog : 1;
     u8 Fish : 1;
@@ -1276,7 +1264,7 @@ typedef struct {
     u8 Bird : 1;
     u8 Squirrel : 1;
     u8 Hippo : 1;
-} TPActiveData;
+} TeleportData;
 
 
 typedef struct {
@@ -1507,8 +1495,8 @@ typedef struct {
     FlameData      Flames;
     u8             Unk8_5               <hidden=true>;
     // ---
-    TPSeenData     TeleportsSeen;
-    TPActiveData   TeleportsActivated;
+    TeleportData   TeleportsSeen;
+    TeleportData   TeleportsActivated;
     StampData      PlacedStamps;
     ElevatorsData  Elevators;
     u8             MuralSelX;

@@ -1250,19 +1250,7 @@ bitfield ElevatorsActive {
 };
 
 
-bitfield TPSeenData {
-    Unk_00_0 : 1 [[comment("Potentially reserved for Eel, but unused?")]];
-    Chameleon : 1;
-    Fish : 1;
-    Bear : 1;
-    Dog : 1;
-    Bird : 1;
-    Cat : 1;
-    Hippo : 1;
-};
-
-
-bitfield TPActiveData {
+bitfield TeleportData {
     unk  : 1 [[hidden]];
     Frog : 1;
     Fish : 1;
@@ -1518,8 +1506,8 @@ struct Slot {
     FlameData      Flames;
     u8             Unk8_5               [[hidden]];
     // ---
-    TPSeenData     TeleportsSeen;
-    TPActiveData   TeleportsActivated;
+    TeleportData   TeleportsSeen;
+    TeleportData   TeleportsActivated;
     StampData      PlacedStamps;
     ElevatorsData  Elevators;
     u8             MuralSelX;
