@@ -1426,7 +1426,7 @@ typedef struct {
 
 
 typedef struct {
-    FruitData        PickedUpFuits;
+    FruitData        PickedUpFruits;
     FirecrackerData  PickedUpFCrackers;
 } PickableSection;
 

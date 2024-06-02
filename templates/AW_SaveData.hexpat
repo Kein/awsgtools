@@ -1437,7 +1437,7 @@ struct ButtonsSection {
 
 
 struct PickableSection {
-    FruitData        PickedUpFuits;
+    FruitData        PickedUpFruits;
     FirecrackerData  PickedUpFCrackers;
 };
 
