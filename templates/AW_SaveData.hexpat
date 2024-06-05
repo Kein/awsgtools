@@ -9,6 +9,7 @@
 //   File Mask: *.sav
 //   History: 
 //     0.1  - Initial port from 010
+//     0.2  - 2024-06-05 - Various updates from the past few weeks
 //---------------------------------------------------------
 
 // ===================================================
@@ -1238,10 +1239,10 @@ bitfield ElevatorDirData {
 };
 
 
-bitfield ElevatorsActive {
+bitfield ElevatorsDisabled {
     Elevator1 : 1;
     Elevator2 : 1;
-    Elevator3 : 1;
+    Ostrich : 1 [[comment("Wheel Ostrich Elevator")]];
     Elevator4 : 1;
     Elevator5 : 1;
     Elevator6 : 1;
@@ -1312,9 +1313,9 @@ struct StampData {
 
 
 struct ElevatorsData {
-    ElevatorsSimData ElevatorPhysics[8];
-    ElevatorDirData  ElevatorDirections;
-    ElevatorsActive  EnabledElevators;
+    ElevatorsSimData   ElevatorPhysics[8];
+    ElevatorDirData    ElevatorDirections;
+    ElevatorsDisabled  DisabledElevators;
 };
 
 

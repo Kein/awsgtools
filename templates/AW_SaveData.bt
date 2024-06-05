@@ -14,6 +14,7 @@
 //             Renamed a few things.
 //     0.4   - Added A LOT of new data points courtesy of ero/just_ero
 //     0.5   - Added more research from ero/lipsum/apo
+//     0.6   - 2024-06-05 - Various updates from the past few weeks
 //---------------------------------------------------------
 
 // ===================================================
@@ -1246,13 +1247,13 @@ typedef struct {
 typedef struct {
     u8 Elevator1 : 1;
     u8 Elevator2 : 1;
-    u8 Elevator3 : 1;
+    u8 Ostrich : 1 <comment="Wheel Ostrich Elevator">;
     u8 Elevator4 : 1;
     u8 Elevator5 : 1;
     u8 Elevator6 : 1;
     u8 Elevator7 : 1;
     u8 Elevator8 : 1;
-} ElevatorsActive;
+} ElevatorsDisabled;
 
 
 typedef struct {
@@ -1307,9 +1308,9 @@ typedef struct {
 
 
 typedef struct {
-    ElevatorsSimData ElevatorPhysics[8];
-    ElevatorDirData  ElevatorDirections;
-    ElevatorsActive  EnabledElevators;
+    ElevatorsSimData   ElevatorPhysics[8];
+    ElevatorDirData    ElevatorDirections;
+    ElevatorsDisabled  DisabledElevators;
 } ElevatorsData;
 
 
