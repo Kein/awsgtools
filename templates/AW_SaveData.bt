@@ -1249,9 +1249,9 @@ typedef struct {
     u8 Elevator2 : 1;
     u8 Ostrich : 1 <comment="Wheel Ostrich Elevator">;
     u8 Elevator4 : 1;
-    u8 Elevator5 : 1;
-    u8 Elevator6 : 1;
-    u8 Elevator7 : 1;
+    u8 Elevator5 : 1 <comment="Disabled from game start")>;
+    u8 Elevator6 : 1 <comment="Disabled from game start")>;
+    u8 Elevator7 : 1 <comment="Disabled from game start")>;
     u8 Elevator8 : 1;
 } ElevatorsDisabled;
 

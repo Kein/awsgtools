@@ -1244,9 +1244,9 @@ bitfield ElevatorsDisabled {
     Elevator2 : 1;
     Ostrich : 1 [[comment("Wheel Ostrich Elevator")]];
     Elevator4 : 1;
-    Elevator5 : 1;
-    Elevator6 : 1;
-    Elevator7 : 1;
+    Elevator5 : 1 [[comment("Disabled from game start")]];
+    Elevator6 : 1 [[comment("Disabled from game start")]];
+    Elevator7 : 1 [[comment("Disabled from game start")]];
     Elevator8 : 1;
 };
 
