@@ -16,12 +16,20 @@ To edit your savedata:
 
 
 ## ImHex
-AW_SaveData.hexpat is a port of the 010 template to open-source [ImHex](https://imhex.werwolv.net/)
+`AW_SaveData.hexpat` is a port of the 010 template to open-source [ImHex](https://imhex.werwolv.net/)
 It lacks some of the features of the base 010 template like previews for some data, but otherwise indentical.
 
 
 # Tools
-In progress
+Known save editors:
+
+- Apocalyptech's Python-based CLI [animalwellsave](https://github.com/apocalyptech/animalwellsave/)
+
+
+# Documentation
+The [project wiki](https://github.com/Kein/awsgtools/wiki) contains some documentation
+on the save format which might be useful for human eyes, including various points
+which might be useful for tool authors.
 
 
 # Contributing
