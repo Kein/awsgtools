@@ -10,8 +10,9 @@
 //   History: 
 //     0.1  - Initial port from 010
 //     0.2  - 2024-06-05 - Various updates from the past few weeks
-//     0.3  - 2024-07-02 - Clarified unk8_3, courtesy avengah.
-//            Also added a missing chest bit.
+//     0.3  - 2024-07-02 - Clarified unk8_3, courtesy avengah
+//          - Added a missing chest bit, also courtesy avengah
+//          - Renamed KangarooStatus values to more closely match the game
 //---------------------------------------------------------
 
 // ===================================================
@@ -92,8 +93,8 @@ enum KangarooShardState : u8 {
 };
 
 enum KangaroStatus : u8 {
-    Idle = 0,
-    RunningAway,
+    Initial = 0,
+    Lurking,
     Attacking
 };
 

@@ -15,8 +15,9 @@
 //     0.4   - Added A LOT of new data points courtesy of ero/just_ero
 //     0.5   - Added more research from ero/lipsum/apo
 //     0.6   - 2024-06-05 - Various updates from the past few weeks
-//     0.7   - 2024-07-02 - Clarified unk8_3, courtesy avengah.
-//             Also added a missing chest bit.
+//     0.7   - 2024-07-02 - Clarified unk8_3, courtesy avengah
+//           - Added a missing chest bit, also courtesy avengah
+//           - Renamed KangarooStatus values to more closely match the game
 //---------------------------------------------------------
 
 // ===================================================
@@ -92,8 +93,8 @@ enum <u8> KangarooShardState {
 };
 
 enum <u8> KangaroStatus {
-    Idle = 0,
-    RunningAway,
+    Initial = 0,
+    Lurking,
     Attacking
 };
 
