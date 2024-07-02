@@ -15,6 +15,7 @@
 //     0.4   - Added A LOT of new data points courtesy of ero/just_ero
 //     0.5   - Added more research from ero/lipsum/apo
 //     0.6   - 2024-06-05 - Various updates from the past few weeks
+//     0.7   - 2024-07-02 - Clarified unk8_3, courtesy avengah
 //---------------------------------------------------------
 
 // ===================================================
@@ -368,6 +369,10 @@ typedef struct {
     u64 pad : 27 <hidden=true>;
 } ChestData <comment="Room coordinates are yx_id not xy_id">;
 
+typedef struct {
+    u8 room_1111_0 : 1 <comment="two rabbits fig">;
+    u8 pad : 7 <hidden=true>;
+} Layer1ChestData <comment="Chests opened in CE Temple">;
 
 typedef struct {
     u64 room_0403_0 : 1;
@@ -633,6 +638,14 @@ typedef struct {
     u64 pad : 58  <hidden=true>;
 } YellowButtonData;
 
+
+typedef struct {
+    u8 room_1019_0 : 1;
+    u8 room_1019_1 : 1;
+    u8 room_1019_2 : 1;
+    u8 room_1019_3 : 1;
+    u8 pad : 4 <hidden=true>;
+} Layer2YellowButtonData <comment="yellow buttons pressed in Space / Bunny Island">;
 
 typedef struct {
     u64 Button_1204_0 : 1;
@@ -1463,7 +1476,9 @@ typedef struct {
     u16           TimesSaved;
     u16           DoorsIdx          <comment="keeps track of doors array index">;
     PinkButtonData PinkButtons;
-    u8            unk8_3[3]         <hidden=true>;
+    u8            NutsCount         <bgcolor=0xD2FFD6>;
+    Layer1ChestData Layer1Chests    <comment="chests opened in CE Temple">;
+    Layer2YellowButtonData Layer2YellowButtons <comment="yellow buttons pressed in Space / Bunny Island">;
     u8            KeysCount         <bgcolor=0xD2FFD6>;
     u8            MatchesCount      <bgcolor=0xD2FFD6>;
     u8            FCrackersCount    <bgcolor=0xD2FFD6>;

@@ -10,6 +10,7 @@
 //   History: 
 //     0.1  - Initial port from 010
 //     0.2  - 2024-06-05 - Various updates from the past few weeks
+//     0.3  - 2024-07-02 - Clarified unk8_3, courtesy avengah
 //---------------------------------------------------------
 
 // ===================================================
@@ -364,6 +365,10 @@ bitfield ChestData {
     pad : 27 [[hidden]];
 } [[comment("Room coordinates are yx_id not xy_id")]];
 
+bitfield Layer1ChestData {
+    room_1111_0 : 1 [[comment("two rabbits fig")]];
+    pad : 7 [[hidden]];
+} [[comment("Chests opened in CE Temple")]];
 
 bitfield ButtonDoorsData {
     room_0403_0 : 1;
@@ -628,6 +633,13 @@ bitfield YellowButtonData {
     pad : 58  [[hidden]];
 };
 
+bitfield Layer2YellowButtonData {
+    room_1019_0 : 1;
+    room_1019_1 : 1;
+    room_1019_2 : 1;
+    room_1019_3 : 1;
+    pad : 4 [[hidden]];
+} [[comment("yellow buttons pressed in Space / Bunny Island")]];
 
 bitfield PurpleButtonData {
     Button_1204_0 : 1;
@@ -1474,7 +1486,9 @@ struct Slot {
     u16           TimesSaved;
     u16           DoorsIdx          [[comment("keeps track of doors array index")]];
     PinkButtonData PinkButtons;
-    u8            unk8_3[3]         [[hidden]];
+    u8            NutsCount         [[color("D2FFD6")]];
+    Layer1ChestData Layer1Chests    [[comment("chests opened in CE Temple")]];
+    Layer2YellowButtonData Layer2YellowButtons [[comment("yellow buttons pressed in Space / Bunny Island")]];
     u8            KeysCount         [[color("D2FFD6")]];
     u8            MatchesCount      [[color("D2FFD6")]];
     u8            FCrackersCount    [[color("D2FFD6")]];

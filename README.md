@@ -40,4 +40,5 @@ If you plan to contribute to template tables, make sure to ALWAYS explictly pad 
 * **Kein** - initial save format structure research, template maintenance  
 * **apocalyptech** - initial save format structure research, tooling  
 * **ero** - runtime save format structure research, lots of it  
-* **lipsum** - runtime save format structure research  
+* **lipsum** - runtime save format structure research
+* **avengah** - save format structure research
