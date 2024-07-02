@@ -10,7 +10,8 @@
 //   History: 
 //     0.1  - Initial port from 010
 //     0.2  - 2024-06-05 - Various updates from the past few weeks
-//     0.3  - 2024-07-02 - Clarified unk8_3, courtesy avengah
+//     0.3  - 2024-07-02 - Clarified unk8_3, courtesy avengah.
+//            Also added a missing chest bit.
 //---------------------------------------------------------
 
 // ===================================================
@@ -362,7 +363,8 @@ bitfield ChestData {
     unknown_0C_2 : 1;
     unknown_0C_3 : 1;
     room_1908_0 : 1;
-    pad : 27 [[hidden]];
+    room_1912_0 : 1 [[comment("golden egg")]];
+    pad : 26 [[hidden]];
 } [[comment("Room coordinates are yx_id not xy_id")]];
 
 bitfield Layer1ChestData {

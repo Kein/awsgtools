@@ -15,7 +15,8 @@
 //     0.4   - Added A LOT of new data points courtesy of ero/just_ero
 //     0.5   - Added more research from ero/lipsum/apo
 //     0.6   - 2024-06-05 - Various updates from the past few weeks
-//     0.7   - 2024-07-02 - Clarified unk8_3, courtesy avengah
+//     0.7   - 2024-07-02 - Clarified unk8_3, courtesy avengah.
+//             Also added a missing chest bit.
 //---------------------------------------------------------
 
 // ===================================================
@@ -366,7 +367,8 @@ typedef struct {
     u64 unknown_0C_2 : 1;
     u64 unknown_0C_3 : 1;
     u64 room_1908_0 : 1;
-    u64 pad : 27 <hidden=true>;
+    u64 room_1912_0 : 1 <comment="golden egg">;
+    u64 pad : 26 <hidden=true>;
 } ChestData <comment="Room coordinates are yx_id not xy_id">;
 
 typedef struct {
