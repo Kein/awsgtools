@@ -1438,6 +1438,7 @@ bitfield MuralPixelRow {
 };
 
 bitfield SmallStalactData {
+
     room_0704_0 : 1;
     room_0704_1 : 1;
     room_0704_2 : 1;
@@ -1446,6 +1447,7 @@ bitfield SmallStalactData {
     room_0905_1 : 1;
     room_0905_2 : 1;
     room_0206_0 : 1;
+
     room_0206_1 : 1;
     room_0406_0 : 1;
     room_0406_1 : 1;
@@ -1454,6 +1456,7 @@ bitfield SmallStalactData {
     room_0406_4 : 1;
     room_0406_5 : 1;
     room_0406_6 : 1;
+
     room_0406_7 : 1;
     room_0406_8 : 1;
     room_0207_0 : 1;
@@ -1462,6 +1465,7 @@ bitfield SmallStalactData {
     room_0207_3 : 1;
     room_0207_4 : 1;
     room_0207_5 : 1;
+
     room_0207_6 : 1;
     room_0207_7 : 1;
     room_0207_8 : 1;
@@ -1470,6 +1474,7 @@ bitfield SmallStalactData {
     room_0207_11 : 1;
     room_0207_12 : 1;
     room_0207_13 : 1;
+
     room_0207_14 : 1;
     room_0207_15 : 1;
     room_0207_16 : 1;
@@ -1478,6 +1483,7 @@ bitfield SmallStalactData {
     room_0207_19 : 1;
     room_0207_20 : 1;
     room_0507_0 : 1;
+
     room_0507_1 : 1;
     room_0507_2 : 1;
     room_0507_3 : 1;
@@ -1486,6 +1492,7 @@ bitfield SmallStalactData {
     room_0310_1 : 1;
     room_0310_2 : 1;
     room_0310_3 : 1;
+
     room_0310_4 : 1;
     room_0310_5 : 1;
     room_0310_6 : 1;
@@ -1494,6 +1501,7 @@ bitfield SmallStalactData {
     room_0410_0 : 1;
     room_0410_1 : 1;
     room_0311_0 : 1;
+
     room_0311_1 : 1;
     room_0311_2 : 1;
     room_0311_3 : 1;
@@ -1502,6 +1510,7 @@ bitfield SmallStalactData {
     room_0311_6 : 1;
     room_0311_7 : 1;
     room_0311_8 : 1;
+
     room_0311_9 : 1;
     room_0311_10 : 1;
     room_0311_11 : 1;
@@ -1510,6 +1519,7 @@ bitfield SmallStalactData {
     room_1511_1 : 1;
     room_1511_2 : 1;
     room_1511_3 : 1;
+
     room_1611_0 : 1;
     room_1611_1 : 1;
     room_1611_2 : 1;
@@ -1518,6 +1528,7 @@ bitfield SmallStalactData {
     room_1611_5 : 1;
     room_1611_6 : 1;
     room_1611_7 : 1;
+
     room_1611_8 : 1;
     room_1611_9 : 1;
     room_1611_10 : 1;
@@ -1526,6 +1537,7 @@ bitfield SmallStalactData {
     room_1611_13 : 1;
     room_1611_14 : 1;
     room_1611_15 : 1;
+
     room_1611_16 : 1;
     room_1611_17 : 1;
     room_1611_18 : 1;
@@ -1534,6 +1546,7 @@ bitfield SmallStalactData {
     room_1611_21 : 1;
     room_1711_0 : 1;
     room_1711_1 : 1;
+
     room_1711_2 : 1;
     room_0212_0 : 1;
     room_0312_0 : 1;
@@ -1542,6 +1555,7 @@ bitfield SmallStalactData {
     room_0312_3 : 1;
     room_0312_4 : 1;
     room_0312_5 : 1;
+
     room_0312_6 : 1;
     room_0312_7 : 1;
     room_0312_8 : 1;
@@ -1550,6 +1564,7 @@ bitfield SmallStalactData {
     room_0312_11 : 1;
     room_0312_12 : 1;
     room_0312_13 : 1;
+
     room_0312_14 : 1;
     room_0312_15 : 1;
     room_0312_16 : 1;
@@ -1558,6 +1573,7 @@ bitfield SmallStalactData {
     room_0312_19 : 1;
     room_0312_20 : 1;
     room_0312_21 : 1;
+
     room_0312_22 : 1;
     room_0312_23 : 1;
     room_0312_24 : 1;
@@ -1566,6 +1582,7 @@ bitfield SmallStalactData {
     room_0312_27 : 1;
     room_0312_28 : 1;
     room_0312_29 : 1;
+
     room_0312_30 : 1;
     room_0312_31 : 1;
     room_0312_32 : 1;
@@ -1574,6 +1591,7 @@ bitfield SmallStalactData {
     room_0312_35 : 1;
     room_0312_36 : 1;
     room_0312_37 : 1;
+
     room_0312_38 : 1;
     room_0312_39 : 1;
     room_0312_40 : 1;
@@ -1582,6 +1600,7 @@ bitfield SmallStalactData {
     room_0312_43 : 1;
     room_0312_44 : 1;
     room_0312_45 : 1;
+
     room_0312_46 : 1;
     room_0312_47 : 1;
     room_0412_0 : 1;
@@ -1590,6 +1609,7 @@ bitfield SmallStalactData {
     room_0412_3 : 1;
     room_0412_4 : 1;
     room_0412_5 : 1;
+
     room_0412_6 : 1;
     room_0412_7 : 1;
     room_0412_8 : 1;
@@ -1598,6 +1618,7 @@ bitfield SmallStalactData {
     room_0412_11 : 1;
     room_0412_12 : 1;
     room_0412_13 : 1;
+
     room_0412_14 : 1;
     room_0412_15 : 1;
     room_0412_16 : 1;
@@ -1606,6 +1627,7 @@ bitfield SmallStalactData {
     room_0412_19 : 1;
     room_0412_20 : 1;
     room_0412_21 : 1;
+
     room_0412_22 : 1;
     room_0412_23 : 1;
     room_0412_24 : 1;
@@ -1614,6 +1636,7 @@ bitfield SmallStalactData {
     room_0412_27 : 1;
     room_0412_28 : 1;
     room_0412_29 : 1;
+
     room_0412_30 : 1;
     room_0412_31 : 1;
     room_0412_32 : 1;
@@ -1622,6 +1645,7 @@ bitfield SmallStalactData {
     room_1412_1 : 1;
     room_1412_2 : 1;
     room_1412_3 : 1;
+
     room_1412_4 : 1;
     room_1412_5 : 1;
     room_1412_6 : 1;
@@ -1630,6 +1654,7 @@ bitfield SmallStalactData {
     room_1412_9 : 1;
     room_1412_10 : 1;
     room_1412_11 : 1;
+
     room_1512_0 : 1;
     room_1512_1 : 1;
     room_1512_2 : 1;
@@ -1638,6 +1663,7 @@ bitfield SmallStalactData {
     room_1512_5 : 1;
     room_1512_6 : 1;
     room_1512_7 : 1;
+
     room_1512_8 : 1;
     room_1512_9 : 1;
     room_1512_10 : 1;
@@ -1646,6 +1672,7 @@ bitfield SmallStalactData {
     room_1512_13 : 1;
     room_1512_14 : 1;
     room_1512_15 : 1;
+
     room_1512_16 : 1;
     room_1512_17 : 1;
     room_1512_18 : 1;
@@ -1654,6 +1681,7 @@ bitfield SmallStalactData {
     room_1512_21 : 1;
     room_1512_22 : 1;
     room_1512_23 : 1;
+
     room_1512_24 : 1;
     room_1512_25 : 1;
     room_1512_26 : 1;
@@ -1662,6 +1690,7 @@ bitfield SmallStalactData {
     room_1512_29 : 1;
     room_1512_30 : 1;
     room_1512_31 : 1;
+
     room_1612_0 : 1;
     room_1612_1 : 1;
     room_1612_2 : 1;
@@ -1670,6 +1699,7 @@ bitfield SmallStalactData {
     room_1612_5 : 1;
     room_1612_6 : 1;
     room_0413_0 : 1;
+
     room_0413_1 : 1;
     room_0413_2 : 1;
     room_0413_3 : 1;
@@ -1678,6 +1708,7 @@ bitfield SmallStalactData {
     room_0513_2 : 1;
     room_0513_3 : 1;
     room_0513_4 : 1;
+
     room_0513_5 : 1;
     room_0513_6 : 1;
     room_0513_7 : 1;
@@ -1686,6 +1717,7 @@ bitfield SmallStalactData {
     room_0513_10 : 1;
     room_0513_11 : 1;
     room_0513_12 : 1;
+
     room_0513_13 : 1;
     room_0513_14 : 1;
     room_0513_15 : 1;
@@ -1694,6 +1726,7 @@ bitfield SmallStalactData {
     room_0513_18 : 1;
     room_0513_19 : 1;
     room_0513_20 : 1;
+
     room_0513_21 : 1;
     room_0513_22 : 1;
     room_0513_23 : 1;
@@ -1702,6 +1735,7 @@ bitfield SmallStalactData {
     room_1413_2 : 1;
     room_1413_3 : 1;
     room_1513_0 : 1;
+
     room_1513_1 : 1;
     room_1513_2 : 1;
     room_1513_3 : 1;
@@ -1710,6 +1744,7 @@ bitfield SmallStalactData {
     room_1613_0 : 1;
     room_1613_1 : 1;
     room_1613_2 : 1;
+
     room_1713_0 : 1;
     room_1713_1 : 1;
     room_1713_2 : 1;
@@ -1718,6 +1753,7 @@ bitfield SmallStalactData {
     room_1713_5 : 1;
     room_1713_6 : 1;
     room_1713_7 : 1;
+
     room_1713_8 : 1;
     room_1713_9 : 1;
     room_1713_10 : 1;
@@ -1726,6 +1762,7 @@ bitfield SmallStalactData {
     room_1713_13 : 1;
     room_1713_14 : 1;
     room_1713_15 : 1;
+
     room_1713_16 : 1;
     room_1713_17 : 1;
     room_1713_18 : 1;
@@ -1734,6 +1771,7 @@ bitfield SmallStalactData {
     room_1713_21 : 1;
     room_1713_22 : 1;
     room_1713_23 : 1;
+
     room_1713_24 : 1;
     room_1713_25 : 1;
     room_1713_26 : 1;
@@ -1742,6 +1780,7 @@ bitfield SmallStalactData {
     room_1713_29 : 1;
     room_1713_30 : 1;
     room_1713_31 : 1;
+
     room_1713_32 : 1;
     room_1713_33 : 1;
     room_1713_34 : 1;
@@ -1750,6 +1789,7 @@ bitfield SmallStalactData {
     room_1713_37 : 1;
     room_1713_38 : 1;
     room_0514_0 : 1;
+
     room_0514_1 : 1;
     room_0514_2 : 1;
     room_0514_3 : 1;
@@ -1758,6 +1798,7 @@ bitfield SmallStalactData {
     room_1314_0 : 1;
     room_1514_0 : 1;
     room_1514_1 : 1;
+
     room_1514_2 : 1;
     room_1514_3 : 1;
     room_1514_4 : 1;
@@ -1766,6 +1807,7 @@ bitfield SmallStalactData {
     room_1514_7 : 1;
     room_1514_8 : 1;
     room_1514_9 : 1;
+
     room_1514_10 : 1;
     room_1514_11 : 1;
     room_1514_12 : 1;
@@ -1774,6 +1816,7 @@ bitfield SmallStalactData {
     room_1514_15 : 1;
     room_1514_16 : 1;
     room_1514_17 : 1;
+
     room_1514_18 : 1;
     room_1514_19 : 1;
     room_1514_20 : 1;
@@ -1782,6 +1825,7 @@ bitfield SmallStalactData {
     room_1514_23 : 1;
     room_1514_24 : 1;
     room_1514_25 : 1;
+
     room_1514_26 : 1;
     room_1514_27 : 1;
     room_1514_28 : 1;
@@ -1790,6 +1834,7 @@ bitfield SmallStalactData {
     room_1514_31 : 1;
     room_1514_32 : 1;
     room_1514_33 : 1;
+
     room_1514_34 : 1;
     room_1514_35 : 1;
     room_1514_36 : 1;
@@ -1798,6 +1843,7 @@ bitfield SmallStalactData {
     room_1514_39 : 1;
     room_1514_40 : 1;
     room_1514_41 : 1;
+
     room_1514_42 : 1;
     room_1514_43 : 1;
     room_1514_44 : 1;
@@ -1806,6 +1852,7 @@ bitfield SmallStalactData {
     room_1714_2 : 1;
     room_1714_3 : 1;
     room_1714_4 : 1;
+
     room_0215_0 : 1;
     room_0215_1 : 1;
     room_1615_0 : 1;
@@ -1814,6 +1861,7 @@ bitfield SmallStalactData {
     room_1615_3 : 1;
     room_0416_0 : 1;
     room_1516_0 : 1;
+
     room_1516_1 : 1;
     room_1616_0 : 1;
     room_1616_1 : 1;
@@ -1822,6 +1870,7 @@ bitfield SmallStalactData {
     room_1616_4 : 1;
     room_1616_5 : 1;
     room_1616_6 : 1;
+
     room_0617_0 : 1;
     room_1518_0 : 1;
     room_1518_1 : 1;
@@ -1830,6 +1879,7 @@ bitfield SmallStalactData {
     room_1518_4 : 1;
     room_1518_5 : 1;
     room_1518_6 : 1;
+
     room_1518_7 : 1;
     room_1518_8 : 1;
     room_1319_0 : 1;
@@ -1838,6 +1888,7 @@ bitfield SmallStalactData {
     room_1319_3 : 1;
     room_1319_4 : 1;
     room_1319_5 : 1;
+
     room_1319_6 : 1;
     room_1319_7 : 1;
     room_1419_0 : 1;
@@ -1846,6 +1897,7 @@ bitfield SmallStalactData {
     room_1419_3 : 1;
     room_1419_4 : 1;
     room_1419_5 : 1;
+
     room_1419_6 : 1;
     room_1419_7 : 1;
     room_1419_8 : 1;
@@ -1854,6 +1906,7 @@ bitfield SmallStalactData {
     room_1519_2 : 1;
     room_1619_0 : 1;
     room_1619_1 : 1;
+
     room_1619_2 : 1;
     room_1619_3 : 1;
     room_1619_4 : 1;
@@ -1861,10 +1914,17 @@ bitfield SmallStalactData {
     room_1619_6 : 1;
     room_1619_7 : 1;
     room_1619_8 : 1;
+
+    // Arguably we should maybe have extra padding outside this bitfield
+    // instead of having an oversize padding here, but I'm sticking with
+    // the sizes that were originally in the file prior to adding this
+    // bitfield.
     pad : 89 [[hidden]];
+
 } [[comment("room_<x><y>_<num>")]];
 
 bitfield IcicleData {
+
     unknown_0 : 1;
     unknown_1 : 1;
     unknown_2 : 1;
@@ -1873,6 +1933,7 @@ bitfield IcicleData {
     unknown_5 : 1;
     unknown_6 : 1;
     unknown_7 : 1;
+
     unknown_8 : 1;
     unknown_9 : 1;
     unknown_10 : 1;
@@ -1881,6 +1942,7 @@ bitfield IcicleData {
     unknown_13 : 1;
     unknown_14 : 1;
     unknown_15 : 1;
+
     unknown_16 : 1;
     unknown_17 : 1;
     unknown_18 : 1;
@@ -1889,6 +1951,7 @@ bitfield IcicleData {
     unknown_21 : 1;
     unknown_22 : 1;
     unknown_23 : 1;
+
     unknown_24 : 1;
     unknown_25 : 1;
     unknown_26 : 1;
@@ -1897,6 +1960,7 @@ bitfield IcicleData {
     unknown_29 : 1;
     unknown_30 : 1;
     unknown_31 : 1;
+
     unknown_32 : 1;
     unknown_33 : 1;
     unknown_34 : 1;
@@ -1905,6 +1969,7 @@ bitfield IcicleData {
     unknown_37 : 1;
     unknown_38 : 1;
     unknown_39 : 1;
+
     unknown_40 : 1;
     unknown_41 : 1;
     unknown_42 : 1;
@@ -1913,6 +1978,7 @@ bitfield IcicleData {
     unknown_45 : 1;
     unknown_46 : 1;
     unknown_47 : 1;
+
     unknown_48 : 1;
     unknown_49 : 1;
     unknown_50 : 1;
@@ -1921,6 +1987,7 @@ bitfield IcicleData {
     unknown_53 : 1;
     unknown_54 : 1;
     unknown_55 : 1;
+
     unknown_56 : 1;
     unknown_57 : 1;
     unknown_58 : 1;
@@ -1929,6 +1996,7 @@ bitfield IcicleData {
     unknown_61 : 1;
     unknown_62 : 1;
     unknown_63 : 1;
+
     unknown_64 : 1;
     unknown_65 : 1;
     unknown_66 : 1;
@@ -1937,6 +2005,7 @@ bitfield IcicleData {
     unknown_69 : 1;
     unknown_70 : 1;
     unknown_71 : 1;
+
     unknown_72 : 1;
     unknown_73 : 1;
     unknown_74 : 1;
@@ -1945,6 +2014,7 @@ bitfield IcicleData {
     unknown_77 : 1;
     unknown_78 : 1;
     unknown_79 : 1;
+
     unknown_80 : 1;
     unknown_81 : 1;
     unknown_82 : 1;
@@ -1953,6 +2023,7 @@ bitfield IcicleData {
     unknown_85 : 1;
     unknown_86 : 1;
     unknown_87 : 1;
+
     unknown_88 : 1;
     unknown_89 : 1;
     unknown_90 : 1;
@@ -1961,6 +2032,7 @@ bitfield IcicleData {
     unknown_93 : 1;
     unknown_94 : 1;
     unknown_95 : 1;
+
     unknown_96 : 1;
     unknown_97 : 1;
     unknown_98 : 1;
@@ -1969,6 +2041,7 @@ bitfield IcicleData {
     unknown_101 : 1;
     unknown_102 : 1;
     unknown_103 : 1;
+
     unknown_104 : 1;
     unknown_105 : 1;
     unknown_106 : 1;
@@ -1977,6 +2050,7 @@ bitfield IcicleData {
     unknown_109 : 1;
     unknown_110 : 1;
     unknown_111 : 1;
+
     unknown_112 : 1;
     unknown_113 : 1;
     unknown_114 : 1;
@@ -1985,6 +2059,7 @@ bitfield IcicleData {
     unknown_117 : 1;
     unknown_118 : 1;
     unknown_119 : 1;
+
     unknown_120 : 1;
     unknown_121 : 1;
     unknown_122 : 1;
@@ -1993,6 +2068,7 @@ bitfield IcicleData {
     unknown_125 : 1;
     unknown_126 : 1;
     unknown_127 : 1;
+
     unknown_128 : 1;
     unknown_129 : 1;
     unknown_130 : 1;
@@ -2001,6 +2077,7 @@ bitfield IcicleData {
     unknown_133 : 1;
     unknown_134 : 1;
     unknown_135 : 1;
+
     unknown_136 : 1;
     unknown_137 : 1;
     unknown_138 : 1;
@@ -2009,6 +2086,7 @@ bitfield IcicleData {
     unknown_141 : 1;
     unknown_142 : 1;
     unknown_143 : 1;
+
     unknown_144 : 1;
     unknown_145 : 1;
     unknown_146 : 1;
@@ -2017,6 +2095,7 @@ bitfield IcicleData {
     unknown_149 : 1;
     unknown_150 : 1;
     unknown_151 : 1;
+
     unknown_152 : 1;
     unknown_153 : 1;
     unknown_154 : 1;
@@ -2024,6 +2103,11 @@ bitfield IcicleData {
     unknown_156 : 1;
     unknown_157 : 1;
     unknown_158 : 1;
+
+    // Arguably we should maybe have extra padding outside this bitfield
+    // instead of having an oversize padding here, but I'm sticking with
+    // the sizes that were originally in the file prior to adding this
+    // bitfield.
     pad : 97 [[hidden]];
 };
 
