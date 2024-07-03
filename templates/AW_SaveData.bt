@@ -19,7 +19,7 @@
 //           - Added a missing chest bit, also courtesy avengah
 //           - Renamed KangarooStatus values to more closely match the game
 //     0.8   - 2024-07-03 - Added Small Stalactite/Stalagmite bitfield
-               mapping, courtesy polinet68, and a barebones icicle bitfield
+//             mapping, courtesy polinet68, and a barebones icicle bitfield
 //---------------------------------------------------------
 
 // ===================================================
