@@ -15,6 +15,8 @@
 //          - Renamed KangarooStatus values to more closely match the game
 //     0.4  - 2024-07-03 - Added stalactite/stalagmite/icicle data,
 //            courtesy polinet68, and a barebones icicle bitfield
+//     0.4.1 - 2024-07-06 - Added stolen-nut bit to FruitData, courtesy
+//             avengah
 //---------------------------------------------------------
 
 // ===================================================
@@ -849,7 +851,8 @@ bitfield FruitData {
     room_1916_0 : 1;
     unknown_0E_1 : 1;
     room_1917_0 : 1;
-    pad : 13 [[hidden]];
+    stolen_nut : 1 [[comment("This is set the first time a nut is stolen from a squirrel")]];
+    pad : 12 [[hidden]];
 } [[comment("Room coordinates are yx_id not xy_id")]];
 
 

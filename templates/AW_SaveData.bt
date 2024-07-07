@@ -20,6 +20,8 @@
 //           - Renamed KangarooStatus values to more closely match the game
 //     0.8   - 2024-07-03 - Added Small Stalactite/Stalagmite bitfield
 //             mapping, courtesy polinet68, and a barebones icicle bitfield
+//     0.8.1 - 2024-07-06 - Added stolen-nut bit to FruitData, courtesy
+//             avengah
 //---------------------------------------------------------
 
 // ===================================================
@@ -844,7 +846,8 @@ typedef struct {
     u64 room_1916_0 : 1;
     u64 unknown_0E_1 : 1;
     u64 room_1917_0 : 1;
-    u64 pad : 13 <hidden=true>;
+    u64 stolen_nut : 1 <comment="This is set the first time a nut is stolen from a squirrel">;
+    u64 pad : 12 <hidden=true>;
 } FruitData <comment="Room coordinates are yx_id not xy_id">;
 
 
