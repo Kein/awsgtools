@@ -2,8 +2,8 @@
 //--- ImHex v1.33.x Binary Template
 //
 //   File: AW_SaveData.bt
-//   Authors: Kein
-//   Version: 0.1
+//   Authors: Kein, apocalyptech, just-ero, lipsum, avengah
+//   Version: 0.4.2
 //   Purpose: Parser for Animal Well save game data
 //   Category: Game
 //   File Mask: *.sav
@@ -17,6 +17,8 @@
 //            courtesy polinet68, and a barebones icicle bitfield
 //     0.4.1 - 2024-07-06 - Added stolen-nut bit to FruitData, courtesy
 //             avengah
+//     0.4.2 - 2025-02-28 - Fixed Crow + Spike-Room Bunny ordering (they were
+//             swapped), courtesy avengah
 //---------------------------------------------------------
 
 // ===================================================
@@ -1041,7 +1043,7 @@ bitfield BunnyData {
     TutorialBunny : 1        [[comment("statue 4")]];
     IllegallBunny1 : 1;
     OrigamiBunny : 1         [[comment("statue 17")]];
-    CrowBunny : 1            [[comment("statue 10")]];
+    SpikeRoomBunny : 1       [[comment("statue 10")]];
     GhostBunny : 1           [[comment("statue 9")]];
     IllegallBunny2 : 1;
     FishBunny : 1       [[comment("statue 8")]];
@@ -1069,7 +1071,7 @@ bitfield BunnyData {
     DreamBunny : 1           [[comment("statue 12")]];
     IllegallBunny16 : 1;
     FloorIsLavaBunny : 1     [[comment("statue 14")]];
-    SpikeRoomBunny : 1       [[comment("statue 20")]];
+    CrowBunny : 1            [[comment("statue 20")]];
 };
 
 

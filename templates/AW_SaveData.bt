@@ -2,8 +2,8 @@
 //--- 010 Editor v14.0 Binary Template
 //
 //      File: AW_SaveData.bt
-//   Authors: Kein, apocalyptech, just-ero, lipsum 
-//   Version: 0.5
+//   Authors: Kein, apocalyptech, just-ero, lipsum, avengah
+//   Version: 0.8.2
 //   Purpose: Parser for Animal Well save game data
 //   Category: Game
 //   File Mask: *.sav
@@ -22,6 +22,8 @@
 //             mapping, courtesy polinet68, and a barebones icicle bitfield
 //     0.8.1 - 2024-07-06 - Added stolen-nut bit to FruitData, courtesy
 //             avengah
+//     0.8.2 - 2025-02-28 - Fixed Crow + Spike-Room Bunny ordering (they were
+//             swapped), courtesy avengah
 //---------------------------------------------------------
 
 // ===================================================
@@ -1036,7 +1038,7 @@ typedef struct {
     u32 TutorialBunny : 1        <comment="statue 4">;
     u32 IllegallBunny1 : 1;
     u32 OrigamiBunny : 1         <comment="statue 17">;
-    u32 CrowBunny : 1            <comment="statue 10">;
+    u32 SpikeRoomBunny : 1            <comment="statue 10">;
     u32 GhostBunny : 1           <comment="statue 9">;
     u32 IllegallBunny2 : 1;
     u32 FishBunny : 1       <comment="statue 8">;
@@ -1064,7 +1066,7 @@ typedef struct {
     u32 DreamBunny : 1           <comment="statue 12">;
     u32 IllegallBunny16 : 1;
     u32 FloorIsLavaBunny : 1     <comment="statue 14">;
-    u32 SpikeRoomBunny : 1       <comment="statue 20">;
+    u32 CrowBunny : 1       <comment="statue 20">;
 } BunnyData;
 
 
